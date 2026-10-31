@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <title>LevelUp — Your Kid's Homework. Your Language.</title>
   <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
   <meta name="description" content="Your kid's homework. Your language. Level up.">
@@ -1220,48 +1223,128 @@
     .hidden { display: none !important; }
 
     
+    
     /* ====================================================================
-       LevelUp Clean & Spacious Design System
+       VOW-INSPIRED DESIGN SYSTEM — LevelUp Edition
+       Matches typography, floating glass navbar, atmospheric gradients,
+       and card structures of vow.rajkrr.dev
        ==================================================================== */
-    .landing-wrapper {
-      width: 100%;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+
+    :root {
+      --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-body: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+      --vow-olive: #3B5732;
+      --vow-olive-deep: #2E4627;
+      --vow-olive-light: #5A854E;
+      --vow-canvas: #FAF8F5;
+      --vow-text: #0B0E13;
+      --vow-muted: #5A6658;
+      --vow-border: rgba(77, 115, 66, 0.18);
+      --vow-shadow-glass: 0 10px 30px -8px rgba(59, 87, 50, 0.08), 0 2px 8px -2px rgba(0, 0, 0, 0.04);
+      --vow-glow-shadow: 0 0 45px -10px rgba(59, 87, 50, 0.22);
     }
 
-    /* Top Navigation Bar */
-    .landing-nav {
-      position: sticky;
+    body {
+      font-family: var(--font-body);
+      background: var(--vow-canvas);
+      color: var(--vow-text);
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .font-display {
+      font-family: var(--font-display);
+    }
+
+    /* Atmospheric Dot Grid & Light Cones (from vow) */
+    .vow-bg-atmosphere {
+      position: absolute;
       top: 0;
-      z-index: 100;
-      background: rgba(250, 248, 245, 0.95);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-      padding: 14px 24px;
+      left: 0;
+      right: 0;
+      height: 100%;
+      min-height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
     }
 
-    .landing-nav-inner {
-      max-width: 980px;
-      margin: 0 auto;
+    .vow-dot-grid {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(59, 87, 50, 0.12) 1.2px, transparent 1.2px);
+      background-size: 28px 28px;
+      mask-image: radial-gradient(ellipse 75% 60% at 50% 20%, black 30%, transparent 80%);
+      -webkit-mask-image: radial-gradient(ellipse 75% 60% at 50% 20%, black 30%, transparent 80%);
+      opacity: 0.7;
+    }
+
+    .vow-light-cone {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1200px;
+      height: 600px;
+      background: radial-gradient(ellipse at 50% 0%, rgba(59, 87, 50, 0.16) 0%, rgba(125, 166, 113, 0.08) 45%, transparent 70%);
+      filter: blur(80px);
+    }
+
+    .vow-horizon-arc {
+      position: absolute;
+      top: -160px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1100px;
+      height: 480px;
+      border-radius: 100%;
+      border-top: 1px solid rgba(77, 115, 66, 0.28);
+      box-shadow: 0 -15px 40px rgba(59, 87, 50, 0.07);
+      opacity: 0.8;
+    }
+
+    /* Floating Capsule Navbar (Exact vow style) */
+    .vow-nav-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      padding: 14px 20px;
+      pointer-events: none;
+    }
+
+    .vow-nav-capsule {
+      pointer-events: auto;
+      width: 100%;
+      max-width: 960px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--vow-border);
+      box-shadow: var(--vow-shadow-glass);
+      padding: 10px 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 16px;
+      transition: all 0.3s ease;
     }
 
-    .nav-brand {
+    .vow-nav-brand {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 9px;
       text-decoration: none;
     }
 
-    .nav-logo-icon {
+    .vow-nav-logo-icon {
       width: 32px;
       height: 32px;
-      background: linear-gradient(135deg, var(--olive-dark), var(--olive-medium));
+      background: linear-gradient(135deg, var(--vow-olive), var(--vow-olive-light));
       border-radius: 9px;
       display: flex;
       align-items: center;
@@ -1269,621 +1352,749 @@
       color: #FFF;
       font-size: 16px;
       font-weight: 800;
+      box-shadow: 0 2px 8px rgba(59, 87, 50, 0.25);
     }
 
-    .nav-brand-title {
-      font-size: 1.25rem;
+    .vow-nav-logo-text {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
       font-weight: 800;
-      color: var(--olive-dark);
-      letter-spacing: -0.4px;
+      color: var(--vow-olive);
+      letter-spacing: -0.5px;
     }
 
-    .badge-gemma-nav {
+    .vow-nav-badge {
       display: inline-flex;
       align-items: center;
       gap: 4px;
       padding: 3px 9px;
-      border-radius: var(--radius-full);
-      background: var(--olive-soft-bg);
-      border: 1px solid rgba(77, 115, 66, 0.2);
-      color: var(--olive-dark);
+      border-radius: 9999px;
+      background: rgba(77, 115, 66, 0.1);
+      border: 1px solid rgba(77, 115, 66, 0.25);
+      color: var(--vow-olive);
       font-size: 0.72rem;
       font-weight: 700;
     }
 
-    .nav-links {
+    .vow-nav-links {
       display: flex;
       align-items: center;
       gap: 24px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
     }
 
-    .nav-link {
-      font-size: 0.86rem;
+    .vow-nav-link {
+      font-size: 0.88rem;
       font-weight: 600;
-      color: var(--text-muted);
+      color: #6B7280;
       text-decoration: none;
       transition: color 0.2s ease;
     }
 
-    .nav-link:hover {
-      color: var(--olive-dark);
+    .vow-nav-link:hover {
+      color: var(--vow-olive);
     }
 
-    .nav-cta-btn {
+    .vow-nav-btn {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 9px 18px;
-      border-radius: var(--radius-full);
-      background: var(--olive-dark);
+      padding: 8px 18px;
+      border-radius: 9999px;
+      background: var(--vow-olive);
       color: #FFFFFF !important;
       font-size: 0.84rem;
       font-weight: 700;
       text-decoration: none;
       transition: all 0.2s ease;
-      box-shadow: 0 2px 8px rgba(59, 87, 50, 0.18);
+      box-shadow: 0 2px 10px rgba(59, 87, 50, 0.25);
     }
 
-    .nav-cta-btn:hover {
-      background: var(--olive-medium);
+    .vow-nav-btn:hover {
+      background: var(--vow-olive-deep);
       transform: translateY(-1px);
     }
 
     @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .badge-gemma-nav { display: none; }
+      .vow-nav-links { display: none; }
+      .vow-nav-badge { display: none; }
+      .vow-nav-wrapper { padding: 10px 14px; }
     }
 
-    /* Landing Content Container */
-    .landing-content {
-      max-width: 980px;
+    /* Main Page Shell */
+    .vow-main-shell {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 1040px;
       margin: 0 auto;
       padding: 0 20px;
-      width: 100%;
     }
 
-    /* Hero Section — Airy & Spacious */
-    .hero-section {
+    /* Hero Section */
+    .vow-hero {
       text-align: center;
-      padding: 68px 0 52px;
-      position: relative;
+      padding: 100px 0 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    .hero-eyebrow {
+    /* SaaS Announcement Pill with Pulsing Dot (from vow) */
+    .vow-eyebrow-pill {
+      margin-bottom: 22px;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 9px;
       padding: 6px 16px;
-      border-radius: var(--radius-full);
-      background: #FFFFFF;
-      border: 1px solid var(--border);
-      font-size: 0.8rem;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--vow-border);
+      box-shadow: 0 2px 15px -3px rgba(59, 87, 50, 0.1);
+      transition: all 0.3s ease;
+      cursor: default;
+    }
+
+    .vow-eyebrow-pill:hover {
+      border-color: rgba(77, 115, 66, 0.4);
+      box-shadow: 0 4px 18px -3px rgba(59, 87, 50, 0.18);
+    }
+
+    .vow-pulse-container {
+      position: relative;
+      display: flex;
+      width: 9px;
+      height: 9px;
+    }
+
+    .vow-pulse-ping {
+      position: absolute;
+      display: inline-flex;
+      width: 100%;
+      height: 100%;
+      border-radius: 9999px;
+      background: #34C759;
+      opacity: 0.75;
+      animation: ping 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+
+    @keyframes ping {
+      75%, 100% { transform: scale(2.2); opacity: 0; }
+    }
+
+    .vow-pulse-dot {
+      position: relative;
+      display: inline-flex;
+      border-radius: 9999px;
+      width: 9px;
+      height: 9px;
+      background: #34C759;
+    }
+
+    .vow-eyebrow-text {
+      font-family: var(--font-display);
+      font-size: 0.76rem;
       font-weight: 700;
-      color: var(--olive-dark);
-      margin-bottom: 22px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--vow-olive);
     }
 
-    .hero-eyebrow-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #2E7D32;
+    .vow-eyebrow-arrow {
+      color: var(--vow-olive);
+      font-size: 0.8rem;
     }
 
-    .hero-title {
-      font-size: 2.85rem;
-      font-weight: 800;
-      color: var(--earth-brown);
-      line-height: 1.2;
-      letter-spacing: -1px;
+    /* Tight Iconic Headline (Exact vow format: 3 words + gradient subline) */
+    .vow-headline {
+      max-width: 860px;
       margin-bottom: 18px;
-      max-width: 780px;
-      margin-left: auto;
-      margin-right: auto;
     }
 
-    .hero-title .gradient-text {
-      background: linear-gradient(135deg, var(--olive-dark) 0%, #2E7D32 50%, var(--terracotta) 100%);
+    .vow-headline-triad {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px sm:gap-18px;
+      white-space: nowrap;
+      line-height: 1.05;
+      font-family: var(--font-display);
+      font-weight: 900;
+      letter-spacing: -1.2px;
+      font-size: clamp(2rem, 5.2vw, 4.4rem);
+    }
+
+    .vow-word-dark {
+      color: #0B0E13;
+    }
+
+    .vow-word-accent {
+      color: var(--vow-olive);
+    }
+
+    .vow-headline-subline {
+      display: block;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(1.3rem, 3.2vw, 2.7rem);
+      background: linear-gradient(135deg, var(--vow-olive) 0%, #2E7D32 50%, #D06346 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      margin-top: 10px;
+      letter-spacing: -0.6px;
+      line-height: 1.2;
     }
 
-    .hero-subtitle {
+    /* Subtext */
+    .vow-subtext {
+      max-width: 620px;
+      margin: 0 auto 30px;
       font-size: 1.05rem;
-      color: var(--text-muted);
       line-height: 1.65;
-      max-width: 640px;
-      margin: 0 auto 32px;
+      color: #4B5563;
       font-weight: 400;
     }
 
-    .hero-actions {
+    /* High-Converting CTA Buttons (from vow) */
+    .vow-btn-group {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 14px;
       flex-wrap: wrap;
-      margin-bottom: 28px;
+      margin-bottom: 24px;
     }
 
-    .btn-hero-primary {
+    /* Primary High-Gloss Button with Shimmer Sweep */
+    .vow-btn-primary {
+      position: relative;
+      overflow: hidden;
       display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 13px 26px;
-      border-radius: var(--radius-full);
-      background: var(--olive-dark);
-      color: #FFFFFF !important;
-      font-size: 0.94rem;
-      font-weight: 700;
-      text-decoration: none;
-      transition: all 0.2s ease;
-      box-shadow: 0 4px 14px rgba(59, 87, 50, 0.25);
-    }
-
-    .btn-hero-primary:hover {
-      background: var(--olive-medium);
-      transform: translateY(-2px);
-    }
-
-    .btn-hero-secondary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 13px 24px;
-      border-radius: var(--radius-full);
-      background: #FFFFFF;
-      color: var(--text-body);
-      border: 1.5px solid var(--border);
-      font-size: 0.94rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.2s ease;
-    }
-
-    .btn-hero-secondary:hover {
-      border-color: var(--olive-medium);
-      color: var(--olive-dark);
-    }
-
-    .hero-substrip {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      display: flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 10px;
+      padding: 13px 28px;
+      min-height: 48px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--vow-olive) 0%, #305028 100%);
+      color: #FFFFFF !important;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.96rem;
+      text-decoration: none;
+      box-shadow: 0 12px 30px -8px rgba(59, 87, 50, 0.45);
+      border-top: 1px solid rgba(255, 255, 255, 0.35);
+      cursor: pointer;
+      transition: all 0.25s ease;
     }
 
-    .hero-substrip span {
+    .vow-btn-primary:hover {
+      box-shadow: 0 16px 36px -6px rgba(59, 87, 50, 0.55);
+      transform: translateY(-1px);
+    }
+
+    .vow-shimmer-sweep {
+      position: absolute;
+      inset: 0;
+      transform: translateX(-100%);
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28), transparent);
+      pointer-events: none;
+      transition: transform 0.8s ease;
+    }
+
+    .vow-btn-primary:hover .vow-shimmer-sweep {
+      transform: translateX(100%);
+    }
+
+    .vow-btn-arrow {
+      transition: transform 0.2s ease;
+    }
+
+    .vow-btn-primary:hover .vow-btn-arrow {
+      transform: translateX(3px);
+    }
+
+    /* Secondary Glass Button */
+    .vow-btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 24px;
+      min-height: 48px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.9);
+      color: #1E261D;
+      border: 1px solid var(--vow-border);
+      backdrop-filter: blur(8px);
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 0.94rem;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .vow-btn-secondary:hover {
+      background: #FFFFFF;
+      border-color: rgba(77, 115, 66, 0.4);
+      transform: translateY(-1px);
+    }
+
+    .vow-play-circle {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(59, 87, 50, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: var(--vow-olive);
+    }
+
+    /* Subtle Trust Strip */
+    .vow-trust-strip {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      font-size: 0.82rem;
+      color: #6B7280;
+      flex-wrap: wrap;
+    }
+
+    .vow-trust-item strong {
+      color: var(--vow-olive);
+      font-weight: 600;
+    }
+
+    .vow-trust-sep {
+      color: #D1D5DB;
+    }
+
+    /* Interactive Showcase Card (Like vow's OfficePreview2D container) */
+    .vow-showcase-frame {
+      width: 100%;
+      max-width: 580px;
+      margin: 44px auto 0;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 0 25px 60px -15px rgba(59, 87, 50, 0.12), 0 0 0 1px rgba(77, 115, 66, 0.14);
+      padding: 24px;
+      position: relative;
+    }
+
+    .vow-showcase-badge {
       display: inline-flex;
       align-items: center;
       gap: 6px;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      background: rgba(77, 115, 66, 0.08);
+      color: var(--vow-olive);
+      font-size: 0.74rem;
+      font-weight: 700;
+      font-family: var(--font-display);
+      margin-bottom: 14px;
     }
 
-    .substrip-sep {
-      color: #D5CDC0;
-      user-select: none;
+    /* Section Cards (How It Works & Demos) */
+    .vow-section {
+      padding: 72px 0 40px;
+      position: relative;
     }
 
-    @media (max-width: 640px) {
-      .hero-title { font-size: 2.05rem; }
-      .hero-subtitle { font-size: 0.95rem; }
-      .hero-section { padding: 44px 0 32px; }
-    }
-
-    /* Section Headers */
-    .landing-section {
-      padding: 56px 0;
-      border-top: 1px solid rgba(232, 227, 218, 0.6);
-    }
-
-    .section-head-center {
+    .vow-section-head {
       text-align: center;
-      max-width: 620px;
+      max-width: 600px;
       margin: 0 auto 36px;
     }
 
-    .section-badge-tag {
+    .vow-section-tag {
       display: inline-block;
       text-transform: uppercase;
       font-size: 0.72rem;
       font-weight: 800;
-      letter-spacing: 1px;
-      color: var(--olive-dark);
-      background: var(--olive-badge-bg);
+      letter-spacing: 1.2px;
+      color: var(--vow-olive);
+      background: rgba(77, 115, 66, 0.1);
       padding: 4px 12px;
-      border-radius: var(--radius-full);
+      border-radius: 9999px;
       margin-bottom: 10px;
+      font-family: var(--font-display);
     }
 
-    .section-main-heading {
-      font-size: 1.85rem;
+    .vow-section-title {
+      font-family: var(--font-display);
+      font-size: 2rem;
       font-weight: 800;
-      color: var(--earth-brown);
-      letter-spacing: -0.5px;
+      color: #0B0E13;
+      letter-spacing: -0.6px;
       line-height: 1.25;
       margin-bottom: 8px;
     }
 
-    .section-lead-text {
-      font-size: 0.92rem;
-      color: var(--text-muted);
+    .vow-section-subtitle {
+      font-size: 0.94rem;
+      color: #6B7280;
       line-height: 1.6;
     }
 
-    /* 3-Step Clean Cards */
-    .how-cards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-    }
-
-    .how-card {
-      background: #FFFFFF;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 26px 22px;
-      box-shadow: var(--shadow-card);
-      transition: all 0.2s ease;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .how-card:hover {
-      border-color: var(--olive-light);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-card-hover);
-    }
-
-    .how-card-num {
-      width: 34px;
-      height: 34px;
-      border-radius: 10px;
-      background: var(--olive-soft-bg);
-      color: var(--olive-dark);
-      font-size: 0.92rem;
-      font-weight: 800;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 4px;
-    }
-
-    .how-card h3 {
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--earth-brown);
-    }
-
-    .how-card p {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
-
-    /* Demo Cards Grid */
-    .demo-grid-clean {
+    /* 3 Clean Modern Feature Cards */
+    .vow-grid-3 {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
       gap: 20px;
     }
 
-    .demo-item {
+    .vow-card-item {
       background: #FFFFFF;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 16px;
-      box-shadow: var(--shadow-card);
+      border: 1px solid var(--vow-border);
+      border-radius: 18px;
+      padding: 24px 20px;
+      box-shadow: var(--vow-shadow-glass);
+      transition: all 0.25s ease;
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      cursor: pointer;
-      transition: all 0.2s ease;
+      gap: 10px;
     }
 
-    .demo-item:hover {
-      border-color: var(--olive-light);
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-card-hover);
+    .vow-card-item:hover {
+      border-color: rgba(77, 115, 66, 0.4);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 35px -10px rgba(59, 87, 50, 0.12);
     }
 
-    .demo-item-thumb {
+    .vow-card-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: rgba(77, 115, 66, 0.08);
+      color: var(--vow-olive);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+
+    .vow-card-item h3 {
+      font-family: var(--font-display);
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: #0B0E13;
+    }
+
+    .vow-card-item p {
+      font-size: 0.86rem;
+      color: #6B7280;
+      line-height: 1.6;
+    }
+
+    /* Demo Preview Cards */
+    .vow-demo-thumb {
       width: 100%;
       height: 140px;
-      border-radius: var(--radius-md);
+      border-radius: 12px;
       overflow: hidden;
       background: #F4F1EA;
       position: relative;
     }
 
-    .demo-item-thumb img {
+    .vow-demo-thumb img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
     }
 
-    .demo-item-tag {
+    .vow-demo-pill {
       position: absolute;
       top: 10px;
       left: 10px;
-      background: rgba(255, 255, 255, 0.94);
-      backdrop-filter: blur(6px);
-      border: 1px solid var(--border);
-      padding: 4px 10px;
-      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--vow-border);
+      padding: 3px 10px;
+      border-radius: 9999px;
       font-size: 0.72rem;
       font-weight: 700;
-      color: var(--olive-dark);
+      color: var(--vow-olive);
+      font-family: var(--font-display);
     }
 
-    .demo-item-title {
-      font-size: 0.98rem;
-      font-weight: 700;
-      color: var(--earth-brown);
-    }
-
-    .demo-item-desc {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-      flex: 1;
-    }
-
-    .demo-item-btn {
+    .vow-demo-action {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 6px;
       width: 100%;
-      padding: 9px 12px;
-      border-radius: var(--radius-md);
-      background: var(--olive-soft-bg);
-      color: var(--olive-dark);
-      font-size: 0.82rem;
+      padding: 10px 14px;
+      border-radius: 10px;
+      background: rgba(77, 115, 66, 0.08);
+      color: var(--vow-olive);
+      font-family: var(--font-display);
+      font-size: 0.84rem;
       font-weight: 700;
       border: 1px solid rgba(77, 115, 66, 0.2);
       transition: all 0.2s ease;
+      cursor: pointer;
     }
 
-    .demo-item:hover .demo-item-btn {
-      background: var(--olive-dark);
+    .vow-card-item:hover .vow-demo-action {
+      background: var(--vow-olive);
       color: #FFFFFF;
     }
 
-    /* Live App Section */
-    .app-section-clean {
-      padding: 56px 0 32px;
-      border-top: 2px solid rgba(59, 87, 50, 0.12);
+    
+    /* ====================================================================
+       VOW-STYLE PREMIUM DARK FOOTER
+       ==================================================================== */
+    .vow-footer {
+      background: linear-gradient(180deg, #1A2318 0%, #111810 100%);
+      color: #E5E7EB;
+      padding: 56px 20px 36px;
+      margin-top: 72px;
+      border-top: 1px solid rgba(77, 115, 66, 0.25);
+      position: relative;
+      z-index: 20;
     }
 
-    .app-box-frame {
-      max-width: 520px;
+    .vow-footer-inner {
+      max-width: 980px;
       margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 36px;
+      text-align: left;
     }
 
-    /* Sample pills inside photo card */
+    @media (max-width: 768px) {
+      .vow-footer-inner {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        text-align: center;
+      }
+      .vow-footer-col {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    .vow-footer-brand-title {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .vow-footer-desc {
+      font-size: 0.86rem;
+      color: #9CA3AF;
+      line-height: 1.6;
+      max-width: 340px;
+      margin-bottom: 18px;
+    }
+
+    .vow-footer-col h4 {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 14px;
+      letter-spacing: -0.2px;
+    }
+
+    .vow-footer-nav-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .vow-footer-nav-item a {
+      font-size: 0.84rem;
+      color: #9CA3AF;
+      text-decoration: none !important;
+      transition: color 0.2s ease;
+      display: inline-block;
+    }
+
+    .vow-footer-nav-item a:hover {
+      color: #7DA671;
+    }
+
+    .vow-footer-bottom {
+      max-width: 980px;
+      margin: 40px auto 0;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.78rem;
+      color: #6B7280;
+    }
+
+    .vow-footer-bottom a {
+      color: #9CA3AF;
+      text-decoration: none !important;
+    }
+
+    .vow-footer-bottom a:hover {
+      color: #FFFFFF;
+    }
+
+    @media (max-width: 640px) {
+      .vow-footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+      }
+    }
+
+
     .sample-pills-row {
       display: flex;
       align-items: center;
       gap: 6px;
       flex-wrap: wrap;
-      margin-bottom: 14px;
-      padding: 9px 12px;
-      background: var(--olive-soft-bg);
-      border-radius: var(--radius-md);
-      border: 1px dashed rgba(77, 115, 66, 0.35);
+      margin-bottom: 12px;
+      padding: 8px 12px;
+      background: rgba(77, 115, 66, 0.08);
+      border-radius: 12px;
+      border: 1px dashed rgba(77, 115, 66, 0.3);
     }
-
     .sample-pills-label {
       font-size: 0.76rem;
       font-weight: 700;
-      color: var(--olive-dark);
+      color: var(--vow-olive);
+      font-family: var(--font-display);
     }
-
     .sample-mini-pill {
       background: #FFFFFF;
       border: 1px solid var(--border);
-      border-radius: var(--radius-full);
+      border-radius: 9999px;
       padding: 4px 10px;
       font-size: 0.74rem;
       font-weight: 600;
-      color: var(--text-body);
+      color: var(--vow-text);
       cursor: pointer;
       transition: all 0.2s ease;
+      font-family: var(--font-body);
     }
-
     .sample-mini-pill:hover {
-      background: var(--olive-dark);
+      background: var(--vow-olive);
       color: #FFFFFF;
-      border-color: var(--olive-dark);
-    }
-
-    /* Minimalist Footer */
-    .landing-footer-clean {
-      background: #FFFFFF;
-      border-top: 1px solid var(--border);
-      padding: 36px 20px;
-      margin-top: 48px;
-      text-align: center;
-    }
-
-    .footer-inner-clean {
-      max-width: 720px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .footer-brand-title {
-      font-size: 1.1rem;
-      font-weight: 800;
-      color: var(--olive-dark);
-    }
-
-    .footer-meta-text {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
-
-    .footer-links-row {
-      display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-top: 4px;
-    }
-
-    .footer-link-item {
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--text-muted);
-      text-decoration: none;
-    }
-
-    .footer-link-item:hover {
-      color: var(--olive-dark);
+      border-color: var(--vow-olive);
     }
 
   </style>
 </head>
 <body>
 
-    <div class="landing-wrapper">
+  <!-- ATMOSPHERIC BACKGROUND (from vow.rajkrr.dev) -->
+  <div class="vow-bg-atmosphere" aria-hidden="true">
+    <div class="vow-light-cone"></div>
+    <div class="vow-horizon-arc"></div>
+    <div class="vow-dot-grid"></div>
+  </div>
 
-    <!-- TOP NAVBAR -->
-    <header class="landing-nav">
-      <div class="landing-nav-inner">
-        <a href="#" class="nav-brand">
-          <div class="nav-logo-icon" aria-hidden="true">↑</div>
-          <span class="nav-brand-title">LevelUp</span>
-          <span class="badge-gemma-nav">Gemma 4</span>
+  <!-- FLOATING GLASS NAVBAR (from vow.rajkrr.dev) -->
+  <header class="vow-nav-wrapper">
+    <div class="vow-nav-capsule">
+      <a href="#" class="vow-nav-brand">
+        <div class="vow-nav-logo-icon">↑</div>
+        <span class="vow-nav-logo-text">LevelUp</span>
+        <span class="vow-nav-badge">Gemma 4</span>
+      </a>
+      <ul class="vow-nav-links">
+        <li><a href="#how-it-works" class="vow-nav-link">How It Works</a></li>
+        <li><a href="#demo-samples" class="vow-nav-link">Demos</a></li>
+        <li><a href="https://github.com/raj-krr/LevelUp" target="_blank" rel="noopener" class="vow-nav-link">GitHub</a></li>
+      </ul>
+      <a href="#app-workspace" class="vow-nav-btn">
+        <span>⚡ Launch Coach</span>
+      </a>
+    </div>
+  </header>
+
+  <div class="vow-main-shell">
+
+    <!-- HERO SECTION (from vow.rajkrr.dev) -->
+    <section class="vow-hero" id="hero">
+      <!-- 1. SaaS Announcement Pill -->
+      <div class="vow-eyebrow-pill">
+        <span class="vow-pulse-container">
+          <span class="vow-pulse-ping"></span>
+          <span class="vow-pulse-dot"></span>
+        </span>
+        <span class="vow-eyebrow-text">Google Gemma 4 Multimodal AI · 6 Indic Languages</span>
+        <span class="vow-eyebrow-arrow">→</span>
+      </div>
+
+      <!-- 2. Tight Iconic SaaS Headline -->
+      <h1 class="vow-headline">
+        <div class="vow-headline-triad">
+          <span class="vow-word-dark">Snap.</span>
+          <span class="vow-word-accent">Understand.</span>
+          <span class="vow-word-dark">Coach.</span>
+        </div>
+        <span class="vow-headline-subline">
+          Your Kid's Homework In Your Native Language.
+        </span>
+      </h1>
+
+      <!-- 3. Subtext -->
+      <p class="vow-subtext">
+        The AI homework coach designed for parents. Understand concepts in 6 Indic languages through everyday cultural analogies, Socratic hints, and teaching scripts—without ever giving away answers.
+      </p>
+
+      <!-- 4. High-Converting CTA Buttons -->
+      <div class="vow-btn-group">
+        <a href="#app-workspace" class="vow-btn-primary">
+          <span class="vow-shimmer-sweep"></span>
+          <span>Launch Homework Coach</span>
+          <span class="vow-btn-arrow">→</span>
         </a>
-        <nav class="nav-links">
-          <a href="#how-it-works" class="nav-link">How It Works</a>
-          <a href="#demo-samples" class="nav-link">Demo Samples</a>
-          <a href="https://github.com/raj-krr/LevelUp" target="_blank" rel="noopener" class="nav-link">GitHub</a>
-        </nav>
-        <a href="#app-workspace" class="nav-cta-btn">
-          <span>⚡ Launch Coach App</span>
+        <a href="#demo-samples" class="vow-btn-secondary">
+          <span class="vow-play-circle">⚡</span>
+          <span>Try Demo Sample</span>
         </a>
       </div>
-    </header>
 
-    <div class="landing-content">
+      <!-- 5. Social Proof / Capability Strip -->
+      <div class="vow-trust-strip">
+        <span class="vow-trust-item">🌐 <strong>Hindi · Tamil · Telugu · Bengali · Marathi · English</strong></span>
+        <span class="vow-trust-sep">•</span>
+        <span class="vow-trust-item">🪜 <strong>Socratic Hint Ladder</strong></span>
+        <span class="vow-trust-sep">•</span>
+        <span class="vow-trust-item">🔒 <strong>100% In-Memory Privacy</strong></span>
+      </div>
 
-      <!-- HERO SECTION -->
-      <section class="hero-section" id="hero">
-        <div class="hero-eyebrow">
-          <span class="hero-eyebrow-dot"></span>
-          <span>Built with Gemma 4 for Hacktoberfest 2026</span>
+      <!-- 6. Interactive App Workspace Frame (Vow OfficePreview2D style) -->
+      <div class="vow-showcase-frame" id="app-workspace">
+        <div class="vow-showcase-badge">
+          <span>📱 Live Interactive Coach</span>
         </div>
-        <h1 class="hero-title">
-          Your Kid's Homework.<br>
-          <span class="gradient-text">In Your Native Language.</span>
-        </h1>
-        <p class="hero-subtitle">
-          An AI coach for parents. Understand schoolwork in 6 Indic languages through real-world analogies, Socratic hints, and teaching scripts—without giving answers away.
+        <p class="tagline" style="font-size: 0.88rem; color: var(--vow-muted); margin-bottom: 16px;">
+          Your kid's homework. Your language. Level up.
         </p>
-        <div class="hero-actions">
-          <a href="#app-workspace" class="btn-hero-primary">
-            🚀 Launch Homework Coach
-          </a>
-          <a href="#demo-samples" class="btn-hero-secondary">
-            ⚡ Try a Demo Sample
-          </a>
-        </div>
-        <div class="hero-substrip">
-          <span>🌐 Hindi · Tamil · Telugu · Bengali · Marathi · English</span>
-          <span class="substrip-sep">•</span>
-          <span>🪜 Socratic Hint Ladder</span>
-          <span class="substrip-sep">•</span>
-          <span>🔒 100% In-Memory Privacy</span>
-        </div>
-      </section>
-
-      <!-- HOW IT WORKS -->
-      <section class="landing-section" id="how-it-works">
-        <div class="section-head-center">
-          <span class="section-badge-tag">How It Works</span>
-          <h2 class="section-main-heading">From Photo to Guided Understanding</h2>
-          <p class="section-lead-text">Three simple steps designed to empower parents, not cheat for students:</p>
-        </div>
-        <div class="how-cards-grid">
-          <div class="how-card">
-            <div class="how-card-num">1</div>
-            <h3>📸 Snap Homework</h3>
-            <p>Photograph any printed textbook question, worksheet, or child's notebook page (Grades 3–8).</p>
-          </div>
-          <div class="how-card">
-            <div class="how-card-num">2</div>
-            <h3>💡 Understand in Your Language</h3>
-            <p>Gemma 4 explains the concept in your mother tongue using relatable cultural analogies (rotis, cricket, water pumps).</p>
-          </div>
-          <div class="how-card">
-            <div class="how-card-num">3</div>
-            <h3>🪜 Coach with Socratic Hints</h3>
-            <p>Follow conversational parent scripts and 3 progressive hints so your child learns to solve it independently.</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- DEMO SAMPLES -->
-      <section class="landing-section" id="demo-samples">
-        <div class="section-head-center">
-          <span class="section-badge-tag">Instant Demos</span>
-          <h2 class="section-main-heading">Try It Out Instantly</h2>
-          <p class="section-lead-text">Click any real homework problem below to test Gemma 4 in 1 click:</p>
-        </div>
-        <div class="demo-grid-clean">
-          <div class="demo-item" onclick="window.loadDemoSample('1_math_word_problem_grade5.jpg', 5, 'Math', 'explain')">
-            <div class="demo-item-thumb">
-              <img src="/static/samples/1_math_word_problem_grade5.jpg" alt="Grade 5 Fractions" loading="lazy">
-              <span class="demo-item-tag">Grade 5 · Math</span>
-            </div>
-            <div class="demo-item-title">📐 Fraction Word Problem</div>
-            <div class="demo-item-desc">Sharing sweets among friends. Gemma 4 creates an everyday sweets analogy and guided hint ladder.</div>
-            <button type="button" class="demo-item-btn">Load & Explain →</button>
-          </div>
-
-          <div class="demo-item" onclick="window.loadDemoSample('2_handwritten_math.jpg', 6, 'Math', 'check')">
-            <div class="demo-item-thumb">
-              <img src="/static/samples/2_handwritten_math.jpg" alt="Handwritten Math Work" loading="lazy">
-              <span class="demo-item-tag">Grade 6 · Check Work</span>
-            </div>
-            <div class="demo-item-title">✍️ Child's Handwritten Equation</div>
-            <div class="demo-item-desc">Student's handwritten steps. Gemma 4 spots where the sign was flipped and praises the correct steps.</div>
-            <button type="button" class="demo-item-btn">Load & Review →</button>
-          </div>
-
-          <div class="demo-item" onclick="window.loadDemoSample('3_science_water_cycle.jpg', 6, 'Science', 'explain')">
-            <div class="demo-item-thumb">
-              <img src="/static/samples/3_science_water_cycle.jpg" alt="Water Cycle Diagram" loading="lazy">
-              <span class="demo-item-tag">Grade 6 · Science</span>
-            </div>
-            <div class="demo-item-title">🔬 Water Cycle & Evaporation</div>
-            <div class="demo-item-desc">Diagram with textbook questions. Translated into conversational Indic explanations with home examples.</div>
-            <button type="button" class="demo-item-btn">Load & Explain →</button>
-          </div>
-        </div>
-      </section>
-
-      <!-- LIVE APP WORKSPACE -->
-      <section class="app-section-clean" id="app-workspace">
-        <div class="section-head-center">
-          <span class="section-badge-tag">Interactive Workspace</span>
-          <h2 class="section-main-heading">Live Homework Coach</h2>
-          <p class="section-lead-text">Your kid's homework. Your language. Level up.</p>
-        </div>
-        <div class="app-box-frame">
 
   <div class="container">
 
@@ -2262,46 +2473,124 @@
           <button type="button" class="modal-confirm" id="modalConfirm">Yes, show it</button>
         </div>
       </div>
-    </div>
+    </main>
+  </div> <!-- /container -->
 
-    <!-- FOOTER -->
-    <footer class="footer">
-      LevelUp · Made with open-weight Gemma 4<br>
-      Always double-check important answers with a school teacher.
-    </footer>
+      </div> <!-- /vow-showcase-frame -->
+    </section> <!-- /hero -->
 
-
+    <!-- HOW IT WORKS -->
+    <section class="vow-section" id="how-it-works">
+      <div class="vow-section-head">
+        <span class="vow-section-tag">How It Works</span>
+        <h2 class="vow-section-title">From Photo to Guided Understanding</h2>
+        <p class="vow-section-subtitle">Three simple steps designed to empower parents, never cheat for students:</p>
+      </div>
+      <div class="vow-grid-3">
+        <div class="vow-card-item">
+          <div class="vow-card-icon">📸</div>
+          <h3>1. Snap Homework</h3>
+          <p>Photograph any printed question, worksheet, or child's handwritten notebook page (Grades 3–8).</p>
         </div>
-      </section>
+        <div class="vow-card-item">
+          <div class="vow-card-icon">💡</div>
+          <h3>2. Understand in Your Language</h3>
+          <p>Gemma 4 explains the concept in your mother tongue using relatable cultural analogies (rotis, cricket, water pumps).</p>
+        </div>
+        <div class="vow-card-item">
+          <div class="vow-card-icon">🪜</div>
+          <h3>3. Coach with Socratic Hints</h3>
+          <p>Follow conversational parent scripts and 3 progressive hints so your child learns to solve it independently.</p>
+        </div>
+      </div>
+    </section>
 
-    </div>
+    <!-- DEMO SAMPLES -->
+    <section class="vow-section" id="demo-samples">
+      <div class="vow-section-head">
+        <span class="vow-section-tag">Instant Demos</span>
+        <h2 class="vow-section-title">Try It Out In One Click</h2>
+        <p class="vow-section-subtitle">Click any real homework problem below to test Gemma 4 immediately:</p>
+      </div>
+      <div class="vow-grid-3">
+        <div class="vow-card-item" onclick="window.loadDemoSample('1_math_word_problem_grade5.jpg', 5, 'Math', 'explain')">
+          <div class="vow-demo-thumb">
+            <img src="/static/samples/1_math_word_problem_grade5.jpg" alt="Grade 5 Fractions" loading="lazy">
+            <span class="vow-demo-pill">Grade 5 · Math</span>
+          </div>
+          <h3>📐 Fraction Word Problem</h3>
+          <p>Sharing sweets among friends. Gemma 4 creates an everyday sweets analogy and guided hint ladder.</p>
+          <button type="button" class="vow-demo-action">Load & Explain →</button>
+        </div>
 
-    <!-- LANDING FOOTER -->
-    <footer class="landing-footer">
-      <div class="footer-inner">
-        <div class="footer-brand">
-          <div class="nav-logo-icon" style="width: 28px; height: 28px; font-size: 14px;">↑</div>
+        <div class="vow-card-item" onclick="window.loadDemoSample('2_handwritten_math.jpg', 6, 'Math', 'check')">
+          <div class="vow-demo-thumb">
+            <img src="/static/samples/2_handwritten_math.jpg" alt="Handwritten Math Work" loading="lazy">
+            <span class="vow-demo-pill">Grade 6 · Check Work</span>
+          </div>
+          <h3>✍️ Child's Handwritten Equation</h3>
+          <p>Student's handwritten steps. Gemma 4 spots where the sign was flipped and praises the correct steps.</p>
+          <button type="button" class="vow-demo-action">Load & Review →</button>
+        </div>
+
+        <div class="vow-card-item" onclick="window.loadDemoSample('3_science_water_cycle.jpg', 6, 'Science', 'explain')">
+          <div class="vow-demo-thumb">
+            <img src="/static/samples/3_science_water_cycle.jpg" alt="Water Cycle Diagram" loading="lazy">
+            <span class="vow-demo-pill">Grade 6 · Science</span>
+          </div>
+          <h3>🔬 Water Cycle & Evaporation</h3>
+          <p>Diagram with textbook questions. Translated into conversational Indic explanations with home examples.</p>
+          <button type="button" class="vow-demo-action">Load & Explain →</button>
+        </div>
+      </div>
+    </section>
+
+  </div> <!-- /vow-main-shell -->
+
+  <!-- VOW-STYLE SLEEK DARK FOOTER -->
+  <footer class="vow-footer">
+    <div class="vow-footer-inner">
+      <!-- Col 1: Brand Info -->
+      <div class="vow-footer-col">
+        <div class="vow-footer-brand-title">
+          <div class="vow-nav-logo-icon" style="width: 28px; height: 28px; font-size: 14px;">↑</div>
           <span>LevelUp</span>
         </div>
-        <div class="footer-links">
-          <a href="#hero" class="footer-link">Back to Top</a>
-          <a href="#how-it-works" class="footer-link">How It Works</a>
-          <a href="#why-levelup" class="footer-link">Why LevelUp</a>
-          <a href="#demo-samples" class="footer-link">Live Demos</a>
-          <a href="#tech-architecture" class="footer-link">Gemma 4 AI</a>
-          <a href="https://github.com/raj-krr/LevelUp" target="_blank" rel="noopener" class="footer-link">GitHub Repository</a>
-          <a href="/healthz" target="_blank" class="footer-link">Service Health</a>
-        </div>
-        <p class="footer-disclaimer">
-          LevelUp · Empowering parents, inspiring children · Powered by open-weights Gemma 4 models via Google Gemini API.<br>
-          Always double-check important answers with a school teacher. Educational coach only.
+        <p class="vow-footer-desc">
+          Your kid's homework. Your language. Level up.<br>
+          Empowering parents across India to become confident home tutors through multimodal AI.
         </p>
       </div>
-    </footer>
 
-  </div>
+      <!-- Col 2: Navigation Links -->
+      <div class="vow-footer-col">
+        <h4>Navigation</h4>
+        <ul class="vow-footer-nav-list">
+          <li class="vow-footer-nav-item"><a href="#hero">Back to Top</a></li>
+          <li class="vow-footer-nav-item"><a href="#app-workspace">Homework Coach</a></li>
+          <li class="vow-footer-nav-item"><a href="#how-it-works">How It Works</a></li>
+          <li class="vow-footer-nav-item"><a href="#demo-samples">Instant Demos</a></li>
+        </ul>
+      </div>
 
-  <!-- ================================================================= -->
+      <!-- Col 3: Tech & Hackathon -->
+      <div class="vow-footer-col">
+        <h4>Hacktoberfest 2026</h4>
+        <ul class="vow-footer-nav-list">
+          <li class="vow-footer-nav-item"><a href="https://github.com/raj-krr/LevelUp" target="_blank" rel="noopener">GitHub Repository</a></li>
+          <li class="vow-footer-nav-item"><a href="/healthz" target="_blank">Service Health</a></li>
+          <li class="vow-footer-nav-item"><span style="color: #6B7280; font-size: 0.82rem;">Google DeepMind · Gemma 4</span></li>
+          <li class="vow-footer-nav-item"><span style="color: #6B7280; font-size: 0.82rem;">DigitalOcean · Open Source</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="vow-footer-bottom">
+      <div>© 2026 LevelUp · Educational Coach for Parents · Processed 100% In-Memory.</div>
+      <div>Powered by Google Gemma 4 open weights.</div>
+    </div>
+  </footer>
+<!-- ================================================================= -->
   <!-- JAVASCRIPT                                                         -->
   <!-- ================================================================= -->
   <script>
