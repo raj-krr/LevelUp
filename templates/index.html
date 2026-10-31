@@ -2007,6 +2007,17 @@
         if (activeSlideEl) {
           activeSlideEl.focus();
         }
+
+        // Cancel previous slide speech if still speaking
+        if (isSpeaking && window.speechSynthesis) {
+          window.speechSynthesis.cancel();
+          isSpeaking = false;
+          const btn = $("btnListen");
+          if (btn) {
+            btn.classList.remove("speaking");
+            btn.textContent = "🔊 Listen";
+          }
+        }
       }
 
       btnPrevSlide.addEventListener("click", () => goToSlide(currentSlide - 1));
@@ -2307,9 +2318,64 @@
       }
 
       // =================================================================
-      // AUDIO (TEXT-TO-SPEECH)
+      // AUDIO (TEXT-TO-SPEECH) — Reads the CURRENT ACTIVE SLIDE
       // =================================================================
       let isSpeaking = false;
+
+      function getCurrentSlideText(data, isCheckMode) {
+        if (!data) return "";
+        let parts = [];
+
+        if (isCheckMode) {
+          if (currentSlide === 0) {
+            if (data.verdict) parts.push("Verdict: " + data.verdict);
+            if (data.what_is_right) parts.push(data.what_is_right);
+          } else if (currentSlide === 1) {
+            if (data.mistake_explained) parts.push(data.mistake_explained);
+          } else if (currentSlide === 2) {
+            if (data.next_step_hint) parts.push(data.next_step_hint);
+          }
+        } else {
+          if (currentSlide === 0) {
+            // Slide 1: Summary & Words
+            if (data.problem_summary) parts.push(data.problem_summary);
+            if (data.key_terms && data.key_terms.length > 0) {
+              const termsText = data.key_terms.map(t => `${t.term}: ${t.meaning}`).join(". ");
+              parts.push(termsText);
+            }
+          } else if (currentSlide === 1) {
+            // Slide 2: Parent Explanation & Example
+            if (data.parent_explanation) parts.push(data.parent_explanation);
+            if (data.everyday_example) parts.push(data.everyday_example);
+          } else if (currentSlide === 2) {
+            // Slide 3: Teach Script
+            if (data.teach_script && data.teach_script.length > 0) {
+              data.teach_script.forEach((s, idx) => {
+                parts.push(`Step ${idx + 1}: ${s}`);
+              });
+            }
+          } else if (currentSlide === 3) {
+            // Slide 4: Hints
+            const h = data.hints || {};
+            if (h.nudge) parts.push("Level 1 nudge: " + h.nudge);
+            if ($("hintBtn2") && $("hintBtn2").classList.contains("opened") && h.bigger_hint) {
+              parts.push("Level 2 hint: " + h.bigger_hint);
+            }
+            if ($("hintBtn3") && $("hintBtn3").classList.contains("opened") && h.full_solution) {
+              parts.push("Level 3 solution: " + h.full_solution);
+            }
+          } else if (currentSlide === 4) {
+            // Slide 5: Practice
+            if (data.practice_questions && data.practice_questions.length > 0) {
+              data.practice_questions.forEach((pq, idx) => {
+                parts.push(`Question ${idx + 1}: ${pq.question}`);
+              });
+            }
+          }
+        }
+
+        return parts.filter(Boolean).join(". ");
+      }
 
       function setupAudioPlayer(data, isCheckMode = false) {
         const btn = $("btnListen");
@@ -2332,21 +2398,14 @@
             return;
           }
 
-          let textParts = [];
-          if (isCheckMode) {
-            textParts = [
-              data.what_is_right,
-              data.mistake_explained,
-              data.next_step_hint
-            ].filter(Boolean);
-          } else {
-            if (data.parent_explanation) textParts.push(data.parent_explanation);
-            if (data.teach_script) {
-              data.teach_script.forEach((s) => textParts.push(s));
-            }
+          const textParts = getCurrentSlideText(data, isCheckMode);
+          if (!textParts) {
+            btn.textContent = "🔊 No text";
+            setTimeout(() => { btn.textContent = "🔊 Listen"; }, 1400);
+            return;
           }
 
-          const utterance = new SpeechSynthesisUtterance(textParts.join(". "));
+          const utterance = new SpeechSynthesisUtterance(textParts);
           utterance.lang = selectedLangCode;
           utterance.rate = 0.9;
 
