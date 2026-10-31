@@ -86,9 +86,20 @@ def _check_rate_limit(ip: str) -> bool:
 # ---------------------------------------------------------------------------
 @app.route("/")
 def index():
-    """Serve the single-page UI."""
+    """Serve the landing showcase page."""
     return render_template(
-        "index.html",
+        "landing.html",
+        languages=ALLOWED_LANGUAGES,
+        grades=ALLOWED_GRADES,
+        subjects=ALLOWED_SUBJECTS,
+    )
+
+
+@app.route("/app")
+def coach():
+    """Serve the dedicated interactive homework coach app."""
+    return render_template(
+        "app.html",
         languages=ALLOWED_LANGUAGES,
         grades=ALLOWED_GRADES,
         subjects=ALLOWED_SUBJECTS,

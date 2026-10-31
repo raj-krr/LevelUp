@@ -22,7 +22,7 @@ def client():
 
 
 def test_index_route(client):
-    """GET / returns the HTML page with status 200."""
+    """GET / returns the HTML landing page with status 200."""
     response = client.get("/")
     assert response.status_code == 200
     html = response.data.decode("utf-8")
@@ -34,6 +34,18 @@ def test_index_route(client):
     # Check grade options are rendered
     for grade in ALLOWED_GRADES:
         assert str(grade) in html
+
+
+def test_app_route(client):
+    """GET /app returns the coach application page with status 200."""
+    response = client.get("/app")
+    assert response.status_code == 200
+    html = response.data.decode("utf-8")
+    assert "LevelUp" in html
+    assert "slideSolution" in html
+    assert "Complete Worked Solution" in html
+    for name, code in ALLOWED_LANGUAGES:
+        assert name in html
 
 
 def test_healthz_route(client):

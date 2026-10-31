@@ -1,0 +1,3712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>LevelUp — Homework Coach App</title>
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+  <meta name="description" content="LevelUp Interactive Homework Coach. Photograph homework, select language, and get step-by-step guidance.">
+  <meta name="theme-color" content="#3B5732">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>LevelUp — Your Kid's Homework. Your Language.</title>
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+  <meta name="description" content="Your kid's homework. Your language. Level up.">
+  <meta name="theme-color" content="#3B5732">
+  <style>
+    /* ====================================================================
+       LevelUp Design System — Light, Fresh Botanical Olive & Warm Linen
+       ==================================================================== */
+
+    :root {
+      /* Bright, fresh botanical olive & warm linen palette */
+      --olive-dark: #3B5732;
+      --olive-medium: #4D7342;
+      --olive-light: #7DA671;
+      --olive-soft-bg: rgba(77, 115, 66, 0.08);
+      --olive-badge-bg: rgba(77, 115, 66, 0.12);
+
+      --beige-warm: #FAF8F5;       /* Light, warm, luminous linen background */
+      --beige-light: #FFFFFF;      /* Clean pure white cards */
+      --beige-subtle: #F5F2EB;     /* Soft ivory tint */
+      --cream: #FFFFFF;
+
+      --earth-brown: #1E261D;      /* Crisp, high-contrast dark forest-slate (never muddy) */
+      --earth-light: #5A6658;      /* Gentle sage-slate muted text */
+
+      --terracotta: #D06346;       /* Warm coral */
+      --rust: #C44C3A;
+      --gold: #D69736;             /* Honey gold for level badges */
+
+      /* Semantic tokens */
+      --bg-page: var(--beige-warm);
+      --bg-card: #FFFFFF;
+      --bg-input: #FFFFFF;
+      --bg-primary: var(--olive-dark);
+      --bg-primary-hover: var(--olive-medium);
+      --text-body: var(--earth-brown);
+      --text-muted: var(--earth-light);
+      --text-on-primary: #FFFFFF;
+
+      --border: #E8E3DA;
+      --border-focus: var(--olive-medium);
+      --shadow-card: 0 4px 20px rgba(45, 55, 40, 0.05);
+      --shadow-card-hover: 0 8px 30px rgba(45, 55, 40, 0.09);
+
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --radius-sm: 8px;
+      --radius-full: 9999px;
+    }
+
+    /* Reset & Base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 17px;
+      -webkit-text-size-adjust: 100%;
+      background: var(--bg-page);
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+                   'Noto Sans', 'Noto Sans Devanagari', 'Noto Sans Tamil',
+                   'Noto Sans Telugu', 'Noto Sans Bengali', sans-serif;
+      background: var(--bg-page);
+      color: var(--text-body);
+      line-height: 1.6;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Layout Container */
+    .container {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 0 16px 36px;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      padding: 22px 0 10px;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 38px;
+      height: 38px;
+      background: linear-gradient(135deg, var(--olive-dark), var(--olive-medium));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFF;
+      font-size: 20px;
+      font-weight: 800;
+      box-shadow: 0 4px 12px rgba(59, 87, 50, 0.25);
+    }
+
+    .logo-text {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--olive-dark);
+      letter-spacing: -0.5px;
+    }
+
+    .tagline {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+      font-weight: 500;
+    }
+
+    /* Mode Switcher Tabs */
+    .mode-switch-wrapper {
+      display: flex;
+      justify-content: center;
+      margin: 14px 0 18px;
+    }
+
+    .mode-switch {
+      display: inline-flex;
+      background: #FFFFFF;
+      padding: 4px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    }
+
+    .mode-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 18px;
+      border-radius: var(--radius-full);
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .mode-btn.active {
+      background: var(--olive-dark);
+      color: #FFFFFF;
+      box-shadow: 0 3px 10px rgba(59, 87, 50, 0.2);
+    }
+
+    /* Cards */
+    .card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      margin-bottom: 14px;
+      box-shadow: var(--shadow-card);
+      border: 1px solid var(--border);
+      transition: all 0.2s ease;
+    }
+
+    .card-accent {
+      border-left: 4px solid var(--olive-medium);
+    }
+
+    .card-warn {
+      border-left: 4px solid var(--terracotta);
+    }
+
+    .card-gold {
+      border-left: 4px solid var(--gold);
+      background: #FFFAF0;
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 10px;
+    }
+
+    /* Pill Selectors */
+    .pill-scroll {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding: 3px 0;
+      margin: 0 -4px;
+    }
+
+    .pill-scroll::-webkit-scrollbar {
+      display: none;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 18px;
+      border-radius: var(--radius-full);
+      border: 1.5px solid var(--border);
+      background: #FFFFFF;
+      color: var(--text-body);
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      min-height: 44px;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .pill:hover {
+      border-color: var(--olive-light);
+    }
+
+    .pill:active {
+      transform: scale(0.97);
+    }
+
+    .pill.active {
+      background: var(--olive-dark);
+      color: #FFFFFF;
+      border-color: var(--olive-dark);
+      font-weight: 600;
+      box-shadow: 0 3px 8px rgba(59, 87, 50, 0.2);
+    }
+
+    /* Grade Selector */
+    .grade-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .grade-btn {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 1.5px solid var(--border);
+      background: #FFFFFF;
+      color: var(--text-body);
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .grade-btn:hover {
+      border-color: var(--olive-light);
+    }
+
+    .grade-btn.active {
+      background: var(--olive-dark);
+      color: #FFFFFF;
+      border-color: var(--olive-dark);
+      transform: scale(1.06);
+      box-shadow: 0 4px 10px rgba(59, 87, 50, 0.25);
+    }
+
+    /* Photo Capture */
+    .photo-area {
+      border: 2px dashed #D5CDC0;
+      border-radius: var(--radius-lg);
+      padding: 30px 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      background: #FAF8F5;
+      position: relative;
+    }
+
+    .photo-area:hover {
+      border-color: var(--olive-medium);
+      background: #FFFFFF;
+    }
+
+    .photo-icon {
+      font-size: 2.4rem;
+      margin-bottom: 8px;
+    }
+
+    .photo-label {
+      font-size: 0.86rem;
+      color: var(--text-body);
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    .photo-sublabel {
+      font-size: 0.73rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .photo-buttons {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 14px;
+    }
+
+    .photo-btn {
+      padding: 10px 18px;
+      border-radius: var(--radius-md);
+      border: 1.5px solid var(--border);
+      background: #FFFFFF;
+      color: var(--text-body);
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+    }
+
+    .photo-btn:hover {
+      border-color: var(--olive-medium);
+    }
+
+    .photo-btn:active {
+      transform: scale(0.97);
+    }
+
+    .file-input {
+      display: none;
+    }
+
+    /* Image preview */
+    .preview-container {
+      position: relative;
+      display: none;
+    }
+
+    .preview-container.visible {
+      display: block;
+    }
+
+    .preview-img {
+      width: 100%;
+      max-height: 250px;
+      object-fit: contain;
+      border-radius: var(--radius-md);
+      background: #F5F2EB;
+    }
+
+    .preview-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .preview-size {
+      font-size: 0.74rem;
+      font-weight: 500;
+      color: var(--olive-dark);
+      background: var(--olive-soft-bg);
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+    }
+
+    .change-photo-link {
+      font-size: 0.8rem;
+      color: var(--olive-medium);
+      cursor: pointer;
+      font-weight: 600;
+      border: none;
+      background: none;
+      text-decoration: underline;
+    }
+
+    /* Primary & Outline Buttons */
+    .btn-primary {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      min-height: 54px;
+      padding: 14px 24px;
+      border-radius: var(--radius-md);
+      border: none;
+      background: linear-gradient(135deg, var(--olive-dark), var(--olive-medium));
+      color: #FFFFFF;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      -webkit-tap-highlight-color: transparent;
+      box-shadow: 0 4px 14px rgba(59, 87, 50, 0.25);
+    }
+
+    .btn-primary:hover:not(:disabled) {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(59, 87, 50, 0.3);
+    }
+
+    .btn-primary:active:not(:disabled) {
+      transform: translateY(0);
+    }
+
+    .btn-primary:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    .btn-outline {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 20px;
+      border-radius: var(--radius-md);
+      border: 1.5px solid var(--border);
+      background: #FFFFFF;
+      color: var(--text-body);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--olive-medium);
+      color: var(--olive-dark);
+    }
+
+    /* Inline Error */
+    .error-msg {
+      display: none;
+      padding: 12px 16px;
+      border-radius: var(--radius-md);
+      background: #FFF5F2;
+      border: 1px solid #F5C6BC;
+      color: var(--rust);
+      font-size: 0.84rem;
+      font-weight: 500;
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+
+    .error-msg.visible {
+      display: block;
+      animation: fadeSlideIn 0.3s ease;
+    }
+
+    /* Loading State */
+    .loading-section {
+      display: none;
+      text-align: center;
+      padding: 44px 20px;
+    }
+
+    .loading-section.visible {
+      display: block;
+    }
+
+    .spinner {
+      width: 48px;
+      height: 48px;
+      border: 4px solid #EAE4D9;
+      border-top-color: var(--olive-dark);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto 16px;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .loading-text {
+      font-size: 0.95rem;
+      color: var(--olive-dark);
+      font-weight: 700;
+      transition: opacity 0.3s ease;
+    }
+
+    .loading-sub {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    .progress-bar-container {
+      display: none;
+      width: 100%;
+      max-width: 260px;
+      height: 6px;
+      background: #ECE6DC;
+      border-radius: var(--radius-full);
+      overflow: hidden;
+      margin: 12px auto 6px;
+    }
+
+    .progress-bar-container.visible {
+      display: block;
+    }
+
+    .progress-bar-fill {
+      width: 0%;
+      height: 100%;
+      background: var(--olive-medium);
+      transition: width 0.2s ease;
+    }
+
+    /* ====================================================================
+       SLIDE DECK / CAROUSEL SYSTEM (Replaces vertical endless scroll)
+       ==================================================================== */
+    .result-area {
+      display: none;
+    }
+
+    .result-area.visible {
+      display: block;
+      animation: fadeSlideIn 0.35s ease forwards;
+    }
+
+    .result-top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      gap: 8px;
+    }
+
+    .btn-listen {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: var(--radius-full);
+      border: 1.5px solid var(--olive-medium);
+      background: #FFFFFF;
+      color: var(--olive-dark);
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+    }
+
+    .btn-listen:hover {
+      background: var(--olive-soft-bg);
+    }
+
+    .btn-listen.speaking {
+      background: var(--olive-dark);
+      color: #FFFFFF;
+      border-color: var(--olive-dark);
+    }
+
+    .btn-reset-top {
+      padding: 8px 14px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border);
+      background: #FFFFFF;
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .btn-reset-top:hover {
+      color: var(--text-body);
+      border-color: var(--olive-light);
+    }
+
+    /* Slide Navigation Tabs (Top) */
+    .slide-tabs-scroll {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding: 2px 0 10px;
+      margin: 0 -4px;
+    }
+    .slide-tabs-scroll::-webkit-scrollbar { display: none; }
+
+    .slide-tab-btn {
+      padding: 7px 14px;
+      border-radius: var(--radius-full);
+      font-size: 0.78rem;
+      font-weight: 600;
+      border: 1.5px solid var(--border);
+      background: #FFFFFF;
+      color: var(--text-muted);
+      white-space: nowrap;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .slide-tab-btn.active {
+      background: var(--olive-dark);
+      color: #FFFFFF;
+      border-color: var(--olive-dark);
+      box-shadow: 0 2px 8px rgba(59, 87, 50, 0.2);
+    }
+
+    /* Carousel Slides Track */
+    .carousel-viewport {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius-lg);
+      touch-action: pan-y pinch-zoom;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.32s cubic-bezier(0.25, 1, 0.5, 1);
+      will-change: transform;
+    }
+
+    .slide-item {
+      min-width: 100%;
+      width: 100%;
+      flex-shrink: 0;
+      box-sizing: border-box;
+      opacity: 0.4;
+      transition: opacity 0.3s ease;
+    }
+
+    .slide-item.active {
+      opacity: 1;
+    }
+
+    /* Slide Content Card */
+    .slide-card {
+      background: #FFFFFF;
+      border-radius: var(--radius-lg);
+      padding: 22px 20px;
+      box-shadow: var(--shadow-card);
+      border: 1px solid var(--border);
+      min-height: 380px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .slide-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #F0ECE4;
+    }
+
+    .slide-badge-title {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--olive-dark);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .slide-number-pill {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--olive-medium);
+      background: var(--olive-soft-bg);
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+    }
+
+    .slide-body {
+      flex: 1;
+    }
+
+    .slide-lead-text {
+      font-size: 0.94rem;
+      line-height: 1.7;
+      color: var(--text-body);
+      margin-bottom: 14px;
+    }
+
+    /* Bottom Slide Navigation Bar */
+    .slide-controls-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 14px;
+      padding: 4px 0;
+      gap: 8px;
+    }
+
+    .btn-slide-nav {
+      min-height: 44px;
+      padding: 8px 18px;
+      border-radius: var(--radius-full);
+      font-size: 0.84rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+      border: 1.5px solid var(--border);
+      background: #FFFFFF;
+      color: var(--text-body);
+    }
+
+    .btn-slide-nav:hover:not(:disabled) {
+      border-color: var(--olive-medium);
+      color: var(--olive-dark);
+    }
+
+    .btn-slide-nav:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+
+    .btn-slide-next {
+      background: var(--olive-dark);
+      color: #FFFFFF;
+      border-color: var(--olive-dark);
+      box-shadow: 0 3px 10px rgba(59, 87, 50, 0.2);
+    }
+
+    .btn-slide-next:hover:not(:disabled) {
+      background: var(--olive-medium);
+      color: #FFFFFF;
+    }
+
+    /* Pagination Dots */
+    .slide-dots {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .slide-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #D9D2C5;
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+
+    .slide-dot.active {
+      width: 22px;
+      border-radius: 6px;
+      background: var(--olive-dark);
+    }
+
+    /* Verification Badge */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border-radius: var(--radius-md);
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-top: 8px;
+    }
+
+    .badge-verified {
+      background: rgba(77, 115, 66, 0.1);
+      color: var(--olive-dark);
+      border: 1px solid var(--olive-light);
+    }
+
+    .badge-warning {
+      background: rgba(208, 99, 70, 0.1);
+      color: var(--terracotta);
+      border: 1px solid var(--terracotta);
+    }
+
+    .badge.hidden { display: none !important; }
+
+    /* Key Terms */
+    .terms-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    @media (min-width: 420px) {
+      .terms-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .term-item {
+      padding: 10px 14px;
+      background: #FAF8F5;
+      border-radius: var(--radius-sm);
+      border: 1px solid #ECE7DE;
+    }
+
+    .term-word {
+      font-weight: 700;
+      font-size: 0.82rem;
+      color: var(--olive-dark);
+      margin-bottom: 2px;
+    }
+
+    .term-meaning {
+      font-size: 0.77rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* Teach Script Steps */
+    .teach-list {
+      list-style: none;
+      counter-reset: teach-counter;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .teach-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      background: #FAF8F5;
+      padding: 12px 14px;
+      border-radius: var(--radius-md);
+      border: 1px solid #ECE7DE;
+    }
+
+    .teach-num {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--olive-dark);
+      color: #FFFFFF;
+      font-size: 0.76rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+    }
+
+    .teach-text {
+      font-size: 0.88rem;
+      line-height: 1.55;
+      color: var(--text-body);
+    }
+
+    /* Everyday Example Highlight */
+    .example-highlight-card {
+      background: #FFFBF2;
+      border: 1.5px solid #F0E2C8;
+      border-radius: var(--radius-md);
+      padding: 14px;
+      margin-top: 12px;
+    }
+
+    .example-highlight-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #8C6218;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+
+    .example-highlight-text {
+      font-style: italic;
+      font-size: 0.88rem;
+      line-height: 1.6;
+      color: var(--text-body);
+    }
+
+    /* Hint Ladder */
+    .hint-ladder {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .hint-btn {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: var(--radius-md);
+      border: 1.5px solid var(--border);
+      background: #FAF8F5;
+      color: var(--text-body);
+      font-size: 0.84rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 52px;
+    }
+
+    .hint-btn:hover:not(:disabled):not(.opened) {
+      border-color: var(--olive-medium);
+      background: #FFFFFF;
+    }
+
+    .hint-btn:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+
+    .hint-btn.opened {
+      border-color: var(--olive-medium);
+      background: #FFFFFF;
+      cursor: default;
+      flex-direction: column;
+      align-items: flex-start;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+
+    .hint-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+    }
+
+    .hint-icon {
+      font-size: 1.1rem;
+    }
+
+    .hint-content {
+      display: none;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid #ECE7DE;
+      font-weight: 400;
+      font-size: 0.88rem;
+      line-height: 1.65;
+      color: var(--text-body);
+      width: 100%;
+    }
+
+    .hint-btn.opened .hint-content {
+      display: block;
+    }
+
+    .hint-level-tag {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--gold);
+      margin-left: auto;
+    }
+
+    /* Practice Questions */
+    .practice-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .practice-item {
+      background: #FAF8F5;
+      border: 1px solid #ECE7DE;
+      border-radius: var(--radius-md);
+      padding: 14px;
+    }
+
+    .practice-q {
+      font-weight: 600;
+      font-size: 0.86rem;
+      color: var(--text-body);
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+
+    .practice-reveal-btn {
+      font-size: 0.77rem;
+      color: var(--olive-dark);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .practice-answer {
+      display: none;
+      margin-top: 8px;
+      padding: 10px 12px;
+      background: #FFFFFF;
+      border-radius: var(--radius-sm);
+      border-left: 3px solid var(--olive-medium);
+      font-size: 0.84rem;
+      color: var(--text-body);
+    }
+
+    .practice-answer.visible {
+      display: block;
+      animation: fadeSlideIn 0.2s ease;
+    }
+
+    /* Check Work Verdict & Reviews */
+    .verdict-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .verdict-tag {
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+
+    .verdict-correct {
+      background: rgba(77, 115, 66, 0.15);
+      color: var(--olive-dark);
+      border: 1px solid var(--olive-light);
+    }
+
+    .verdict-partly {
+      background: rgba(214, 151, 54, 0.15);
+      color: #8C6218;
+      border: 1px solid var(--gold);
+    }
+
+    .verdict-incorrect {
+      background: rgba(208, 99, 70, 0.15);
+      color: var(--terracotta);
+      border: 1px solid var(--terracotta);
+    }
+
+    .verdict-unclear {
+      background: #FAF8F5;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+    }
+
+    .check-block {
+      background: #FAF8F5;
+      border-radius: var(--radius-md);
+      padding: 14px;
+      margin-bottom: 12px;
+      border: 1px solid #ECE7DE;
+    }
+
+    .check-block-title {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--olive-dark);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+
+    /* Retake & Not-homework states */
+    .retake-section, .not-homework-section {
+      display: none;
+    }
+    .retake-section.visible, .not-homework-section.visible {
+      display: block;
+      animation: fadeSlideIn 0.3s ease;
+    }
+
+    .retake-icon {
+      font-size: 2.6rem;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .retake-text {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--text-body);
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    /* Confirm Modal */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(30, 38, 29, 0.45);
+      backdrop-filter: blur(2px);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .modal-overlay.visible {
+      display: flex;
+    }
+
+    .modal-box {
+      background: #FFFFFF;
+      border-radius: var(--radius-lg);
+      padding: 26px 22px;
+      max-width: 340px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.15);
+      animation: popIn 0.25s ease;
+    }
+
+    .modal-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-body);
+      margin-bottom: 8px;
+    }
+
+    .modal-desc {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .modal-actions button {
+      flex: 1;
+      min-height: 44px;
+      border-radius: var(--radius-sm);
+      font-size: 0.84rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+    }
+
+    .modal-cancel {
+      background: #FAF8F5;
+      color: var(--text-body);
+      border: 1px solid var(--border) !important;
+    }
+
+    .modal-confirm {
+      background: var(--olive-dark);
+      color: #FFFFFF;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 24px 0 16px;
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Animations */
+    @keyframes fadeSlideIn {
+      from { opacity: 0; transform: translateY(-8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0.92); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .setup-area {
+      transition: opacity 0.3s ease;
+    }
+
+    .setup-area.dimmed {
+      opacity: 0.35;
+      pointer-events: none;
+    }
+
+    .hidden { display: none !important; }
+
+    
+    
+    /* ====================================================================
+       VOW-INSPIRED DESIGN SYSTEM — LevelUp Edition
+       Matches typography, floating glass navbar, atmospheric gradients,
+       and card structures of vow.rajkrr.dev
+       ==================================================================== */
+
+    :root {
+      --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-body: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+      --vow-olive: #3B5732;
+      --vow-olive-deep: #2E4627;
+      --vow-olive-light: #5A854E;
+      --vow-canvas: #FAF8F5;
+      --vow-text: #0B0E13;
+      --vow-muted: #5A6658;
+      --vow-border: rgba(77, 115, 66, 0.18);
+      --vow-shadow-glass: 0 10px 30px -8px rgba(59, 87, 50, 0.08), 0 2px 8px -2px rgba(0, 0, 0, 0.04);
+      --vow-glow-shadow: 0 0 45px -10px rgba(59, 87, 50, 0.22);
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--vow-canvas);
+      color: var(--vow-text);
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .font-display {
+      font-family: var(--font-display);
+    }
+
+    /* Atmospheric Dot Grid & Light Cones (from vow) */
+    .vow-bg-atmosphere {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 100%;
+      min-height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .vow-dot-grid {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(59, 87, 50, 0.12) 1.2px, transparent 1.2px);
+      background-size: 28px 28px;
+      mask-image: radial-gradient(ellipse 75% 60% at 50% 20%, black 30%, transparent 80%);
+      -webkit-mask-image: radial-gradient(ellipse 75% 60% at 50% 20%, black 30%, transparent 80%);
+      opacity: 0.7;
+    }
+
+    .vow-light-cone {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1200px;
+      height: 600px;
+      background: radial-gradient(ellipse at 50% 0%, rgba(59, 87, 50, 0.16) 0%, rgba(125, 166, 113, 0.08) 45%, transparent 70%);
+      filter: blur(80px);
+    }
+
+    .vow-horizon-arc {
+      position: absolute;
+      top: -160px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1100px;
+      height: 480px;
+      border-radius: 100%;
+      border-top: 1px solid rgba(77, 115, 66, 0.28);
+      box-shadow: 0 -15px 40px rgba(59, 87, 50, 0.07);
+      opacity: 0.8;
+    }
+
+    /* Floating Capsule Navbar (Exact vow style) */
+    .vow-nav-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      padding: 14px 20px;
+      pointer-events: none;
+    }
+
+    .vow-nav-capsule {
+      pointer-events: auto;
+      width: 100%;
+      max-width: 960px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--vow-border);
+      box-shadow: var(--vow-shadow-glass);
+      padding: 10px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .vow-nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      text-decoration: none;
+    }
+
+    .vow-nav-logo-icon {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, var(--vow-olive), var(--vow-olive-light));
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFF;
+      font-size: 16px;
+      font-weight: 800;
+      box-shadow: 0 2px 8px rgba(59, 87, 50, 0.25);
+    }
+
+    .vow-nav-logo-text {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--vow-olive);
+      letter-spacing: -0.5px;
+    }
+
+    .vow-nav-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 9px;
+      border-radius: 9999px;
+      background: rgba(77, 115, 66, 0.1);
+      border: 1px solid rgba(77, 115, 66, 0.25);
+      color: var(--vow-olive);
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+
+    .vow-nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .vow-nav-link {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #6B7280;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .vow-nav-link:hover {
+      color: var(--vow-olive);
+    }
+
+    .vow-nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 18px;
+      border-radius: 9999px;
+      background: var(--vow-olive);
+      color: #FFFFFF !important;
+      font-size: 0.84rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 10px rgba(59, 87, 50, 0.25);
+    }
+
+    .vow-nav-btn:hover {
+      background: var(--vow-olive-deep);
+      transform: translateY(-1px);
+    }
+
+    @media (max-width: 768px) {
+      .vow-nav-links { display: none; }
+      .vow-nav-badge { display: none; }
+      .vow-nav-wrapper { padding: 10px 14px; }
+    }
+
+    /* Main Page Shell */
+    .vow-main-shell {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Hero Section */
+    .vow-hero {
+      text-align: center;
+      padding: 100px 0 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* SaaS Announcement Pill with Pulsing Dot (from vow) */
+    .vow-eyebrow-pill {
+      margin-bottom: 22px;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 6px 16px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--vow-border);
+      box-shadow: 0 2px 15px -3px rgba(59, 87, 50, 0.1);
+      transition: all 0.3s ease;
+      cursor: default;
+    }
+
+    .vow-eyebrow-pill:hover {
+      border-color: rgba(77, 115, 66, 0.4);
+      box-shadow: 0 4px 18px -3px rgba(59, 87, 50, 0.18);
+    }
+
+    .vow-pulse-container {
+      position: relative;
+      display: flex;
+      width: 9px;
+      height: 9px;
+    }
+
+    .vow-pulse-ping {
+      position: absolute;
+      display: inline-flex;
+      width: 100%;
+      height: 100%;
+      border-radius: 9999px;
+      background: #34C759;
+      opacity: 0.75;
+      animation: ping 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+
+    @keyframes ping {
+      75%, 100% { transform: scale(2.2); opacity: 0; }
+    }
+
+    .vow-pulse-dot {
+      position: relative;
+      display: inline-flex;
+      border-radius: 9999px;
+      width: 9px;
+      height: 9px;
+      background: #34C759;
+    }
+
+    .vow-eyebrow-text {
+      font-family: var(--font-display);
+      font-size: 0.76rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--vow-olive);
+    }
+
+    .vow-eyebrow-arrow {
+      color: var(--vow-olive);
+      font-size: 0.8rem;
+    }
+
+    /* Tight Iconic Headline (Exact vow format: 3 words + gradient subline) */
+    .vow-headline {
+      max-width: 860px;
+      margin-bottom: 18px;
+    }
+
+    .vow-headline-triad {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px sm:gap-18px;
+      white-space: nowrap;
+      line-height: 1.05;
+      font-family: var(--font-display);
+      font-weight: 900;
+      letter-spacing: -1.2px;
+      font-size: clamp(2rem, 5.2vw, 4.4rem);
+    }
+
+    .vow-word-dark {
+      color: #0B0E13;
+    }
+
+    .vow-word-accent {
+      color: var(--vow-olive);
+    }
+
+    .vow-headline-subline {
+      display: block;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(1.3rem, 3.2vw, 2.7rem);
+      background: linear-gradient(135deg, var(--vow-olive) 0%, #2E7D32 50%, #D06346 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-top: 10px;
+      letter-spacing: -0.6px;
+      line-height: 1.2;
+    }
+
+    /* Subtext */
+    .vow-subtext {
+      max-width: 620px;
+      margin: 0 auto 30px;
+      font-size: 1.05rem;
+      line-height: 1.65;
+      color: #4B5563;
+      font-weight: 400;
+    }
+
+    /* High-Converting CTA Buttons (from vow) */
+    .vow-btn-group {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    /* Primary High-Gloss Button with Shimmer Sweep */
+    .vow-btn-primary {
+      position: relative;
+      overflow: hidden;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 13px 28px;
+      min-height: 48px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--vow-olive) 0%, #305028 100%);
+      color: #FFFFFF !important;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.96rem;
+      text-decoration: none;
+      box-shadow: 0 12px 30px -8px rgba(59, 87, 50, 0.45);
+      border-top: 1px solid rgba(255, 255, 255, 0.35);
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .vow-btn-primary:hover {
+      box-shadow: 0 16px 36px -6px rgba(59, 87, 50, 0.55);
+      transform: translateY(-1px);
+    }
+
+    .vow-shimmer-sweep {
+      position: absolute;
+      inset: 0;
+      transform: translateX(-100%);
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28), transparent);
+      pointer-events: none;
+      transition: transform 0.8s ease;
+    }
+
+    .vow-btn-primary:hover .vow-shimmer-sweep {
+      transform: translateX(100%);
+    }
+
+    .vow-btn-arrow {
+      transition: transform 0.2s ease;
+    }
+
+    .vow-btn-primary:hover .vow-btn-arrow {
+      transform: translateX(3px);
+    }
+
+    /* Secondary Glass Button */
+    .vow-btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 24px;
+      min-height: 48px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.9);
+      color: #1E261D;
+      border: 1px solid var(--vow-border);
+      backdrop-filter: blur(8px);
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 0.94rem;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .vow-btn-secondary:hover {
+      background: #FFFFFF;
+      border-color: rgba(77, 115, 66, 0.4);
+      transform: translateY(-1px);
+    }
+
+    .vow-play-circle {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(59, 87, 50, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: var(--vow-olive);
+    }
+
+    /* Subtle Trust Strip */
+    .vow-trust-strip {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      font-size: 0.82rem;
+      color: #6B7280;
+      flex-wrap: wrap;
+    }
+
+    .vow-trust-item strong {
+      color: var(--vow-olive);
+      font-weight: 600;
+    }
+
+    .vow-trust-sep {
+      color: #D1D5DB;
+    }
+
+    /* Interactive Showcase Card (Like vow's OfficePreview2D container) */
+    .vow-showcase-frame {
+      width: 100%;
+      max-width: 580px;
+      margin: 44px auto 0;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 0 25px 60px -15px rgba(59, 87, 50, 0.12), 0 0 0 1px rgba(77, 115, 66, 0.14);
+      padding: 24px;
+      position: relative;
+    }
+
+    .vow-showcase-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      background: rgba(77, 115, 66, 0.08);
+      color: var(--vow-olive);
+      font-size: 0.74rem;
+      font-weight: 700;
+      font-family: var(--font-display);
+      margin-bottom: 14px;
+    }
+
+    /* Section Cards (How It Works & Demos) */
+    .vow-section {
+      padding: 72px 0 40px;
+      position: relative;
+    }
+
+    .vow-section-head {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 36px;
+    }
+
+    .vow-section-tag {
+      display: inline-block;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      color: var(--vow-olive);
+      background: rgba(77, 115, 66, 0.1);
+      padding: 4px 12px;
+      border-radius: 9999px;
+      margin-bottom: 10px;
+      font-family: var(--font-display);
+    }
+
+    .vow-section-title {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 800;
+      color: #0B0E13;
+      letter-spacing: -0.6px;
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+
+    .vow-section-subtitle {
+      font-size: 0.94rem;
+      color: #6B7280;
+      line-height: 1.6;
+    }
+
+    /* 3 Clean Modern Feature Cards */
+    .vow-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 20px;
+    }
+
+    .vow-card-item {
+      background: #FFFFFF;
+      border: 1px solid var(--vow-border);
+      border-radius: 18px;
+      padding: 24px 20px;
+      box-shadow: var(--vow-shadow-glass);
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .vow-card-item:hover {
+      border-color: rgba(77, 115, 66, 0.4);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 35px -10px rgba(59, 87, 50, 0.12);
+    }
+
+    .vow-card-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: rgba(77, 115, 66, 0.08);
+      color: var(--vow-olive);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+
+    .vow-card-item h3 {
+      font-family: var(--font-display);
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: #0B0E13;
+    }
+
+    .vow-card-item p {
+      font-size: 0.86rem;
+      color: #6B7280;
+      line-height: 1.6;
+    }
+
+    /* Demo Preview Cards */
+    .vow-demo-thumb {
+      width: 100%;
+      height: 140px;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #F4F1EA;
+      position: relative;
+    }
+
+    .vow-demo-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .vow-demo-pill {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--vow-border);
+      padding: 3px 10px;
+      border-radius: 9999px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--vow-olive);
+      font-family: var(--font-display);
+    }
+
+    .vow-demo-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      width: 100%;
+      padding: 10px 14px;
+      border-radius: 10px;
+      background: rgba(77, 115, 66, 0.08);
+      color: var(--vow-olive);
+      font-family: var(--font-display);
+      font-size: 0.84rem;
+      font-weight: 700;
+      border: 1px solid rgba(77, 115, 66, 0.2);
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .vow-card-item:hover .vow-demo-action {
+      background: var(--vow-olive);
+      color: #FFFFFF;
+    }
+
+    
+    /* ====================================================================
+       VOW-STYLE PREMIUM DARK FOOTER
+       ==================================================================== */
+    .vow-footer {
+      background: linear-gradient(180deg, #1A2318 0%, #111810 100%);
+      color: #E5E7EB;
+      padding: 56px 20px 36px;
+      margin-top: 72px;
+      border-top: 1px solid rgba(77, 115, 66, 0.25);
+      position: relative;
+      z-index: 20;
+    }
+
+    .vow-footer-inner {
+      max-width: 980px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 36px;
+      text-align: left;
+    }
+
+    @media (max-width: 768px) {
+      .vow-footer-inner {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        text-align: center;
+      }
+      .vow-footer-col {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    .vow-footer-brand-title {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .vow-footer-desc {
+      font-size: 0.86rem;
+      color: #9CA3AF;
+      line-height: 1.6;
+      max-width: 340px;
+      margin-bottom: 18px;
+    }
+
+    .vow-footer-col h4 {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 14px;
+      letter-spacing: -0.2px;
+    }
+
+    .vow-footer-nav-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .vow-footer-nav-item a {
+      font-size: 0.84rem;
+      color: #9CA3AF;
+      text-decoration: none !important;
+      transition: color 0.2s ease;
+      display: inline-block;
+    }
+
+    .vow-footer-nav-item a:hover {
+      color: #7DA671;
+    }
+
+    .vow-footer-bottom {
+      max-width: 980px;
+      margin: 40px auto 0;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.78rem;
+      color: #6B7280;
+    }
+
+    .vow-footer-bottom a {
+      color: #9CA3AF;
+      text-decoration: none !important;
+    }
+
+    .vow-footer-bottom a:hover {
+      color: #FFFFFF;
+    }
+
+    @media (max-width: 640px) {
+      .vow-footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+      }
+    }
+
+
+    .sample-pills-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+      padding: 8px 12px;
+      background: rgba(77, 115, 66, 0.08);
+      border-radius: 12px;
+      border: 1px dashed rgba(77, 115, 66, 0.3);
+    }
+    .sample-pills-label {
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--vow-olive);
+      font-family: var(--font-display);
+    }
+    .sample-mini-pill {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: 9999px;
+      padding: 4px 10px;
+      font-size: 0.74rem;
+      font-weight: 600;
+      color: var(--vow-text);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: var(--font-body);
+    }
+    .sample-mini-pill:hover {
+      background: var(--vow-olive);
+      color: #FFFFFF;
+      border-color: var(--vow-olive);
+    }
+
+  
+
+    /* Dedicated App Navbar */
+    .app-top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(250, 248, 245, 0.94);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 20px;
+      margin-bottom: 24px;
+    }
+
+    .app-top-nav-inner {
+      max-width: 580px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .btn-back-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--vow-muted, #5A6658);
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: 9999px;
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      transition: all 0.2s ease;
+    }
+
+    .btn-back-home:hover {
+      color: var(--olive-dark);
+      border-color: var(--olive-light);
+    }
+
+    .app-brand-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: var(--olive-dark);
+      text-decoration: none;
+    }
+
+    /* Solution Slide Card */
+    .solution-card-box {
+      background: rgba(77, 115, 66, 0.05);
+      border: 1.5px solid rgba(77, 115, 66, 0.25);
+      border-left: 4px solid var(--olive-dark);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 14px;
+    }
+
+    .solution-card-header {
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--olive-dark);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .solution-card-text {
+      font-size: 0.94rem;
+      line-height: 1.65;
+      color: var(--text-body);
+      white-space: pre-wrap;
+    }
+
+    .solution-tip-box {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      background: #FFFFFF;
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      line-height: 1.5;
+    }
+
+    /* Quick demo samples inside photo card */
+    .sample-pills-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+      padding: 8px 12px;
+      background: rgba(77, 115, 66, 0.08);
+      border-radius: 12px;
+      border: 1px dashed rgba(77, 115, 66, 0.3);
+    }
+
+    .sample-pills-label {
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--olive-dark);
+    }
+
+    .sample-mini-pill {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: 9999px;
+      padding: 4px 10px;
+      font-size: 0.74rem;
+      font-weight: 600;
+      color: var(--text-body);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .sample-mini-pill:hover {
+      background: var(--olive-dark);
+      color: #FFFFFF;
+      border-color: var(--olive-dark);
+    }
+
+    /* Sleek App Footer */
+    .app-footer {
+      background: #111610;
+      color: #9CA3AF;
+      padding: 32px 20px;
+      margin-top: 48px;
+      text-align: center;
+      font-size: 0.8rem;
+      border-top: 1px solid rgba(77, 115, 66, 0.2);
+    }
+
+    .app-footer a {
+      color: #E5E7EB;
+      text-decoration: none;
+    }
+
+    .app-footer a:hover {
+      color: #7DA671;
+    }
+
+    /* ====================================================================
+       APP RESPONSIVE PERFECTION (All Devices 320px - 1440px+)
+       ==================================================================== */
+    
+    html {
+      font-size: 16px;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      overflow-x: hidden;
+      width: 100%;
+      max-width: 100vw;
+    }
+
+    /* Responsive Container */
+    .container {
+      width: 100%;
+      max-width: 520px;
+      margin: 0 auto;
+      padding: 0 16px 36px;
+    }
+
+    /* Mobile screens (<= 480px) */
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 12px 28px;
+      }
+
+      .app-top-nav {
+        padding: 10px 14px;
+        margin-bottom: 12px;
+      }
+
+      .app-top-nav-inner {
+        gap: 8px;
+      }
+
+      .btn-back-home {
+        font-size: 0.78rem;
+        padding: 5px 10px;
+      }
+
+      .app-brand-badge {
+        font-size: 1.05rem;
+      }
+
+      /* Mode Switcher on Mobile */
+      .mode-switch-wrapper {
+        margin: 6px 0 14px;
+      }
+
+      .mode-switch {
+        padding: 3px;
+        border-radius: 9999px;
+      }
+
+      .mode-btn {
+        padding: 8px 10px;
+        font-size: 0.8rem;
+        gap: 4px;
+      }
+
+      /* Card Spacing */
+      .card {
+        padding: 16px 14px;
+        border-radius: 16px;
+        margin-bottom: 12px;
+      }
+
+      /* Grade buttons on small screens */
+      .grade-row {
+        gap: 6px;
+        justify-content: space-between;
+      }
+
+      .grade-btn {
+        width: 42px;
+        height: 42px;
+        font-size: 0.95rem;
+      }
+
+      /* Photo buttons */
+      .photo-buttons {
+        gap: 8px;
+      }
+
+      .photo-btn {
+        min-height: 44px;
+        font-size: 0.86rem;
+        padding: 10px 12px;
+      }
+
+      /* Slide tabs scroll */
+      .slide-tabs-scroll {
+        gap: 6px;
+        padding: 4px 0;
+      }
+
+      .slide-tab-btn {
+        padding: 8px 14px;
+        font-size: 0.8rem;
+        min-height: 38px;
+      }
+
+      /* Carousel Card */
+      .slide-card {
+        padding: 18px 14px;
+        border-radius: 16px;
+      }
+
+      .slide-card-header {
+        margin-bottom: 14px;
+      }
+
+      .slide-badge-title {
+        font-size: 0.88rem;
+      }
+
+      .slide-nav-bar {
+        padding: 12px 0 6px;
+      }
+
+      .btn-slide-nav {
+        padding: 10px 18px;
+        font-size: 0.84rem;
+        min-height: 42px;
+      }
+
+      /* Sample pills inside photo card */
+      .sample-pills-row {
+        padding: 7px 10px;
+        gap: 5px;
+      }
+
+      .sample-mini-pill {
+        padding: 4px 8px;
+        font-size: 0.72rem;
+      }
+    }
+
+    /* Extra Small Devices (<= 360px - iPhone SE, Galaxy Fold cover) */
+    @media (max-width: 360px) {
+      .app-brand-badge span:last-child {
+        display: none; /* Keep just icon on tiny screens */
+      }
+
+      .mode-btn {
+        font-size: 0.74rem;
+        padding: 7px 6px;
+      }
+
+      .grade-btn {
+        width: 38px;
+        height: 38px;
+        font-size: 0.88rem;
+      }
+    }
+
+    /* Tablets & Desktops (>= 768px) */
+    @media (min-width: 768px) {
+      .container {
+        max-width: 540px;
+        padding: 10px 20px 48px;
+      }
+
+      .card {
+        padding: 22px 20px;
+        box-shadow: 0 6px 24px rgba(45, 55, 40, 0.06);
+      }
+
+      .slide-card {
+        padding: 24px 22px;
+      }
+    }
+
+  </style>
+
+</head>
+<body>
+
+  <!-- DEDICATED APP TOP NAV -->
+  <header class="app-top-nav">
+    <div class="app-top-nav-inner">
+      <a href="/" class="btn-back-home">
+        <span>← Back to Home</span>
+      </a>
+      <a href="/" class="app-brand-badge">
+        <span class="logo-icon" style="width:28px; height:28px; font-size:14px;">↑</span>
+        <span>LevelUp</span>
+      </a>
+      <span style="font-size: 0.76rem; font-weight:700; color:var(--olive-dark); background:rgba(77,115,66,0.1); padding:4px 10px; border-radius:9999px;">
+        Gemma 4 Coach
+      </span>
+    </div>
+  </header>
+
+<div class="container">
+
+    <!-- HEADER -->
+    <header class="header" style="padding-top: 4px;">
+      <!-- Mode Switcher -->
+      <div class="mode-switch-wrapper">
+        <div class="mode-switch" role="tablist" aria-label="Choose mode">
+          <button type="button" class="mode-btn active" id="tabExplain" role="tab" aria-selected="true">
+            💡 Explain homework
+          </button>
+          <button type="button" class="mode-btn" id="tabCheck" role="tab" aria-selected="false">
+            ✍️ Check child's work
+          </button>
+        </div>
+      </div>
+    
+    </header>
+
+    <main>
+      <!-- SETUP AREA -->
+      <div class="setup-area" id="setupArea">
+
+        <!-- Language Picker -->
+        <div class="card">
+          <div class="section-label">Language</div>
+          <div class="pill-scroll" id="langPicker" role="radiogroup" aria-label="Choose language">
+            {% for name, code in languages %}
+            <button type="button"
+                    class="pill{% if loop.first %} active{% endif %}"
+                    role="radio"
+                    aria-checked="{% if loop.first %}true{% else %}false{% endif %}"
+                    data-lang="{{ name }}"
+                    data-code="{{ code }}">
+              {{ name }}
+            </button>
+            {% endfor %}
+          </div>
+        </div>
+
+        <!-- Grade Picker -->
+        <div class="card">
+          <div class="section-label">Child's class</div>
+          <div class="grade-row" id="gradePicker" role="radiogroup" aria-label="Choose class">
+            {% for g in grades %}
+            <button type="button"
+                    class="grade-btn{% if g == 5 %} active{% endif %}"
+                    role="radio"
+                    aria-checked="{% if g == 5 %}true{% else %}false{% endif %}"
+                    data-grade="{{ g }}">
+              {{ g }}
+            </button>
+            {% endfor %}
+          </div>
+        </div>
+
+        <!-- Subject Picker -->
+        <div class="card">
+          <div class="section-label">Subject</div>
+          <div class="pill-scroll" id="subjectPicker" role="radiogroup" aria-label="Choose subject">
+            {% for s in subjects %}
+            <button type="button"
+                    class="pill{% if s == 'Not sure' %} active{% endif %}"
+                    role="radio"
+                    aria-checked="{% if s == 'Not sure' %}true{% else %}false{% endif %}"
+                    data-subject="{{ s }}">
+              {{ s }}
+            </button>
+            {% endfor %}
+          </div>
+        </div>
+
+        <!-- Photo Capture -->
+        <div class="card">
+          <div class="section-label">Homework photo</div>
+
+                    <!-- Quick Samples -->
+          <div class="sample-pills-row">
+            <span class="sample-pills-label">⚡ Try a demo sample:</span>
+            <button type="button" class="sample-mini-pill" onclick="window.loadDemoSample('1_math_word_problem_grade5.jpg', 5, 'Math', 'explain')">📐 Fractions (Gr 5)</button>
+            <button type="button" class="sample-mini-pill" onclick="window.loadDemoSample('2_handwritten_math.jpg', 6, 'Math', 'check')">✍️ Handwritten Math</button>
+            <button type="button" class="sample-mini-pill" onclick="window.loadDemoSample('3_science_water_cycle.jpg', 6, 'Science', 'explain')">🔬 Water Cycle (Gr 6)</button>
+          </div>
+
+          <div class="photo-area" id="photoArea">
+            <div class="photo-icon">📷</div>
+            <div class="photo-label">Take a photo or choose from gallery</div>
+            <div class="photo-sublabel">Student photos are processed in memory and never saved</div>
+            <div class="photo-buttons">
+              <button type="button" class="photo-btn" id="btnCamera" aria-label="Take photo with camera">
+                📸 Camera
+              </button>
+              <button type="button" class="photo-btn" id="btnGallery" aria-label="Choose from gallery">
+                🖼️ Gallery
+              </button>
+            </div>
+          </div>
+
+          <input type="file" accept="image/*" capture="environment" class="file-input" id="inputCamera" aria-hidden="true">
+          <input type="file" accept="image/*" class="file-input" id="inputGallery" aria-hidden="true">
+
+          <div class="preview-container" id="previewContainer">
+            <img class="preview-img" id="previewImg" alt="Preview of selected homework photo">
+            <div class="preview-actions">
+              <span class="preview-size" id="previewSize"></span>
+              <button type="button" class="change-photo-link" id="btnChangePhoto">
+                Change photo
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Optional Context (Check Child's Work mode) -->
+        <div class="card" id="checkContextCard" style="display: none;">
+          <div class="section-label">Question Text (Optional)</div>
+          <input type="text" id="inputProblemText" class="pill" style="width: 100%; border-radius: var(--radius-md); text-align: left; padding: 12px 14px;" placeholder="e.g. Find 3/4 of 1/2, or paste question...">
+        </div>
+
+        <!-- Error Message -->
+        <div class="error-msg" id="errorMsg" role="alert" aria-live="polite"></div>
+
+        <!-- Submit Button -->
+        <button type="button" class="btn-primary" id="btnSubmit" disabled>
+          <span id="btnSubmitText">✨ Explain it to me</span>
+        </button>
+      </div>
+
+      <!-- LOADING STATE -->
+      <div class="loading-section" id="loadingSection" aria-live="polite">
+        <div class="spinner" aria-hidden="true"></div>
+        <div class="loading-text" id="loadingText">📖 Reading the page…</div>
+        <div class="progress-bar-container" id="progressBarContainer">
+          <div class="progress-bar-fill" id="progressBarFill"></div>
+        </div>
+        <div class="loading-sub" id="loadingSub">Takes ~10–15 seconds with Gemma 4</div>
+      </div>
+
+      <!-- RETAKE STATE -->
+      <div class="retake-section" id="retakeSection">
+        <div class="card card-warn">
+          <div class="retake-icon">📷</div>
+          <p class="retake-text" id="retakeText"></p>
+          <button type="button" class="btn-primary" id="btnRetake">
+            📸 Take photo again
+          </button>
+        </div>
+      </div>
+
+      <!-- NOT-HOMEWORK STATE -->
+      <div class="not-homework-section" id="notHomeworkSection">
+        <div class="card">
+          <div class="retake-icon">😊</div>
+          <p class="retake-text" id="notHomeworkText"></p>
+          <button type="button" class="btn-primary" id="btnTryHomework">
+            📚 Try with a homework photo
+          </button>
+        </div>
+      </div>
+
+      <!-- ============================================================= -->
+      <!-- SLIDE DECK RESULT AREA                                        -->
+      <!-- ============================================================= -->
+      <div class="result-area" id="resultArea" aria-live="polite">
+
+        <!-- Result Top Bar: Actions -->
+        <div class="result-top-bar">
+          <button type="button" class="btn-reset-top" id="btnTryAnotherTop">
+            🔄 Another
+          </button>
+          <button type="button" class="btn-listen" id="btnListen" aria-label="Read aloud">
+            🔊 Listen
+          </button>
+        </div>
+
+        <!-- Slide Tabs Navigation -->
+        <div class="slide-tabs-scroll" id="slideTabsScroll" role="tablist">
+          <!-- Filled dynamically by JS -->
+        </div>
+
+        <!-- Carousel Viewport -->
+        <div class="carousel-viewport" id="carouselViewport">
+          <div class="carousel-track" id="carouselTrack">
+
+            <!-- ================= EXPLAIN SLIDES ================= -->
+
+            <!-- Slide 1: Question Summary & Key Words -->
+            <div class="slide-item active" data-slide-index="0" id="slideQuestion">
+              <div class="slide-card card-accent">
+                <div class="slide-card-header">
+                  <span class="slide-badge-title">📝 Question Summary</span>
+                  <span class="slide-number-pill" id="pillSlide1">Slide 1 of 5</span>
+                </div>
+                <div class="slide-body">
+                  <p class="slide-lead-text" id="textSummary"></p>
+                  <div class="badge hidden" id="verifyBadge"></div>
+                  <p id="verifyNote" style="display:none; font-size:0.75rem; color:var(--text-muted); margin-top:6px; font-style:italic;"></p>
+
+                  <div id="cardTermsBlock" style="margin-top: 14px;">
+                    <div class="section-label" style="margin-bottom:6px;">Key Terms</div>
+                    <div class="terms-grid" id="termsGrid"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 2: Parent Explanation & Life Example -->
+            <div class="slide-item" data-slide-index="1" id="slideExplain">
+              <div class="slide-card">
+                <div class="slide-card-header">
+                  <span class="slide-badge-title">💡 Explanation For You</span>
+                  <span class="slide-number-pill" id="pillSlide2">Slide 2 of 5</span>
+                </div>
+                <div class="slide-body">
+                  <p class="slide-lead-text" id="textExplanation"></p>
+                  
+                  <div class="example-highlight-card" id="cardExampleBlock">
+                    <div class="example-highlight-title">
+                      <span>🏠 Everyday Example</span>
+                    </div>
+                    <p class="example-highlight-text" id="textExample"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 3: Teach Script -->
+            <div class="slide-item" data-slide-index="2" id="slideTeach">
+              <div class="slide-card">
+                <div class="slide-card-header">
+                  <span class="slide-badge-title">🗣️ How to Teach Your Child</span>
+                  <span class="slide-number-pill" id="pillSlide3">Slide 3 of 5</span>
+                </div>
+                <div class="slide-body">
+                  <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:12px;">Say these steps to your child one by one:</p>
+                  <ol class="teach-list" id="teachList"></ol>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 4: Hint Ladder (Levels) -->
+            <div class="slide-item" data-slide-index="3" id="slideHints">
+              <div class="slide-card">
+                <div class="slide-card-header">
+                  <span class="slide-badge-title">🎮 Help Your Child Think</span>
+                  <span class="slide-number-pill" id="pillSlide4">Slide 4 of 5</span>
+                </div>
+                <div class="slide-body">
+                  <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:12px;">Reveal hints one level at a time as your child tries:</p>
+                  <div class="hint-ladder" id="hintLadder">
+                    <button type="button" class="hint-btn" id="hintBtn1" data-level="1">
+                      <div class="hint-label">
+                        <span class="hint-icon">⭐</span>
+                        <span>Level 1</span>
+                        <span class="hint-level-tag">Nudge</span>
+                      </div>
+                      <div class="hint-content" id="hintContent1"></div>
+                    </button>
+                    <button type="button" class="hint-btn" id="hintBtn2" data-level="2" disabled>
+                      <div class="hint-label">
+                        <span class="hint-icon">🔒</span>
+                        <span>Level 2</span>
+                        <span class="hint-level-tag">Bigger hint</span>
+                      </div>
+                      <div class="hint-content" id="hintContent2"></div>
+                    </button>
+                    <button type="button" class="hint-btn" id="hintBtn3" data-level="3" disabled>
+                      <div class="hint-label">
+                        <span class="hint-icon">🔒</span>
+                        <span>Level 3</span>
+                        <span class="hint-level-tag">Full solution</span>
+                      </div>
+                      <div class="hint-content" id="hintContent3"></div>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            
+            <!-- Slide 5: Full Worked Solution (New Requested Feature!) -->
+            <div class="slide-item" data-slide-index="4" id="slideSolution">
+              <div class="slide-card">
+                <div class="slide-card-header">
+                  <span class="slide-badge-title">✅ Complete Worked Solution</span>
+                  <span class="slide-number-pill" id="pillSlide5">Slide 5 of 6</span>
+                </div>
+                <div class="slide-body">
+                  <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:12px;">
+                    Full step-by-step solution for parent guidance:
+                  </p>
+                  <div class="solution-card-box">
+                    <div class="solution-card-header">
+                      <span>✓ Final Answer & Working</span>
+                    </div>
+                    <div class="solution-card-text" id="textFullSolution">Loading solution...</div>
+                  </div>
+                  <div class="solution-tip-box">
+                    <span style="font-size: 1.1rem;">💡</span>
+                    <span><strong>Parent guidance:</strong> Let your child attempt the guiding questions in the Hints tab first before revealing this full answer.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 6: Practice Questions -->
+            <div class="slide-item" data-slide-index="5" id="slidePractice">
+              <div class="slide-card">
+                <div class="slide-card-header">
+                  <span class="slide-badge-title">🎯 Practice Together</span>
+                  <span class="slide-number-pill" id="pillSlide5">Slide 6 of 6</span>
+                </div>
+                <div class="slide-body">
+                  <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:12px;">Try similar questions to build your child's confidence:</p>
+                  <div class="practice-list" id="practiceList"></div>
+                  <div style="margin-top: 20px;">
+                    <button type="button" class="btn-outline" id="btnTryAnotherBottom">
+                      🔄 Try another homework photo
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ================= CHECK MODE SLIDES ================= -->
+
+            <!-- Check Slide 1: Review & What Was Done Well -->
+            <div class="slide-item" data-slide-index="0" id="checkSlide1" style="display:none;">
+              <div class="slide-card card-accent">
+                <div class="slide-card-header">
+                  <span class="slide-badge-title">🌟 What Was Done Well</span>
+                  <span class="slide-number-pill">Slide 1 of 3</span>
+                </div>
+                <div class="slide-body">
+                  <div class="verdict-header">
+                    <div class="verdict-tag" id="verdictTag">Review</div>
+                  </div>
+                  <p class="slide-lead-text" id="textCheckRight"></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Check Slide 2: Where to Look Closer -->
+            <div class="slide-item" data-slide-index="1" id="checkSlide2" style="display:none;">
+              <div class="slide-card">
+                <div class="slide-card-header">
+                  <span class="slide-badge-title">💡 Where to Look Closer</span>
+                  <span class="slide-number-pill">Slide 2 of 3</span>
+                </div>
+                <div class="slide-body">
+                  <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:12px;">Gentle guidance for the parent:</p>
+                  <p class="slide-lead-text" id="textCheckMistake"></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Check Slide 3: Next Step for the Child -->
+            <div class="slide-item" data-slide-index="2" id="checkSlide3" style="display:none;">
+              <div class="slide-card">
+                <div class="slide-card-header">
+                  <span class="slide-badge-title">🚀 Next Step for Your Child</span>
+                  <span class="slide-number-pill">Slide 3 of 3</span>
+                </div>
+                <div class="slide-body">
+                  <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:12px;">Ask or suggest this to your child:</p>
+                  <p class="slide-lead-text" id="textCheckNext"></p>
+                  <div style="margin-top: 20px;">
+                    <button type="button" class="btn-outline" id="btnCheckResetBottom">
+                      🔄 Check another work
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Slide Controls Navigation Bar (Bottom) -->
+        <div class="slide-controls-bar">
+          <button type="button" class="btn-slide-nav" id="btnPrevSlide" aria-label="Previous slide">
+            ← Prev
+          </button>
+          <div class="slide-dots" id="slideDotsContainer">
+            <!-- Dots filled dynamically -->
+          </div>
+          <button type="button" class="btn-slide-nav btn-slide-next" id="btnNextSlide" aria-label="Next slide">
+            Next →
+          </button>
+        </div>
+
+      </div>
+
+    </main>
+
+    <!-- CONFIRM MODAL (Level 3) -->
+    
+
+<div class="modal-overlay" id="confirmModal">
+      <div class="modal-box">
+        <div class="modal-title">Show the full solution?</div>
+        <div class="modal-desc">Are you sure? Let your child try first. Every hint is a level they climb! 💪</div>
+        <div class="modal-actions">
+          <button type="button" class="modal-cancel" id="modalCancel">Not yet</button>
+          <button type="button" class="modal-confirm" id="modalConfirm">Yes, show it</button>
+        </div>
+      </div>
+    
+
+  <!-- APP FOOTER -->
+  <footer class="app-footer">
+    <div style="max-width:540px; margin:0 auto; display:flex; flex-direction:column; gap:8px;">
+      <div style="font-weight:700; color:#FFF;">LevelUp Homework Coach</div>
+      <div>Powered by Google Gemma 4 open weights · Images processed 100% in-memory</div>
+      <div style="display:flex; gap:16px; justify-content:center; margin-top:4px;">
+        <a href="/">Landing Page</a>
+        <a href="https://github.com/raj-krr/LevelUp" target="_blank">GitHub</a>
+        <a href="/healthz" target="_blank">Health Status</a>
+      </div>
+    </div>
+  </footer>
+
+<script>
+    (function () {
+      "use strict";
+
+      // State
+      let currentMode = "explain"; // "explain" or "check"
+      let currentSlide = 0;
+      let totalSlides = 5;
+      let selectedLanguage = "English";
+      let selectedLangCode = "en-IN";
+      let selectedGrade = 5;
+      let selectedSubject = "Not sure";
+      let resizedBlob = null;
+      let isSubmitting = false;
+      let currentData = null;
+
+      // DOM Elements
+      const $ = (id) => document.getElementById(id);
+      const tabExplain = $("tabExplain");
+      const tabCheck = $("tabCheck");
+      const checkContextCard = $("checkContextCard");
+      const inputProblemText = $("inputProblemText");
+      const setupArea = $("setupArea");
+      const langPicker = $("langPicker");
+      const gradePicker = $("gradePicker");
+      const subjectPicker = $("subjectPicker");
+      const photoArea = $("photoArea");
+      const inputCamera = $("inputCamera");
+      const inputGallery = $("inputGallery");
+      const previewContainer = $("previewContainer");
+      const previewImg = $("previewImg");
+      const previewSize = $("previewSize");
+      const btnSubmit = $("btnSubmit");
+      const btnSubmitText = $("btnSubmitText");
+      const errorMsg = $("errorMsg");
+      const loadingSection = $("loadingSection");
+      const loadingText = $("loadingText");
+      const progressBarContainer = $("progressBarContainer");
+      const progressBarFill = $("progressBarFill");
+      const resultArea = $("resultArea");
+      const carouselViewport = $("carouselViewport");
+      const carouselTrack = $("carouselTrack");
+      const slideTabsScroll = $("slideTabsScroll");
+      const slideDotsContainer = $("slideDotsContainer");
+      const btnPrevSlide = $("btnPrevSlide");
+      const btnNextSlide = $("btnNextSlide");
+      const retakeSection = $("retakeSection");
+      const notHomeworkSection = $("notHomeworkSection");
+      const confirmModal = $("confirmModal");
+
+      // Slide Configurations
+      const EXPLAIN_TABS = [
+        { label: "📝 Summary", id: "slideQuestion" },
+        { label: "💡 For You", id: "slideExplain" },
+        { label: "🗣️ Teach", id: "slideTeach" },
+        { label: "🎮 Hints", id: "slideHints" },
+        { label: "✅ Solution", id: "slideSolution" },
+        { label: "🎯 Practice", id: "slidePractice" }
+      ];
+
+      const CHECK_TABS = [
+        { label: "🌟 What Went Well", id: "checkSlide1" },
+        { label: "💡 Guidance", id: "checkSlide2" },
+        { label: "🚀 Next Step", id: "checkSlide3" }
+      ];
+
+      // LocalStorage Helpers
+      function saveChoice(key, val) {
+        try { localStorage.setItem("levelup_" + key, val); } catch (e) {}
+      }
+      function loadChoice(key) {
+        try { return localStorage.getItem("levelup_" + key); } catch (e) { return null; }
+      }
+
+      // Restore Saved Language
+      (function restoreLang() {
+        const saved = loadChoice("language");
+        if (saved) {
+          const btn = langPicker.querySelector('[data-lang="' + saved + '"]');
+          if (btn) {
+            langPicker.querySelectorAll(".pill").forEach(p => {
+              p.classList.remove("active");
+              p.setAttribute("aria-checked", "false");
+            });
+            btn.classList.add("active");
+            btn.setAttribute("aria-checked", "true");
+            selectedLanguage = saved;
+            selectedLangCode = btn.dataset.code;
+          }
+        }
+      })();
+
+      // Picker setup helper
+      function setupPicker(container, attr, cb) {
+        container.addEventListener("click", (e) => {
+          const btn = e.target.closest("[data-" + attr + "]");
+          if (!btn) return;
+          container.querySelectorAll("[data-" + attr + "]").forEach(b => {
+            b.classList.remove("active");
+            b.setAttribute("aria-checked", "false");
+          });
+          btn.classList.add("active");
+          btn.setAttribute("aria-checked", "true");
+          cb(btn);
+        });
+      }
+
+      setupPicker(langPicker, "lang", (btn) => {
+        selectedLanguage = btn.dataset.lang;
+        selectedLangCode = btn.dataset.code;
+        saveChoice("language", selectedLanguage);
+      });
+
+      setupPicker(gradePicker, "grade", (btn) => {
+        selectedGrade = parseInt(btn.dataset.grade, 10);
+      });
+
+      setupPicker(subjectPicker, "subject", (btn) => {
+        selectedSubject = btn.dataset.subject;
+      });
+
+      // Mode Switching
+      tabExplain.addEventListener("click", () => setMode("explain"));
+      tabCheck.addEventListener("click", () => setMode("check"));
+
+      function setMode(mode) {
+        if (currentMode === mode) return;
+        currentMode = mode;
+        if (mode === "explain") {
+          tabExplain.classList.add("active");
+          tabExplain.setAttribute("aria-selected", "true");
+          tabCheck.classList.remove("active");
+          tabCheck.setAttribute("aria-selected", "false");
+          checkContextCard.style.display = "none";
+          btnSubmitText.textContent = "✨ Explain it to me";
+        } else {
+          tabCheck.classList.add("active");
+          tabCheck.setAttribute("aria-selected", "true");
+          tabExplain.classList.remove("active");
+          tabExplain.setAttribute("aria-selected", "false");
+          checkContextCard.style.display = "block";
+          btnSubmitText.textContent = "🔍 Check my child's work";
+        }
+      }
+
+      // Photo Selection
+      $("btnCamera").addEventListener("click", () => inputCamera.click());
+      $("btnGallery").addEventListener("click", () => inputGallery.click());
+      photoArea.addEventListener("click", (e) => {
+        if (e.target.closest(".photo-btn")) return;
+        if (/Mobi|Android/i.test(navigator.userAgent)) {
+          inputCamera.click();
+        } else {
+          inputGallery.click();
+        }
+      });
+
+      inputCamera.addEventListener("change", handleFileSelect);
+      inputGallery.addEventListener("change", handleFileSelect);
+
+      function handleFileSelect(e) {
+        const file = e.target.files && e.target.files[0];
+        if (!file) return;
+
+        if (!file.type.startsWith("image/")) {
+          showError("That doesn't look like a photo. Please choose an image.");
+          return;
+        }
+
+        const objectUrl = URL.createObjectURL(file);
+        previewImg.src = objectUrl;
+        previewImg.onload = () => URL.revokeObjectURL(objectUrl);
+
+        photoArea.style.display = "none";
+        previewContainer.classList.add("visible");
+
+        resizeImage(file).then(blob => {
+          resizedBlob = blob;
+          const sizeKB = Math.round(blob.size / 1024);
+          previewSize.textContent = "Ready · " + sizeKB + " KB";
+          btnSubmit.disabled = false;
+        });
+
+        hideError();
+      }
+
+
+      // Load Demo Sample Helper
+      window.loadDemoSample = async function(filename, grade, subject, mode) {
+        try {
+          const res = await fetch("/static/samples/" + filename);
+          if (!res.ok) throw new Error("Could not fetch sample image");
+          const blob = await res.blob();
+
+          const objectUrl = URL.createObjectURL(blob);
+          previewImg.src = objectUrl;
+          photoArea.style.display = "none";
+          previewContainer.classList.add("visible");
+
+          if (grade) {
+            const gBtn = gradePicker.querySelector('[data-grade="' + grade + '"]');
+            if (gBtn) gBtn.click();
+          }
+          if (subject) {
+            const sBtn = subjectPicker.querySelector('[data-subject="' + subject + '"]');
+            if (sBtn) sBtn.click();
+          }
+          if (mode) {
+            setMode(mode);
+          }
+
+          resizedBlob = blob;
+          const sizeKB = Math.round(blob.size / 1024);
+          previewSize.textContent = "Demo Sample · " + sizeKB + " KB";
+          btnSubmit.disabled = false;
+          hideError();
+
+          const appSection = document.getElementById("app-workspace");
+          if (appSection) {
+            appSection.scrollIntoView({ behavior: "smooth" });
+          }
+        } catch (err) {
+          console.error("Failed to load demo sample:", err);
+          showError("Could not load demo sample. Please try uploading an image.");
+        }
+      };
+
+      $("btnChangePhoto").addEventListener("click", resetPhoto);
+      $("btnRetake").addEventListener("click", resetAll);
+      $("btnTryHomework").addEventListener("click", resetAll);
+      $("btnTryAnotherTop").addEventListener("click", resetAll);
+      $("btnTryAnotherBottom").addEventListener("click", resetAll);
+      $("btnCheckResetBottom").addEventListener("click", resetAll);
+
+      function resetPhoto() {
+        photoArea.style.display = "";
+        previewContainer.classList.remove("visible");
+        previewImg.src = "";
+        previewSize.textContent = "";
+        resizedBlob = null;
+        btnSubmit.disabled = true;
+        inputCamera.value = "";
+        inputGallery.value = "";
+      }
+
+      // Canvas Resize & EXIF Strip
+      function resizeImage(file) {
+        return new Promise(resolve => {
+          const img = new Image();
+          const canvas = document.createElement("canvas");
+          const ctx = canvas.getContext("2d");
+
+          img.onload = () => {
+            const MAX = 1600;
+            let { width: w, height: h } = img;
+            if (w > MAX || h > MAX) {
+              const r = Math.min(MAX / w, MAX / h);
+              w = Math.round(w * r);
+              h = Math.round(h * r);
+            }
+            canvas.width = w;
+            canvas.height = h;
+            ctx.drawImage(img, 0, 0, w, h);
+            canvas.toBlob(blob => {
+              URL.revokeObjectURL(img.src);
+              resolve(blob);
+            }, "image/jpeg", 0.82);
+          };
+
+          img.src = URL.createObjectURL(file);
+        });
+      }
+
+      // Errors
+      let errorTimeout = null;
+      function showError(msg) {
+        errorMsg.textContent = msg;
+        errorMsg.classList.add("visible");
+        clearTimeout(errorTimeout);
+        errorTimeout = setTimeout(hideError, 8000);
+      }
+      function hideError() {
+        errorMsg.classList.remove("visible");
+        clearTimeout(errorTimeout);
+      }
+
+      // Submit Request
+      btnSubmit.addEventListener("click", submitRequest);
+
+      function submitRequest() {
+        if (isSubmitting || !resizedBlob) return;
+        isSubmitting = true;
+        hideError();
+
+        setupArea.classList.add("dimmed");
+        btnSubmitText.textContent = "Working…";
+        btnSubmit.disabled = true;
+        loadingSection.classList.add("visible");
+        progressBarContainer.classList.add("visible");
+        progressBarFill.style.width = "0%";
+        loadingText.textContent = "📤 Uploading… 0%";
+
+        const formData = new FormData();
+        formData.append("image", resizedBlob, "homework.jpg");
+        formData.append("language", selectedLanguage);
+        formData.append("grade", selectedGrade.toString());
+        formData.append("subject", selectedSubject);
+        if (currentMode === "check") {
+          formData.append("problem_text", (inputProblemText.value || "").trim());
+        }
+
+        const endpoint = currentMode === "check" ? "/api/check" : "/api/explain";
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", endpoint, true);
+
+        xhr.upload.onprogress = (e) => {
+          if (e.lengthComputable) {
+            const pct = Math.round((e.loaded / e.total) * 100);
+            progressBarFill.style.width = pct + "%";
+            loadingText.textContent = "📤 Uploading… " + pct + "%";
+          }
+        };
+
+        let stageTimer = null;
+        xhr.upload.onload = () => {
+          progressBarContainer.classList.remove("visible");
+          if (currentMode === "check") {
+            loadingText.textContent = "🔍 Reviewing child's steps with Gemma 4…";
+          } else {
+            loadingText.textContent = "📖 Reading the page with Gemma 4…";
+            stageTimer = setTimeout(() => {
+              loadingText.textContent = "🔍 Double-checking with Gemma 4 verifier…";
+            }, 8000);
+          }
+        };
+
+        xhr.onload = () => {
+          if (stageTimer) clearTimeout(stageTimer);
+          isSubmitting = false;
+
+          try {
+            const data = JSON.parse(xhr.responseText);
+            if (xhr.status >= 200 && xhr.status < 300) {
+              if (currentMode === "check") {
+                handleCheckResult(data);
+              } else {
+                handleExplainResult(data);
+              }
+            } else {
+              showError(data.error || "Something went wrong. Please try again.");
+              resetLoadingState();
+            }
+          } catch (err) {
+            showError("Could not process the response. Please try again.");
+            resetLoadingState();
+          }
+        };
+
+        xhr.onerror = () => {
+          if (stageTimer) clearTimeout(stageTimer);
+          isSubmitting = false;
+          showError("Could not connect. Please check your internet and try again.");
+          resetLoadingState();
+        };
+
+        xhr.send(formData);
+      }
+
+      function resetLoadingState() {
+        setupArea.classList.remove("dimmed");
+        btnSubmitText.textContent = currentMode === "check" ? "🔍 Check my child's work" : "✨ Explain it to me";
+        btnSubmit.disabled = false;
+        loadingSection.classList.remove("visible");
+        progressBarContainer.classList.remove("visible");
+      }
+
+      // =================================================================
+      // SLIDE DECK SYSTEM (CAROUSEL)
+      // =================================================================
+      function initSlideDeck(tabsConfig) {
+        currentSlide = 0;
+        totalSlides = tabsConfig.length;
+
+        // Build top tabs
+        slideTabsScroll.innerHTML = "";
+        tabsConfig.forEach((tab, index) => {
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "slide-tab-btn" + (index === 0 ? " active" : "");
+          btn.textContent = tab.label;
+          btn.onclick = () => goToSlide(index);
+          slideTabsScroll.appendChild(btn);
+        });
+
+        // Build bottom dots
+        slideDotsContainer.innerHTML = "";
+        tabsConfig.forEach((_, index) => {
+          const dot = document.createElement("div");
+          dot.className = "slide-dot" + (index === 0 ? " active" : "");
+          dot.onclick = () => goToSlide(index);
+          slideDotsContainer.appendChild(dot);
+        });
+
+        goToSlide(0);
+      }
+
+      function goToSlide(index) {
+        if (index < 0) index = 0;
+        if (index >= totalSlides) index = totalSlides - 1;
+        currentSlide = index;
+
+        // Move track
+        carouselTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+        // Update tabs active state
+        slideTabsScroll.querySelectorAll(".slide-tab-btn").forEach((t, i) => {
+          t.classList.toggle("active", i === currentSlide);
+          if (i === currentSlide) {
+            t.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+          }
+        });
+
+        // Update dots active state
+        slideDotsContainer.querySelectorAll(".slide-dot").forEach((d, i) => {
+          d.classList.toggle("active", i === currentSlide);
+        });
+
+        // Update prev / next buttons
+        btnPrevSlide.disabled = currentSlide === 0;
+        if (currentSlide === totalSlides - 1) {
+          btnNextSlide.textContent = "Done ✨";
+        } else {
+          btnNextSlide.textContent = "Next →";
+        }
+
+        // Focus card for accessibility
+        const activeSlideEl = carouselTrack.children[currentSlide];
+        if (activeSlideEl) {
+          activeSlideEl.focus();
+        }
+
+        // Cancel previous slide speech if still speaking
+        if (isSpeaking && window.speechSynthesis) {
+          window.speechSynthesis.cancel();
+          isSpeaking = false;
+          const btn = $("btnListen");
+          if (btn) {
+            btn.classList.remove("speaking");
+            btn.textContent = "🔊 Listen";
+          }
+        }
+      }
+
+      btnPrevSlide.addEventListener("click", () => goToSlide(currentSlide - 1));
+      btnNextSlide.addEventListener("click", () => {
+        if (currentSlide === totalSlides - 1) {
+          btnNextSlide.textContent = "Done ✨";
+        } else {
+          goToSlide(currentSlide + 1);
+        }
+      });
+
+      // Touch Swipe Gesture Support
+      let touchStartX = 0;
+      let touchEndX = 0;
+      carouselViewport.addEventListener("touchstart", (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+
+      carouselViewport.addEventListener("touchend", (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipeGesture();
+      }, { passive: true });
+
+      function handleSwipeGesture() {
+        const threshold = 40; // minimum pixels for a swipe
+        if (touchEndX < touchStartX - threshold) {
+          goToSlide(currentSlide + 1);
+        } else if (touchEndX > touchStartX + threshold) {
+          goToSlide(currentSlide - 1);
+        }
+      }
+
+      // =================================================================
+      // EXPLAIN MODE RESULT HANDLER
+      // =================================================================
+      function handleExplainResult(data) {
+        currentData = data;
+        loadingSection.classList.remove("visible");
+        setupArea.classList.add("dimmed");
+
+        if (data.image_quality === "poor") {
+          $("retakeText").textContent = data.retake_hint || "The photo is blurry or dark. Please retake it with better lighting.";
+          retakeSection.classList.add("visible");
+          return;
+        }
+
+        if (data.subject === "not_homework") {
+          $("notHomeworkText").textContent = data.problem_summary || "This does not appear to be homework. Please photograph a textbook or worksheet.";
+          notHomeworkSection.classList.add("visible");
+          return;
+        }
+
+        // Show explain slides, hide check slides
+        $("slideQuestion").style.display = "";
+        $("slideExplain").style.display = "";
+        $("slideTeach").style.display = "";
+        $("slideHints").style.display = "";
+        $("slideSolution").style.display = "";
+        $("slidePractice").style.display = "";
+
+        $("checkSlide1").style.display = "none";
+        $("checkSlide2").style.display = "none";
+        $("checkSlide3").style.display = "none";
+
+        // Slide 1: Summary & Words
+        $("textSummary").textContent = data.problem_summary || "";
+        renderBadge(data);
+
+        const termsGrid = $("termsGrid");
+        termsGrid.innerHTML = "";
+        const terms = data.key_terms || [];
+        if (terms.length === 0) {
+          $("cardTermsBlock").style.display = "none";
+        } else {
+          $("cardTermsBlock").style.display = "block";
+          terms.forEach(t => {
+            const item = document.createElement("div");
+            item.className = "term-item";
+            const word = document.createElement("div");
+            word.className = "term-word";
+            word.textContent = t.term || "";
+            const mean = document.createElement("div");
+            mean.className = "term-meaning";
+            mean.textContent = t.meaning || "";
+            item.appendChild(word);
+            item.appendChild(mean);
+            termsGrid.appendChild(item);
+          });
+        }
+
+        // Slide 2: Parent Explanation & Example
+        $("textExplanation").textContent = data.parent_explanation || "";
+        if (data.everyday_example) {
+          $("cardExampleBlock").style.display = "block";
+          $("textExample").textContent = data.everyday_example;
+        } else {
+          $("cardExampleBlock").style.display = "none";
+        }
+
+        // Slide 3: Teach Script
+        const teachList = $("teachList");
+        teachList.innerHTML = "";
+        (data.teach_script || []).forEach((step, idx) => {
+          const li = document.createElement("li");
+          li.className = "teach-item";
+          const num = document.createElement("span");
+          num.className = "teach-num";
+          num.textContent = (idx + 1).toString();
+          const txt = document.createElement("span");
+          txt.className = "teach-text";
+          txt.textContent = step;
+          li.appendChild(num);
+          li.appendChild(txt);
+          teachList.appendChild(li);
+        });
+
+        
+        // Populate Solution Slide
+        const solEl = $("textFullSolution");
+        if (solEl) {
+          const hints = data.hints || {};
+          solEl.textContent = hints.full_solution || "Full step-by-step solution provided by Gemma 4.";
+        }
+
+        // Slide 4: Hint Ladder
+        resetHintLadder(data);
+
+        // Slide 5: Practice Questions
+        const practiceList = $("practiceList");
+        practiceList.innerHTML = "";
+        const practiceItems = data.practice_questions || [];
+        if (practiceItems.length === 0) {
+          const p = document.createElement("p");
+          p.style.fontSize = "0.85rem";
+          p.style.color = "var(--text-muted)";
+          p.textContent = "You're all set! Review the hints and teach script with your child.";
+          practiceList.appendChild(p);
+        } else {
+          practiceItems.forEach((pq, idx) => {
+            const pItem = document.createElement("div");
+            pItem.className = "practice-item";
+            const qDiv = document.createElement("div");
+            qDiv.className = "practice-q";
+            qDiv.textContent = `${idx + 1}. ${pq.question}`;
+            const revealBtn = document.createElement("button");
+            revealBtn.type = "button";
+            revealBtn.className = "practice-reveal-btn";
+            revealBtn.textContent = "👁️ Show answer";
+            const aDiv = document.createElement("div");
+            aDiv.className = "practice-answer";
+            aDiv.textContent = pq.answer;
+
+            revealBtn.onclick = () => {
+              const isVis = aDiv.classList.contains("visible");
+              if (isVis) {
+                aDiv.classList.remove("visible");
+                revealBtn.textContent = "👁️ Show answer";
+              } else {
+                aDiv.classList.add("visible");
+                revealBtn.textContent = "🙈 Hide answer";
+              }
+            };
+
+            pItem.appendChild(qDiv);
+            pItem.appendChild(revealBtn);
+            pItem.appendChild(aDiv);
+            practiceList.appendChild(pItem);
+          });
+        }
+
+        // Init Carousel
+        initSlideDeck(EXPLAIN_TABS);
+        setupAudioPlayer(data);
+
+        resultArea.classList.add("visible");
+        resultArea.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      // =================================================================
+      // CHECK WORK MODE RESULT HANDLER
+      // =================================================================
+      function handleCheckResult(data) {
+        currentData = data;
+        loadingSection.classList.remove("visible");
+        setupArea.classList.add("dimmed");
+
+        // Hide explain slides, show check slides
+        $("slideQuestion").style.display = "none";
+        $("slideExplain").style.display = "none";
+        $("slideTeach").style.display = "none";
+        $("slideHints").style.display = "none";
+        $("slideSolution").style.display = "none";
+        $("slidePractice").style.display = "none";
+
+        $("checkSlide1").style.display = "";
+        $("checkSlide2").style.display = "";
+        $("checkSlide3").style.display = "";
+
+        // Slide 1: Verdict & Praise
+        const tag = $("verdictTag");
+        const v = (data.verdict || "unclear").toLowerCase();
+        tag.className = "verdict-tag";
+
+        if (v === "correct") {
+          tag.textContent = "✅ Correct work!";
+          tag.classList.add("verdict-correct");
+        } else if (v === "partly") {
+          tag.textContent = "⚡ Good effort — partly correct";
+          tag.classList.add("verdict-partly");
+        } else if (v === "incorrect") {
+          tag.textContent = "🌱 Needs revision";
+          tag.classList.add("verdict-incorrect");
+        } else {
+          tag.textContent = "🔍 Needs a closer look";
+          tag.classList.add("verdict-unclear");
+        }
+
+        $("textCheckRight").textContent = data.what_is_right || "Great effort working through the question steps.";
+        $("textCheckMistake").textContent = data.mistake_explained || "Take a look at how the calculation is structured.";
+        $("textCheckNext").textContent = data.next_step_hint || "Ask your child what step they did first!";
+
+        initSlideDeck(CHECK_TABS);
+        setupAudioPlayer(data, true);
+
+        resultArea.classList.add("visible");
+        resultArea.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      // =================================================================
+      // HINT LADDER LOGIC
+      // =================================================================
+      function resetHintLadder(data) {
+        const hints = data.hints || {};
+        ["hintBtn1", "hintBtn2", "hintBtn3"].forEach((id) => {
+          const btn = $(id);
+          btn.classList.remove("opened");
+          btn.disabled = id !== "hintBtn1";
+        });
+
+        $("hintContent1").textContent = hints.nudge || "";
+        $("hintContent2").textContent = hints.bigger_hint || "";
+        $("hintContent3").textContent = hints.full_solution || "";
+
+        $("hintBtn1").querySelector(".hint-icon").textContent = "⭐";
+        $("hintBtn2").querySelector(".hint-icon").textContent = "🔒";
+        $("hintBtn3").querySelector(".hint-icon").textContent = "🔒";
+      }
+
+      $("hintBtn1").addEventListener("click", function () {
+        if (this.classList.contains("opened")) return;
+        openHint(1);
+      });
+
+      $("hintBtn2").addEventListener("click", function () {
+        if (this.classList.contains("opened") || this.disabled) return;
+        openHint(2);
+      });
+
+      $("hintBtn3").addEventListener("click", function () {
+        if (this.classList.contains("opened") || this.disabled) return;
+        confirmModal.classList.add("visible");
+      });
+
+      $("modalCancel").addEventListener("click", () => confirmModal.classList.remove("visible"));
+      $("modalConfirm").addEventListener("click", () => {
+        confirmModal.classList.remove("visible");
+        openHint(3);
+      });
+
+      confirmModal.addEventListener("click", (e) => {
+        if (e.target === confirmModal) confirmModal.classList.remove("visible");
+      });
+
+      function openHint(level) {
+        const btn = $("hintBtn" + level);
+        btn.classList.add("opened");
+        btn.querySelector(".hint-icon").textContent = "⭐";
+
+        if (level < 3) {
+          const next = $("hintBtn" + (level + 1));
+          next.disabled = false;
+          next.querySelector(".hint-icon").textContent = "🔓";
+        }
+      }
+
+      // =================================================================
+      // VERIFICATION BADGE
+      // =================================================================
+      function renderBadge(data) {
+        const badge = $("verifyBadge");
+        const note = $("verifyNote");
+        badge.className = "badge";
+        note.style.display = "none";
+
+        if (data.verified === true) {
+          badge.textContent = "✅ Double-checked with Gemma 4";
+          badge.classList.add("badge-verified");
+        } else if (data.verified === false) {
+          badge.textContent = "⚠️ Please double-check this with a teacher";
+          badge.classList.add("badge-warning");
+          if (data.verify_note) {
+            note.textContent = data.verify_note;
+            note.style.display = "block";
+          }
+        } else {
+          badge.classList.add("hidden");
+        }
+      }
+
+      // =================================================================
+      // AUDIO (TEXT-TO-SPEECH) — Reads the CURRENT ACTIVE SLIDE
+      // =================================================================
+      let isSpeaking = false;
+
+      function getCurrentSlideText(data, isCheckMode) {
+        if (!data) return "";
+        let parts = [];
+
+        if (isCheckMode) {
+          if (currentSlide === 0) {
+            if (data.verdict) parts.push("Verdict: " + data.verdict);
+            if (data.what_is_right) parts.push(data.what_is_right);
+          } else if (currentSlide === 1) {
+            if (data.mistake_explained) parts.push(data.mistake_explained);
+          } else if (currentSlide === 2) {
+            if (data.next_step_hint) parts.push(data.next_step_hint);
+          }
+        } else {
+          if (currentSlide === 0) {
+            // Slide 1: Summary & Words
+            if (data.problem_summary) parts.push(data.problem_summary);
+            if (data.key_terms && data.key_terms.length > 0) {
+              const termsText = data.key_terms.map(t => `${t.term}: ${t.meaning}`).join(". ");
+              parts.push(termsText);
+            }
+          } else if (currentSlide === 1) {
+            // Slide 2: Parent Explanation & Example
+            if (data.parent_explanation) parts.push(data.parent_explanation);
+            if (data.everyday_example) parts.push(data.everyday_example);
+          } else if (currentSlide === 2) {
+            // Slide 3: Teach Script
+            if (data.teach_script && data.teach_script.length > 0) {
+              data.teach_script.forEach((s, idx) => {
+                parts.push(`Step ${idx + 1}: ${s}`);
+              });
+            }
+          } else if (currentSlide === 3) {
+            // Slide 4: Hints
+            const h = data.hints || {};
+            if (h.nudge) parts.push("Level 1 nudge: " + h.nudge);
+            if ($("hintBtn2") && $("hintBtn2").classList.contains("opened") && h.bigger_hint) {
+              parts.push("Level 2 hint: " + h.bigger_hint);
+            }
+            if ($("hintBtn3") && $("hintBtn3").classList.contains("opened") && h.full_solution) {
+              parts.push("Level 3 solution: " + h.full_solution);
+            }
+          } else if (currentSlide === 4) {
+            // Slide 5: Solution
+            const h = data.hints || {};
+            if (h.full_solution) {
+              parts.push("Complete worked solution: " + h.full_solution);
+            }
+          } else if (currentSlide === 5) {
+            // Slide 6: Practice
+            if (data.practice_questions && data.practice_questions.length > 0) {
+              data.practice_questions.forEach((pq, idx) => {
+                parts.push(`Practice question ${idx + 1}: ${pq.question}`);
+              });
+            }
+          }
+        }
+
+        return parts.filter(Boolean).join(". ");
+      }
+
+      function setupAudioPlayer(data, isCheckMode = false) {
+        const btn = $("btnListen");
+        btn.classList.remove("speaking");
+        isSpeaking = false;
+        btn.textContent = "🔊 Listen";
+
+        const synth = window.speechSynthesis;
+        if (!synth) {
+          btn.style.display = "none";
+          return;
+        }
+
+        btn.onclick = () => {
+          if (isSpeaking) {
+            synth.cancel();
+            isSpeaking = false;
+            btn.classList.remove("speaking");
+            btn.textContent = "🔊 Listen";
+            return;
+          }
+
+          const textParts = getCurrentSlideText(data, isCheckMode);
+          if (!textParts) {
+            btn.textContent = "🔊 No text";
+            setTimeout(() => { btn.textContent = "🔊 Listen"; }, 1400);
+            return;
+          }
+
+          const utterance = new SpeechSynthesisUtterance(textParts);
+          utterance.lang = selectedLangCode;
+          utterance.rate = 0.9;
+
+          utterance.onend = () => {
+            isSpeaking = false;
+            btn.classList.remove("speaking");
+            btn.textContent = "🔊 Listen";
+          };
+          utterance.onerror = () => {
+            isSpeaking = false;
+            btn.classList.remove("speaking");
+            btn.textContent = "🔊 Listen";
+          };
+
+          synth.speak(utterance);
+          isSpeaking = true;
+          btn.classList.add("speaking");
+          btn.textContent = "⏹️ Stop";
+        };
+      }
+
+      // =================================================================
+      // RESET ALL
+      // =================================================================
+      function resetAll() {
+        if (window.speechSynthesis) window.speechSynthesis.cancel();
+        isSpeaking = false;
+
+        resetPhoto();
+        resultArea.classList.remove("visible");
+        retakeSection.classList.remove("visible");
+        notHomeworkSection.classList.remove("visible");
+        loadingSection.classList.remove("visible");
+
+        setupArea.classList.remove("dimmed");
+        btnSubmitText.textContent = currentMode === "check" ? "🔍 Check my child's work" : "✨ Explain it to me";
+        if (inputProblemText) inputProblemText.value = "";
+
+        currentData = null;
+        hideError();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+    
+      // Auto-load sample from URL query parameter (e.g. from landing page)
+      window.addEventListener("DOMContentLoaded", () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const sample = urlParams.get("sample");
+        const grade = urlParams.get("grade");
+        const subject = urlParams.get("subject");
+        const mode = urlParams.get("mode");
+
+        if (sample) {
+          setTimeout(() => {
+            if (window.loadDemoSample) {
+              window.loadDemoSample(sample, grade, subject, mode);
+            }
+          }, 300);
+        }
+      });
+
+    })();
+  </script>
+
+</body>
+</html>
+
+</html>
