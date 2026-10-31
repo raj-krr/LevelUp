@@ -9,6 +9,12 @@ import os
 import time
 from collections import defaultdict
 
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass
+
 from flask import Flask, render_template, request, jsonify
 
 import ai

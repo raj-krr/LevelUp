@@ -10,6 +10,12 @@ import os
 import re
 import time
 
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass
+
 from google import genai
 from google.genai import types
 
@@ -44,12 +50,15 @@ def get_client():
     """Return the genai client, creating it on first call."""
     global _client
     if _client is None:
-        if not API_KEY:
+        api_key = os.environ.get("GEMINI_API_KEY")
+        if not api_key:
             raise RuntimeError("GEMINI_API_KEY is not set")
-        _client = genai.Client(api_key=API_KEY)
+        main_model = os.environ.get("GEMMA_MODEL", MAIN_MODEL)
+        verify_model = os.environ.get("GEMMA_VERIFY_MODEL", VERIFY_MODEL)
+        _client = genai.Client(api_key=api_key)
         logger.info(
             "Initialised genai client — main=%s  verify=%s",
-            MAIN_MODEL, VERIFY_MODEL,
+            main_model, verify_model,
         )
     return _client
 
