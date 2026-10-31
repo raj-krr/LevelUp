@@ -1,0 +1,2268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>LevelUp</title>
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+  <meta name="description" content="Your kid's homework. Your language. Level up.">
+  <meta name="theme-color" content="#4A5D3A">
+  <style>
+    /* ====================================================================
+       LevelUp Design System — Olive Green & Beige
+       ==================================================================== */
+
+    /* --- CSS Custom Properties (Light Mode) --- */
+    :root {
+      --olive-dark: #4A5D3A;
+      --olive-medium: #6B8F5B;
+      --olive-light: #8FBF7A;
+      --beige-warm: #F5F0E8;
+      --beige-light: #FAF7F2;
+      --cream: #FFFDF7;
+      --earth-brown: #5C4A3A;
+      --earth-light: #8B7D6B;
+      --terracotta: #C67B5C;
+      --rust: #B85C4A;
+      --gold: #D4A54A;
+
+      --bg-page: var(--beige-warm);
+      --bg-card: var(--beige-light);
+      --bg-input: var(--cream);
+      --bg-primary: var(--olive-dark);
+      --bg-primary-hover: var(--olive-medium);
+      --text-body: var(--earth-brown);
+      --text-muted: var(--earth-light);
+      --text-on-primary: #FFFDF7;
+      --border: #D9D0C4;
+      --border-focus: var(--olive-medium);
+      --shadow-card: 0 2px 12px rgba(90, 80, 60, 0.07);
+      --shadow-card-hover: 0 4px 20px rgba(90, 80, 60, 0.12);
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --radius-sm: 8px;
+      --radius-full: 9999px;
+    }
+
+    /* --- Dark Mode --- */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-page: #1A1E16;
+        --bg-card: #242A1E;
+        --bg-input: #2E3528;
+        --bg-primary: #8FBF7A;
+        --bg-primary-hover: #A5D190;
+        --text-body: #E8E2D6;
+        --text-muted: #A89E8E;
+        --text-on-primary: #1A1E16;
+        --border: #3A4230;
+        --border-focus: #8FBF7A;
+        --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.25);
+        --shadow-card-hover: 0 4px 20px rgba(0, 0, 0, 0.35);
+        --olive-dark: #8FBF7A;
+        --olive-medium: #A5D190;
+        --terracotta: #E09070;
+        --rust: #D07060;
+        --gold: #E8C060;
+      }
+    }
+
+    /* --- Reset & Base --- */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 18px;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+                   'Noto Sans', 'Noto Sans Devanagari', 'Noto Sans Tamil',
+                   'Noto Sans Telugu', 'Noto Sans Bengali', sans-serif;
+      background: var(--bg-page);
+      color: var(--text-body);
+      line-height: 1.6;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* --- Layout Container --- */
+    .container {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 0 16px 32px;
+    }
+
+    /* --- Header --- */
+    .header {
+      text-align: center;
+      padding: 24px 0 8px;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--bg-primary);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-on-primary);
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .logo-text {
+      font-size: 1.55rem;
+      font-weight: 800;
+      color: var(--olive-dark);
+      letter-spacing: -0.5px;
+    }
+
+    .tagline {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+      font-weight: 400;
+    }
+
+    /* --- Cards --- */
+    .card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      margin-bottom: 14px;
+      box-shadow: var(--shadow-card);
+      border: 1px solid var(--border);
+    }
+
+    .card-accent {
+      border-left: 4px solid var(--olive-dark);
+    }
+
+    .card-warn {
+      border-left: 4px solid var(--terracotta);
+    }
+
+    /* --- Section Labels --- */
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 10px;
+    }
+
+    /* --- Pill Selector (Language, Subject) --- */
+    .pill-scroll {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding: 2px 0;
+      margin: 0 -4px;
+    }
+
+    .pill-scroll::-webkit-scrollbar {
+      display: none;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 16px;
+      border-radius: var(--radius-full);
+      border: 2px solid var(--border);
+      background: var(--bg-input);
+      color: var(--text-body);
+      font-size: 0.83rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      min-height: 44px;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .pill:hover {
+      border-color: var(--border-focus);
+    }
+
+    .pill:active {
+      transform: scale(0.97);
+    }
+
+    .pill.active {
+      background: var(--bg-primary);
+      color: var(--text-on-primary);
+      border-color: var(--bg-primary);
+      font-weight: 600;
+    }
+
+    /* --- Grade Selector (Circles) --- */
+    .grade-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .grade-btn {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 2px solid var(--border);
+      background: var(--bg-input);
+      color: var(--text-body);
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .grade-btn:hover {
+      border-color: var(--border-focus);
+    }
+
+    .grade-btn.active {
+      background: var(--bg-primary);
+      color: var(--text-on-primary);
+      border-color: var(--bg-primary);
+      transform: scale(1.05);
+    }
+
+    /* --- Photo Capture Area --- */
+    .photo-area {
+      border: 2px dashed var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      background: var(--bg-input);
+      position: relative;
+    }
+
+    .photo-area:hover {
+      border-color: var(--border-focus);
+      background: var(--bg-card);
+    }
+
+    .photo-area.has-photo {
+      padding: 12px;
+      border-style: solid;
+      border-color: var(--olive-medium);
+    }
+
+    .photo-icon {
+      font-size: 2.2rem;
+      margin-bottom: 8px;
+    }
+
+    .photo-label {
+      font-size: 0.83rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .photo-sublabel {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+      opacity: 0.7;
+    }
+
+    .photo-buttons {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-top: 12px;
+    }
+
+    .photo-btn {
+      padding: 10px 16px;
+      border-radius: var(--radius-md);
+      border: 1.5px solid var(--border);
+      background: var(--bg-card);
+      color: var(--text-body);
+      font-size: 0.78rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .photo-btn:active {
+      transform: scale(0.97);
+    }
+
+    /* Hidden file inputs */
+    .file-input {
+      display: none;
+    }
+
+    /* Image preview */
+    .preview-container {
+      position: relative;
+      display: none;
+    }
+
+    .preview-container.visible {
+      display: block;
+    }
+
+    .preview-img {
+      width: 100%;
+      max-height: 260px;
+      object-fit: contain;
+      border-radius: var(--radius-md);
+      background: var(--bg-page);
+    }
+
+    .preview-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .preview-size {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      background: var(--bg-page);
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+    }
+
+    .change-photo-link {
+      font-size: 0.78rem;
+      color: var(--olive-medium);
+      cursor: pointer;
+      font-weight: 500;
+      border: none;
+      background: none;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    /* --- Primary Button --- */
+    .btn-primary {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      min-height: 56px;
+      padding: 14px 24px;
+      border-radius: var(--radius-md);
+      border: none;
+      background: var(--bg-primary);
+      color: var(--text-on-primary);
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      -webkit-tap-highlight-color: transparent;
+      letter-spacing: 0.2px;
+    }
+
+    .btn-primary:hover:not(:disabled) {
+      background: var(--bg-primary-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(74, 93, 58, 0.25);
+    }
+
+    .btn-primary:active:not(:disabled) {
+      transform: translateY(0);
+    }
+
+    .btn-primary:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* --- Secondary / Outline Button --- */
+    .btn-outline {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      min-height: 48px;
+      padding: 12px 24px;
+      border-radius: var(--radius-md);
+      border: 2px solid var(--olive-medium);
+      background: transparent;
+      color: var(--olive-medium);
+      font-size: 0.89rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .btn-outline:hover {
+      background: var(--bg-card);
+    }
+
+    .btn-outline:active {
+      transform: scale(0.98);
+    }
+
+    /* --- Inline Error --- */
+    .error-msg {
+      display: none;
+      padding: 12px 16px;
+      border-radius: var(--radius-md);
+      background: rgba(184, 92, 74, 0.08);
+      border: 1px solid var(--rust);
+      color: var(--rust);
+      font-size: 0.83rem;
+      font-weight: 500;
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+
+    .error-msg.visible {
+      display: block;
+      animation: fadeSlideIn 0.3s ease;
+    }
+
+    /* --- Loading State --- */
+    .loading-section {
+      display: none;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .loading-section.visible {
+      display: block;
+    }
+
+    .spinner {
+      width: 48px;
+      height: 48px;
+      border: 4px solid var(--border);
+      border-top-color: var(--bg-primary);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto 16px;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .loading-text {
+      font-size: 0.89rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      transition: opacity 0.3s ease;
+    }
+
+    .loading-sub {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+      opacity: 0.6;
+    }
+
+    /* --- Result Sections --- */
+    .result-area {
+      display: none;
+    }
+
+    .result-area.visible {
+      display: block;
+    }
+
+    .result-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+
+    .result-card {
+      opacity: 0;
+      transform: translateY(14px);
+      animation: cardIn 0.45s ease forwards;
+    }
+
+    .result-card:nth-child(2) { animation-delay: 0.07s; }
+    .result-card:nth-child(3) { animation-delay: 0.14s; }
+    .result-card:nth-child(4) { animation-delay: 0.21s; }
+    .result-card:nth-child(5) { animation-delay: 0.28s; }
+    .result-card:nth-child(6) { animation-delay: 0.35s; }
+    .result-card:nth-child(7) { animation-delay: 0.42s; }
+    .result-card:nth-child(8) { animation-delay: 0.49s; }
+
+    @keyframes cardIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeSlideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .result-icon {
+      font-size: 1.1rem;
+      margin-right: 8px;
+    }
+
+    .result-title {
+      font-size: 0.89rem;
+      font-weight: 700;
+      color: var(--olive-dark);
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .result-text {
+      font-size: 0.89rem;
+      line-height: 1.7;
+      color: var(--text-body);
+    }
+
+    /* Listen button */
+    .btn-listen {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: var(--radius-full);
+      border: 1.5px solid var(--olive-medium);
+      background: transparent;
+      color: var(--olive-medium);
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      min-height: 36px;
+    }
+
+    .btn-listen:hover {
+      background: var(--bg-card);
+    }
+
+    .btn-listen:active {
+      transform: scale(0.96);
+    }
+
+    .btn-listen.hidden {
+      display: none;
+    }
+
+    .voice-note {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-top: 4px;
+      display: none;
+    }
+
+    .voice-note.visible {
+      display: block;
+    }
+
+    /* --- Teach Script (numbered steps) --- */
+    .teach-list {
+      list-style: none;
+      counter-reset: teach-counter;
+    }
+
+    .teach-item {
+      counter-increment: teach-counter;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+
+    .teach-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .teach-num {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--olive-medium);
+      color: var(--text-on-primary);
+      font-size: 0.72rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+
+    .teach-text {
+      font-size: 0.89rem;
+      line-height: 1.6;
+      color: var(--text-body);
+    }
+
+    /* --- Everyday Example --- */
+    .example-card {
+      background: var(--bg-input);
+      border-left: 4px solid var(--gold);
+    }
+
+    .example-text {
+      font-style: italic;
+      font-size: 0.89rem;
+      line-height: 1.7;
+      color: var(--text-body);
+    }
+
+    /* --- Hint Ladder --- */
+    .hint-ladder {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .hint-btn {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: var(--radius-md);
+      border: 2px solid var(--border);
+      background: var(--bg-input);
+      color: var(--text-body);
+      font-size: 0.83rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 52px;
+    }
+
+    .hint-btn:hover:not(:disabled):not(.opened) {
+      border-color: var(--border-focus);
+      background: var(--bg-card);
+    }
+
+    .hint-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    .hint-btn.opened {
+      border-color: var(--olive-medium);
+      background: var(--bg-card);
+      cursor: default;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .hint-btn .hint-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+    }
+
+    .hint-icon {
+      font-size: 1.1rem;
+    }
+
+    .hint-content {
+      display: none;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid var(--border);
+      font-weight: 400;
+      font-size: 0.89rem;
+      line-height: 1.7;
+      color: var(--text-body);
+      width: 100%;
+    }
+
+    .hint-btn.opened .hint-content {
+      display: block;
+    }
+
+    .hint-level-tag {
+      font-size: 0.67rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--gold);
+    }
+
+    /* --- Key Terms --- */
+    .terms-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    @media (min-width: 400px) {
+      .terms-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .term-item {
+      padding: 10px 14px;
+      background: var(--bg-input);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+    }
+
+    .term-word {
+      font-weight: 700;
+      font-size: 0.83rem;
+      color: var(--olive-dark);
+      margin-bottom: 2px;
+    }
+
+    .term-meaning {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* --- Verification Badge --- */
+    .badge {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 18px;
+      border-radius: var(--radius-md);
+      font-size: 0.83rem;
+      font-weight: 600;
+      text-align: center;
+      animation: popIn 0.4s ease;
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0.9); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .badge-verified {
+      background: rgba(143, 191, 122, 0.12);
+      color: var(--olive-dark);
+      border: 1px solid var(--olive-light);
+    }
+
+    .badge-warning {
+      background: rgba(198, 123, 92, 0.1);
+      color: var(--terracotta);
+      border: 1px solid var(--terracotta);
+    }
+
+    .verify-note {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: 6px;
+      font-style: italic;
+    }
+
+    .badge.hidden {
+      display: none;
+    }
+
+    /* --- Retake Card --- */
+    .retake-section, .not-homework-section {
+      display: none;
+    }
+
+    .retake-section.visible, .not-homework-section.visible {
+      display: block;
+      animation: fadeSlideIn 0.4s ease;
+    }
+
+    .retake-icon {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 12px;
+    }
+
+    .retake-text {
+      font-size: 0.89rem;
+      line-height: 1.6;
+      color: var(--text-body);
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    /* --- Confirm Modal --- */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .modal-overlay.visible {
+      display: flex;
+    }
+
+    .modal-box {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 28px 24px;
+      max-width: 340px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+      animation: popIn 0.3s ease;
+    }
+
+    .modal-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-body);
+      margin-bottom: 8px;
+    }
+
+    .modal-desc {
+      font-size: 0.83rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .modal-actions button {
+      flex: 1;
+      min-height: 44px;
+      border-radius: var(--radius-sm);
+      font-size: 0.83rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: all 0.15s ease;
+    }
+
+    .modal-cancel {
+      background: var(--bg-input);
+      color: var(--text-body);
+      border: 1px solid var(--border) !important;
+    }
+
+    .modal-confirm {
+      background: var(--bg-primary);
+      color: var(--text-on-primary);
+    }
+
+    /* --- Footer --- */
+    .footer {
+      text-align: center;
+      padding: 24px 0 16px;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      opacity: 0.7;
+    }
+
+    /* --- Mode Switcher --- */
+    .mode-switch-wrapper {
+      display: flex;
+      justify-content: center;
+      margin: 12px 0 16px;
+    }
+
+    .mode-switch {
+      display: inline-flex;
+      background: var(--bg-card);
+      padding: 4px;
+      border-radius: var(--radius-full);
+      border: 1.5px solid var(--border);
+      box-shadow: 0 1px 4px rgba(90, 80, 60, 0.05);
+    }
+
+    .mode-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: var(--radius-full);
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .mode-btn.active {
+      background: var(--bg-primary);
+      color: var(--text-on-primary);
+      box-shadow: 0 2px 6px rgba(74, 93, 58, 0.2);
+    }
+
+    /* --- Practice Questions --- */
+    .practice-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .practice-item {
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 14px;
+      transition: all 0.2s ease;
+    }
+
+    .practice-q {
+      font-weight: 600;
+      font-size: 0.86rem;
+      color: var(--text-body);
+      margin-bottom: 8px;
+    }
+
+    .practice-reveal-btn {
+      font-size: 0.75rem;
+      color: var(--olive-medium);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      padding: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .practice-answer {
+      display: none;
+      margin-top: 8px;
+      padding: 10px 12px;
+      background: var(--bg-card);
+      border-radius: var(--radius-sm);
+      border-left: 3px solid var(--olive-medium);
+      font-size: 0.83rem;
+      color: var(--text-body);
+    }
+
+    .practice-answer.visible {
+      display: block;
+      animation: fadeSlideIn 0.25s ease;
+    }
+
+    /* --- Check Child Work Result --- */
+    .verdict-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .verdict-tag {
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+
+    .verdict-correct {
+      background: rgba(143, 191, 122, 0.2);
+      color: var(--olive-dark);
+      border: 1px solid var(--olive-light);
+    }
+
+    .verdict-partly {
+      background: rgba(212, 165, 74, 0.2);
+      color: #936814;
+      border: 1px solid var(--gold);
+    }
+
+    .verdict-incorrect {
+      background: rgba(198, 123, 92, 0.2);
+      color: var(--terracotta);
+      border: 1px solid var(--terracotta);
+    }
+
+    .verdict-unclear {
+      background: var(--bg-input);
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+    }
+
+    /* --- Upload Progress Bar --- */
+    .progress-bar-container {
+      display: none;
+      width: 100%;
+      height: 6px;
+      background: var(--border);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+      margin-top: 10px;
+    }
+
+    .progress-bar-container.visible {
+      display: block;
+    }
+
+    .progress-bar-fill {
+      width: 0%;
+      height: 100%;
+      background: var(--olive-medium);
+      transition: width 0.2s ease;
+    }
+
+    /* --- Section spacing --- */
+    .form-section {
+      margin-bottom: 14px;
+    }
+
+    /* --- Utility --- */
+    .hidden { display: none !important; }
+
+    .mt-sm { margin-top: 8px; }
+    .mt-md { margin-top: 14px; }
+    .mb-md { margin-bottom: 14px; }
+
+    /* --- Focus styles for a11y --- */
+    *:focus-visible {
+      outline: 2px solid var(--olive-medium);
+      outline-offset: 2px;
+    }
+
+    /* Smooth transitions for sections */
+    .setup-area {
+      transition: opacity 0.3s ease;
+    }
+
+    .setup-area.dimmed {
+      opacity: 0.45;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- ============================================================= -->
+    <!-- HEADER                                                         -->
+    <!-- ============================================================= -->
+    <header class="header">
+      <div class="logo">
+        <div class="logo-icon" aria-hidden="true">↑</div>
+        <span class="logo-text">LevelUp</span>
+      </div>
+      <p class="tagline">Your kid's homework. Your language. Level up.</p>
+
+      <!-- Mode Switcher (Explain vs Check) -->
+      <div class="mode-switch-wrapper">
+        <div class="mode-switch" role="tablist" aria-label="Choose mode">
+          <button type="button" class="mode-btn active" id="tabExplain" role="tab" aria-selected="true">
+            💡 Explain homework
+          </button>
+          <button type="button" class="mode-btn" id="tabCheck" role="tab" aria-selected="false">
+            ✍️ Check child's work
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- ============================================================= -->
+      <!-- SETUP AREA (language, grade, subject, photo)                  -->
+      <!-- ============================================================= -->
+      <div class="setup-area" id="setupArea">
+
+        <!-- Language Picker -->
+        <div class="card form-section">
+          <div class="section-label">Language</div>
+          <div class="pill-scroll" id="langPicker" role="radiogroup" aria-label="Choose language">
+            {% for name, code in languages %}
+            <button type="button"
+                    class="pill{% if loop.first %} active{% endif %}"
+                    role="radio"
+                    aria-checked="{% if loop.first %}true{% else %}false{% endif %}"
+                    data-lang="{{ name }}"
+                    data-code="{{ code }}">
+              {{ name }}
+            </button>
+            {% endfor %}
+          </div>
+        </div>
+
+        <!-- Grade Picker -->
+        <div class="card form-section">
+          <div class="section-label">Child's class</div>
+          <div class="grade-row" id="gradePicker" role="radiogroup" aria-label="Choose class">
+            {% for g in grades %}
+            <button type="button"
+                    class="grade-btn{% if g == 5 %} active{% endif %}"
+                    role="radio"
+                    aria-checked="{% if g == 5 %}true{% else %}false{% endif %}"
+                    data-grade="{{ g }}">
+              {{ g }}
+            </button>
+            {% endfor %}
+          </div>
+        </div>
+
+        <!-- Subject Picker -->
+        <div class="card form-section">
+          <div class="section-label">Subject</div>
+          <div class="pill-scroll" id="subjectPicker" role="radiogroup" aria-label="Choose subject">
+            {% for s in subjects %}
+            <button type="button"
+                    class="pill{% if s == 'Not sure' %} active{% endif %}"
+                    role="radio"
+                    aria-checked="{% if s == 'Not sure' %}true{% else %}false{% endif %}"
+                    data-subject="{{ s }}">
+              {{ s }}
+            </button>
+            {% endfor %}
+          </div>
+        </div>
+
+        <!-- Photo Capture -->
+        <div class="card form-section">
+          <div class="section-label">Homework photo</div>
+
+          <!-- Upload area (shown when no photo selected) -->
+          <div class="photo-area" id="photoArea">
+            <div class="photo-icon">📷</div>
+            <div class="photo-label">Take a photo or choose from gallery</div>
+            <div class="photo-sublabel">We never store your photos</div>
+            <div class="photo-buttons mt-sm">
+              <button type="button" class="photo-btn" id="btnCamera" aria-label="Take photo with camera">
+                📸 Camera
+              </button>
+              <button type="button" class="photo-btn" id="btnGallery" aria-label="Choose from gallery">
+                🖼️ Gallery
+              </button>
+            </div>
+          </div>
+
+          <!-- Hidden file inputs -->
+          <input type="file" accept="image/*" capture="environment"
+                 class="file-input" id="inputCamera" aria-hidden="true">
+          <input type="file" accept="image/*"
+                 class="file-input" id="inputGallery" aria-hidden="true">
+
+          <!-- Image preview (shown after photo selected) -->
+          <div class="preview-container" id="previewContainer">
+            <img class="preview-img" id="previewImg" alt="Preview of selected homework photo">
+            <div class="preview-actions">
+              <span class="preview-size" id="previewSize"></span>
+              <button type="button" class="change-photo-link" id="btnChangePhoto">
+                Change photo
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Optional Context (for Check Child's Work mode) -->
+        <div class="card form-section" id="checkContextCard" style="display: none;">
+          <div class="section-label">Problem Question (Optional)</div>
+          <input type="text" id="inputProblemText" class="pill" style="width: 100%; border-radius: var(--radius-md); text-align: left; padding: 12px 14px;" placeholder="e.g. Find 3/4 + 1/2 or paste the question text...">
+        </div>
+
+        <!-- Error Message -->
+        <div class="error-msg" id="errorMsg" role="alert" aria-live="polite"></div>
+
+        <!-- Submit Button -->
+        <button type="button" class="btn-primary" id="btnSubmit" disabled>
+          <span id="btnSubmitText">✨ Explain it to me</span>
+        </button>
+      </div>
+
+      <!-- ============================================================= -->
+      <!-- LOADING STATE                                                 -->
+      <!-- ============================================================= -->
+      <div class="loading-section" id="loadingSection" aria-live="polite">
+        <div class="spinner" aria-hidden="true"></div>
+        <div class="loading-text" id="loadingText">📖 Reading the page…</div>
+        <div class="progress-bar-container" id="progressBarContainer">
+          <div class="progress-bar-fill" id="progressBarFill"></div>
+        </div>
+        <div class="loading-sub" id="loadingSub">This usually takes 10–15 seconds</div>
+      </div>
+
+      <!-- ============================================================= -->
+      <!-- RETAKE STATE                                                  -->
+      <!-- ============================================================= -->
+      <div class="retake-section" id="retakeSection">
+        <div class="card card-warn">
+          <div class="retake-icon">📷</div>
+          <p class="retake-text" id="retakeText"></p>
+          <button type="button" class="btn-primary" id="btnRetake">
+            📸 Take photo again
+          </button>
+        </div>
+      </div>
+
+      <!-- ============================================================= -->
+      <!-- NOT-HOMEWORK STATE                                            -->
+      <!-- ============================================================= -->
+      <div class="not-homework-section" id="notHomeworkSection">
+        <div class="card">
+          <div class="retake-icon">😊</div>
+          <p class="retake-text" id="notHomeworkText"></p>
+          <button type="button" class="btn-primary" id="btnTryHomework">
+            📚 Try with a homework photo
+          </button>
+        </div>
+      </div>
+
+      <!-- ============================================================= -->
+      <!-- RESULT AREA                                                   -->
+      <!-- ============================================================= -->
+      <div class="result-area" id="resultArea" aria-live="polite">
+
+        <!-- Result Header (Listen + Try Another) -->
+        <div class="result-header result-card">
+          <button type="button" class="btn-listen" id="btnListen" aria-label="Read aloud">
+            🔊 Listen
+          </button>
+          <button type="button" class="btn-outline" style="width:auto; min-height:36px; padding:8px 16px; font-size:0.78rem;" id="btnTryAnother">
+            Try another
+          </button>
+        </div>
+        <div class="voice-note" id="voiceNote">Your device doesn't have a voice for this language yet.</div>
+
+        <!-- 1. Problem Summary -->
+        <div class="card card-accent result-card" id="cardSummary">
+          <div class="result-title">
+            <span class="result-icon">📝</span>
+            What this question is asking
+          </div>
+          <p class="result-text" id="textSummary"></p>
+        </div>
+
+        <!-- 2. Parent Explanation -->
+        <div class="card result-card" id="cardExplanation">
+          <div class="result-title">
+            <span class="result-icon">💡</span>
+            Explanation for you
+          </div>
+          <p class="result-text" id="textExplanation"></p>
+        </div>
+
+        <!-- 3. Teach Script -->
+        <div class="card result-card" id="cardTeach">
+          <div class="result-title">
+            <span class="result-icon">🗣️</span>
+            How to teach your child
+          </div>
+          <ol class="teach-list" id="teachList"></ol>
+        </div>
+
+        <!-- 4. Everyday Example -->
+        <div class="card example-card result-card" id="cardExample">
+          <div class="result-title">
+            <span class="result-icon">🏠</span>
+            A real-life example
+          </div>
+          <p class="example-text" id="textExample"></p>
+        </div>
+
+        <!-- 5. Hint Ladder -->
+        <div class="card result-card" id="cardHints">
+          <div class="result-title">
+            <span class="result-icon">🎮</span>
+            Help your child think
+          </div>
+          <div class="hint-ladder" id="hintLadder">
+            <button type="button" class="hint-btn" id="hintBtn1" data-level="1">
+              <div class="hint-label">
+                <span class="hint-icon">⭐</span>
+                <span>Level 1</span>
+                <span class="hint-level-tag">Nudge</span>
+              </div>
+              <div class="hint-content" id="hintContent1"></div>
+            </button>
+            <button type="button" class="hint-btn" id="hintBtn2" data-level="2" disabled>
+              <div class="hint-label">
+                <span class="hint-icon">🔒</span>
+                <span>Level 2</span>
+                <span class="hint-level-tag">Bigger hint</span>
+              </div>
+              <div class="hint-content" id="hintContent2"></div>
+            </button>
+            <button type="button" class="hint-btn" id="hintBtn3" data-level="3" disabled>
+              <div class="hint-label">
+                <span class="hint-icon">🔒</span>
+                <span>Level 3</span>
+                <span class="hint-level-tag">Full solution</span>
+              </div>
+              <div class="hint-content" id="hintContent3"></div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Check Child Work Review Card (shown in check mode) -->
+        <div class="card card-accent result-card" id="cardCheckResult" style="display: none;">
+          <div class="verdict-header">
+            <span class="result-icon">📋</span>
+            <div class="verdict-tag" id="verdictTag">Review</div>
+          </div>
+          <div class="mb-md">
+            <div class="result-title" style="margin-bottom: 4px;">
+              <span class="result-icon">🌟</span>
+              What was done well
+            </div>
+            <p class="result-text" id="textCheckRight"></p>
+          </div>
+          <div class="mb-md">
+            <div class="result-title" style="margin-bottom: 4px;">
+              <span class="result-icon">💡</span>
+              Where to look closer
+            </div>
+            <p class="result-text" id="textCheckMistake"></p>
+          </div>
+          <div>
+            <div class="result-title" style="margin-bottom: 4px;">
+              <span class="result-icon">🚀</span>
+              Next step for your child
+            </div>
+            <p class="result-text" id="textCheckNext"></p>
+          </div>
+        </div>
+
+        <!-- 6. Key Terms -->
+        <div class="card result-card" id="cardTerms">
+          <div class="result-title">
+            <span class="result-icon">📚</span>
+            Key words
+          </div>
+          <div class="terms-grid" id="termsGrid"></div>
+        </div>
+
+        <!-- 7. Practice Questions -->
+        <div class="card result-card" id="cardPractice" style="display: none;">
+          <div class="result-title">
+            <span class="result-icon">🎯</span>
+            Practice together (similar questions)
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </div>
+
+        <!-- 8. Verification Badge -->
+        <div class="badge hidden" id="verifyBadge"></div>
+        <p class="verify-note" id="verifyNote" style="display:none;"></p>
+
+        <!-- Try Another (bottom) -->
+        <div class="mt-md result-card">
+          <button type="button" class="btn-outline" id="btnTryAnotherBottom">
+            🔄 Try another question
+          </button>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- ============================================================= -->
+    <!-- CONFIRM MODAL (Level 3)                                       -->
+    <!-- ============================================================= -->
+    <div class="modal-overlay" id="confirmModal">
+      <div class="modal-box">
+        <div class="modal-title">Show the full solution?</div>
+        <div class="modal-desc">Are you sure? Let your child try first. 💪</div>
+        <div class="modal-actions">
+          <button type="button" class="modal-cancel" id="modalCancel">Not yet</button>
+          <button type="button" class="modal-confirm" id="modalConfirm">Yes, show it</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================= -->
+    <!-- FOOTER                                                         -->
+    <!-- ============================================================= -->
+    <footer class="footer">
+      Made with open-weight Gemma 4<br>
+      Always double-check important answers with a teacher.
+    </footer>
+
+  </div>
+
+  <!-- ================================================================= -->
+  <!-- JAVASCRIPT                                                         -->
+  <!-- ================================================================= -->
+  <script>
+    (function () {
+      "use strict";
+
+      // -----------------------------------------------------------------
+      // State
+      // -----------------------------------------------------------------
+      let currentMode = "explain"; // "explain" or "check"
+      let selectedLanguage = "English";
+      let selectedLangCode = "en-IN";
+      let selectedGrade = 5;
+      let selectedSubject = "Not sure";
+      let resizedBlob = null;
+      let isSubmitting = false;
+      let currentData = null;
+
+      // -----------------------------------------------------------------
+      // DOM references
+      // -----------------------------------------------------------------
+      const $ = (id) => document.getElementById(id);
+      const tabExplain = $("tabExplain");
+      const tabCheck = $("tabCheck");
+      const checkContextCard = $("checkContextCard");
+      const inputProblemText = $("inputProblemText");
+      const setupArea = $("setupArea");
+      const langPicker = $("langPicker");
+      const gradePicker = $("gradePicker");
+      const subjectPicker = $("subjectPicker");
+      const photoArea = $("photoArea");
+      const inputCamera = $("inputCamera");
+      const inputGallery = $("inputGallery");
+      const previewContainer = $("previewContainer");
+      const previewImg = $("previewImg");
+      const previewSize = $("previewSize");
+      const btnSubmit = $("btnSubmit");
+      const btnSubmitText = $("btnSubmitText");
+      const errorMsg = $("errorMsg");
+      const loadingSection = $("loadingSection");
+      const loadingText = $("loadingText");
+      const progressBarContainer = $("progressBarContainer");
+      const progressBarFill = $("progressBarFill");
+      const loadingSub = $("loadingSub");
+      const resultArea = $("resultArea");
+      const retakeSection = $("retakeSection");
+      const notHomeworkSection = $("notHomeworkSection");
+      const confirmModal = $("confirmModal");
+
+      // -----------------------------------------------------------------
+      // Mode Switching (Explain vs Check Child's Work)
+      // -----------------------------------------------------------------
+      tabExplain.addEventListener("click", () => setMode("explain"));
+      tabCheck.addEventListener("click", () => setMode("check"));
+
+      function setMode(mode) {
+        if (currentMode === mode) return;
+        currentMode = mode;
+        if (mode === "explain") {
+          tabExplain.classList.add("active");
+          tabExplain.setAttribute("aria-selected", "true");
+          tabCheck.classList.remove("active");
+          tabCheck.setAttribute("aria-selected", "false");
+          checkContextCard.style.display = "none";
+          btnSubmitText.textContent = "✨ Explain it to me";
+        } else {
+          tabCheck.classList.add("active");
+          tabCheck.setAttribute("aria-selected", "true");
+          tabExplain.classList.remove("active");
+          tabExplain.setAttribute("aria-selected", "false");
+          checkContextCard.style.display = "block";
+          btnSubmitText.textContent = "🔍 Check my child's work";
+        }
+      }
+
+      // -----------------------------------------------------------------
+      // localStorage helpers (try/catch for privacy modes)
+      // -----------------------------------------------------------------
+      function saveChoice(key, value) {
+        try { localStorage.setItem("levelup_" + key, value); } catch (e) { /* ignore */ }
+      }
+
+      function loadChoice(key) {
+        try { return localStorage.getItem("levelup_" + key); } catch (e) { return null; }
+      }
+
+      // -----------------------------------------------------------------
+      // Restore saved language
+      // -----------------------------------------------------------------
+      (function restoreLang() {
+        const saved = loadChoice("language");
+        if (saved) {
+          const btn = langPicker.querySelector('[data-lang="' + saved + '"]');
+          if (btn) {
+            langPicker.querySelectorAll(".pill").forEach((p) => {
+              p.classList.remove("active");
+              p.setAttribute("aria-checked", "false");
+            });
+            btn.classList.add("active");
+            btn.setAttribute("aria-checked", "true");
+            selectedLanguage = saved;
+            selectedLangCode = btn.dataset.code;
+          }
+        }
+      })();
+
+      // -----------------------------------------------------------------
+      // Pill / grade picker logic
+      // -----------------------------------------------------------------
+      function setupPicker(container, dataAttr, callback) {
+        container.addEventListener("click", function (e) {
+          const btn = e.target.closest("[data-" + dataAttr + "]");
+          if (!btn) return;
+          container.querySelectorAll("[data-" + dataAttr + "]").forEach((b) => {
+            b.classList.remove("active");
+            b.setAttribute("aria-checked", "false");
+          });
+          btn.classList.add("active");
+          btn.setAttribute("aria-checked", "true");
+          callback(btn);
+        });
+      }
+
+      setupPicker(langPicker, "lang", function (btn) {
+        selectedLanguage = btn.dataset.lang;
+        selectedLangCode = btn.dataset.code;
+        saveChoice("language", selectedLanguage);
+      });
+
+      setupPicker(gradePicker, "grade", function (btn) {
+        selectedGrade = parseInt(btn.dataset.grade, 10);
+      });
+
+      setupPicker(subjectPicker, "subject", function (btn) {
+        selectedSubject = btn.dataset.subject;
+      });
+
+      // -----------------------------------------------------------------
+      // Photo capture
+      // -----------------------------------------------------------------
+      $("btnCamera").addEventListener("click", function () {
+        inputCamera.click();
+      });
+
+      $("btnGallery").addEventListener("click", function () {
+        inputGallery.click();
+      });
+
+      photoArea.addEventListener("click", function (e) {
+        // Don't trigger if clicking the specific buttons
+        if (e.target.closest(".photo-btn")) return;
+        // Default to gallery on desktop, camera on mobile
+        if (/Mobi|Android/i.test(navigator.userAgent)) {
+          inputCamera.click();
+        } else {
+          inputGallery.click();
+        }
+      });
+
+      inputCamera.addEventListener("change", handleFileSelect);
+      inputGallery.addEventListener("change", handleFileSelect);
+
+      function handleFileSelect(e) {
+        const file = e.target.files && e.target.files[0];
+        if (!file) return;
+
+        // Validate type
+        if (!file.type.startsWith("image/")) {
+          showError("That doesn't look like a photo. Please choose an image.");
+          return;
+        }
+
+        // Show preview immediately
+        const objectUrl = URL.createObjectURL(file);
+        previewImg.src = objectUrl;
+        previewImg.onload = function () {
+          URL.revokeObjectURL(objectUrl);
+        };
+
+        photoArea.style.display = "none";
+        previewContainer.classList.add("visible");
+
+        // Resize in background
+        resizeImage(file).then(function (blob) {
+          resizedBlob = blob;
+          var sizeKB = Math.round(blob.size / 1024);
+          previewSize.textContent = "Ready · " + sizeKB + " KB";
+          btnSubmit.disabled = false;
+        });
+
+        hideError();
+      }
+
+      $("btnChangePhoto").addEventListener("click", resetPhoto);
+      $("btnRetake").addEventListener("click", resetAll);
+      $("btnTryHomework").addEventListener("click", resetAll);
+
+      function resetPhoto() {
+        photoArea.style.display = "";
+        previewContainer.classList.remove("visible");
+        previewImg.src = "";
+        previewSize.textContent = "";
+        resizedBlob = null;
+        btnSubmit.disabled = true;
+        inputCamera.value = "";
+        inputGallery.value = "";
+      }
+
+      // -----------------------------------------------------------------
+      // Image resize (canvas-based — strips EXIF, limits dimensions)
+      // -----------------------------------------------------------------
+      function resizeImage(file) {
+        return new Promise(function (resolve) {
+          var img = new Image();
+          var canvas = document.createElement("canvas");
+          var ctx = canvas.getContext("2d");
+
+          img.onload = function () {
+            var MAX = 1600;
+            var w = img.width;
+            var h = img.height;
+
+            if (w > MAX || h > MAX) {
+              var ratio = Math.min(MAX / w, MAX / h);
+              w = Math.round(w * ratio);
+              h = Math.round(h * ratio);
+            }
+
+            canvas.width = w;
+            canvas.height = h;
+            ctx.drawImage(img, 0, 0, w, h);
+
+            canvas.toBlob(
+              function (blob) {
+                URL.revokeObjectURL(img.src);
+                resolve(blob);
+              },
+              "image/jpeg",
+              0.8
+            );
+          };
+
+          img.src = URL.createObjectURL(file);
+        });
+      }
+
+      // -----------------------------------------------------------------
+      // Error display
+      // -----------------------------------------------------------------
+      var errorTimeout = null;
+
+      function showError(msg) {
+        errorMsg.textContent = msg;
+        errorMsg.classList.add("visible");
+        clearTimeout(errorTimeout);
+        errorTimeout = setTimeout(hideError, 8000);
+      }
+
+      function hideError() {
+        errorMsg.classList.remove("visible");
+        clearTimeout(errorTimeout);
+      }
+
+      // -----------------------------------------------------------------
+      // Submit (with Low-Bandwidth upload progress tracking)
+      // -----------------------------------------------------------------
+      btnSubmit.addEventListener("click", submitRequest);
+
+      function submitRequest() {
+        if (isSubmitting || !resizedBlob) return;
+        isSubmitting = true;
+        hideError();
+
+        // Show loading state
+        setupArea.classList.add("dimmed");
+        btnSubmitText.textContent = "Working…";
+        btnSubmit.disabled = true;
+        loadingSection.classList.add("visible");
+        progressBarContainer.classList.add("visible");
+        progressBarFill.style.width = "0%";
+        loadingText.textContent = "📤 Uploading… 0%";
+
+        var formData = new FormData();
+        formData.append("image", resizedBlob, "homework.jpg");
+        formData.append("language", selectedLanguage);
+        formData.append("grade", selectedGrade.toString());
+        formData.append("subject", selectedSubject);
+        if (currentMode === "check") {
+          formData.append("problem_text", (inputProblemText.value || "").trim());
+        }
+
+        var endpoint = currentMode === "check" ? "/api/check" : "/api/explain";
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", endpoint, true);
+
+        // Upload progress
+        xhr.upload.onprogress = function (e) {
+          if (e.lengthComputable) {
+            var pct = Math.round((e.loaded / e.total) * 100);
+            progressBarFill.style.width = pct + "%";
+            loadingText.textContent = "📤 Uploading… " + pct + "%";
+          }
+        };
+
+        // When upload completes, transition to processing stages
+        var stageTimer = null;
+        xhr.upload.onload = function () {
+          progressBarContainer.classList.remove("visible");
+          if (currentMode === "check") {
+            loadingText.textContent = "🔍 Reviewing your child's steps…";
+          } else {
+            loadingText.textContent = "📖 Reading the page…";
+            stageTimer = setTimeout(function () {
+              loadingText.textContent = "🔍 Double-checking the answer…";
+            }, 8000);
+          }
+        };
+
+        xhr.onload = function () {
+          if (stageTimer) clearTimeout(stageTimer);
+          isSubmitting = false;
+
+          try {
+            var data = JSON.parse(xhr.responseText);
+            if (xhr.status >= 200 && xhr.status < 300) {
+              if (currentMode === "check") {
+                handleCheckResult(data);
+              } else {
+                handleResult(data);
+              }
+            } else {
+              showError(data.error || "Something went wrong. Please try again.");
+              resetLoadingState();
+            }
+          } catch (err) {
+            showError("Could not process the response. Please try again.");
+            resetLoadingState();
+          }
+        };
+
+        xhr.onerror = function () {
+          if (stageTimer) clearTimeout(stageTimer);
+          isSubmitting = false;
+          showError("Could not connect. Please check your internet and try again.");
+          resetLoadingState();
+        };
+
+        xhr.send(formData);
+      }
+
+      function resetLoadingState() {
+        setupArea.classList.remove("dimmed");
+        btnSubmitText.textContent = currentMode === "check" ? "🔍 Check my child's work" : "✨ Explain it to me";
+        btnSubmit.disabled = false;
+        loadingSection.classList.remove("visible");
+        progressBarContainer.classList.remove("visible");
+      }
+
+      // -----------------------------------------------------------------
+      // Handle result
+      // -----------------------------------------------------------------
+      function handleResult(data) {
+        currentData = data;
+        loadingSection.classList.remove("visible");
+        setupArea.classList.add("dimmed");
+
+        // Poor image quality
+        if (data.image_quality === "poor") {
+          $("retakeText").textContent = data.retake_hint || "The photo is hard to read. Please try taking it again with better lighting.";
+          retakeSection.classList.add("visible");
+          return;
+        }
+
+        // Not homework
+        if (data.subject === "not_homework") {
+          $("notHomeworkText").textContent = data.problem_summary || "This doesn't seem to be homework. Please try with a homework photo.";
+          notHomeworkSection.classList.add("visible");
+          return;
+        }
+
+        // --- Render result sections ---
+        renderResult(data);
+      }
+
+      function renderResult(data) {
+        // 1. Problem Summary
+        $("textSummary").textContent = data.problem_summary || "";
+
+        // 2. Parent Explanation
+        $("textExplanation").textContent = data.parent_explanation || "";
+
+        // 3. Teach Script
+        var teachList = $("teachList");
+        teachList.innerHTML = "";
+        var steps = data.teach_script || [];
+        steps.forEach(function (step, i) {
+          var li = document.createElement("li");
+          li.className = "teach-item";
+
+          var num = document.createElement("span");
+          num.className = "teach-num";
+          num.textContent = (i + 1).toString();
+
+          var txt = document.createElement("span");
+          txt.className = "teach-text";
+          txt.textContent = step;
+
+          li.appendChild(num);
+          li.appendChild(txt);
+          teachList.appendChild(li);
+        });
+
+        // 4. Everyday Example
+        $("textExample").textContent = data.everyday_example || "";
+
+        // 5. Hint Ladder — reset all
+        resetHintLadder(data);
+
+        // 6. Key Terms
+        var termsGrid = $("termsGrid");
+        termsGrid.innerHTML = "";
+        var terms = data.key_terms || [];
+        if (terms.length === 0) {
+          $("cardTerms").style.display = "none";
+        } else {
+          $("cardTerms").style.display = "";
+          terms.forEach(function (t) {
+            var item = document.createElement("div");
+            item.className = "term-item";
+
+            var word = document.createElement("div");
+            word.className = "term-word";
+            word.textContent = t.term || "";
+
+            var meaning = document.createElement("div");
+            meaning.className = "term-meaning";
+            meaning.textContent = t.meaning || "";
+
+            item.appendChild(word);
+            item.appendChild(meaning);
+            termsGrid.appendChild(item);
+          });
+        }
+
+        // 7. Practice Questions (Should-Have #12)
+        var practiceCard = $("cardPractice");
+        var practiceList = $("practiceList");
+        practiceList.innerHTML = "";
+        var practiceItems = data.practice_questions || [];
+        if (practiceItems.length === 0) {
+          practiceCard.style.display = "none";
+        } else {
+          practiceCard.style.display = "block";
+          practiceItems.forEach(function (pq, idx) {
+            var pItem = document.createElement("div");
+            pItem.className = "practice-item";
+
+            var qDiv = document.createElement("div");
+            qDiv.className = "practice-q";
+            qDiv.textContent = (idx + 1) + ". " + pq.question;
+
+            var revealBtn = document.createElement("button");
+            revealBtn.type = "button";
+            revealBtn.className = "practice-reveal-btn";
+            revealBtn.textContent = "👁️ Show answer";
+
+            var aDiv = document.createElement("div");
+            aDiv.className = "practice-answer";
+            aDiv.textContent = pq.answer;
+
+            revealBtn.onclick = function () {
+              var isVisible = aDiv.classList.contains("visible");
+              if (isVisible) {
+                aDiv.classList.remove("visible");
+                revealBtn.textContent = "👁️ Show answer";
+              } else {
+                aDiv.classList.add("visible");
+                revealBtn.textContent = "🙈 Hide answer";
+              }
+            };
+
+            pItem.appendChild(qDiv);
+            pItem.appendChild(revealBtn);
+            pItem.appendChild(aDiv);
+            practiceList.appendChild(pItem);
+          });
+        }
+
+        // 8. Verification Badge
+        renderBadge(data);
+
+        // Hide check work card in explain mode
+        $("cardCheckResult").style.display = "none";
+
+        // Show explain cards
+        $("cardSummary").style.display = "";
+        $("cardExplanation").style.display = "";
+        $("cardTeach").style.display = "";
+        $("cardExample").style.display = "";
+        $("cardHints").style.display = "";
+
+        // Setup listen button
+        setupListenButton(data);
+
+        // Show result area
+        resultArea.classList.add("visible");
+
+        // Scroll to results
+        resultArea.scrollIntoView({ behavior: "smooth", block: "start" });
+
+        // Move focus for a11y
+        resultArea.focus();
+      }
+
+      // -----------------------------------------------------------------
+      // Handle Check Child Work Result (Should-Have #11)
+      // -----------------------------------------------------------------
+      function handleCheckResult(data) {
+        currentData = data;
+        loadingSection.classList.remove("visible");
+        setupArea.classList.add("dimmed");
+
+        // Hide explain cards
+        $("cardSummary").style.display = "none";
+        $("cardExplanation").style.display = "none";
+        $("cardTeach").style.display = "none";
+        $("cardExample").style.display = "none";
+        $("cardHints").style.display = "none";
+        $("cardTerms").style.display = "none";
+        $("cardPractice").style.display = "none";
+        $("verifyBadge").classList.add("hidden");
+        $("verifyNote").style.display = "none";
+
+        // Setup Check Result card
+        var card = $("cardCheckResult");
+        card.style.display = "block";
+
+        var tag = $("verdictTag");
+        var v = (data.verdict || "unclear").toLowerCase();
+        tag.className = "verdict-tag";
+
+        if (v === "correct") {
+          tag.textContent = "✅ Correct work!";
+          tag.classList.add("verdict-correct");
+        } else if (v === "partly") {
+          tag.textContent = "⚡ Good effort — partly correct";
+          tag.classList.add("verdict-partly");
+        } else if (v === "incorrect") {
+          tag.textContent = "🌱 Needs revision";
+          tag.classList.add("verdict-incorrect");
+        } else {
+          tag.textContent = "🔍 Unclear / needs closer look";
+          tag.classList.add("verdict-unclear");
+        }
+
+        $("textCheckRight").textContent = data.what_is_right || "Great effort working through the question.";
+        $("textCheckMistake").textContent = data.mistake_explained || "Take a look at how the calculation is structured.";
+        $("textCheckNext").textContent = data.next_step_hint || "Ask your child what step they did first!";
+
+        // Setup Listen button for check mode
+        setupCheckListenButton(data);
+
+        resultArea.classList.add("visible");
+        resultArea.scrollIntoView({ behavior: "smooth", block: "start" });
+        resultArea.focus();
+      }
+
+      function setupCheckListenButton(data) {
+        var btn = $("btnListen");
+        var voiceNote = $("voiceNote");
+        btn.classList.remove("hidden");
+        voiceNote.classList.remove("visible");
+        isSpeaking = false;
+        btn.textContent = "🔊 Listen";
+
+        var synth = window.speechSynthesis;
+        if (!synth) {
+          btn.classList.add("hidden");
+          return;
+        }
+
+        btn.onclick = function () {
+          if (isSpeaking) {
+            synth.cancel();
+            isSpeaking = false;
+            btn.textContent = "🔊 Listen";
+            return;
+          }
+
+          var textParts = [
+            data.what_is_right,
+            data.mistake_explained,
+            data.next_step_hint
+          ].filter(Boolean);
+
+          var utterance = new SpeechSynthesisUtterance(textParts.join(". "));
+          utterance.lang = selectedLangCode;
+          utterance.rate = 0.9;
+
+          utterance.onend = function () {
+            isSpeaking = false;
+            btn.textContent = "🔊 Listen";
+          };
+
+          utterance.onerror = function () {
+            isSpeaking = false;
+            btn.textContent = "🔊 Listen";
+          };
+
+          synth.speak(utterance);
+          isSpeaking = true;
+          btn.textContent = "⏹️ Stop";
+        };
+      }
+
+      // -----------------------------------------------------------------
+      // Hint Ladder
+      // -----------------------------------------------------------------
+      function resetHintLadder(data) {
+        var hints = data.hints || {};
+
+        // Reset states
+        ["hintBtn1", "hintBtn2", "hintBtn3"].forEach(function (id) {
+          var btn = $(id);
+          btn.classList.remove("opened");
+          btn.disabled = id !== "hintBtn1"; // Only L1 starts enabled
+        });
+
+        // Set content (using textContent for safety)
+        $("hintContent1").textContent = hints.nudge || "";
+        $("hintContent2").textContent = hints.bigger_hint || "";
+        $("hintContent3").textContent = hints.full_solution || "";
+
+        // Reset icons
+        $("hintBtn1").querySelector(".hint-icon").textContent = "⭐";
+        $("hintBtn2").querySelector(".hint-icon").textContent = "🔒";
+        $("hintBtn3").querySelector(".hint-icon").textContent = "🔒";
+      }
+
+      $("hintBtn1").addEventListener("click", function () {
+        if (this.classList.contains("opened")) return;
+        openHint(1);
+      });
+
+      $("hintBtn2").addEventListener("click", function () {
+        if (this.classList.contains("opened") || this.disabled) return;
+        openHint(2);
+      });
+
+      $("hintBtn3").addEventListener("click", function () {
+        if (this.classList.contains("opened") || this.disabled) return;
+        // Show confirmation modal
+        confirmModal.classList.add("visible");
+      });
+
+      $("modalCancel").addEventListener("click", function () {
+        confirmModal.classList.remove("visible");
+      });
+
+      $("modalConfirm").addEventListener("click", function () {
+        confirmModal.classList.remove("visible");
+        openHint(3);
+      });
+
+      // Close modal on overlay click
+      confirmModal.addEventListener("click", function (e) {
+        if (e.target === confirmModal) {
+          confirmModal.classList.remove("visible");
+        }
+      });
+
+      function openHint(level) {
+        var btn = $("hintBtn" + level);
+        btn.classList.add("opened");
+        btn.querySelector(".hint-icon").textContent = "⭐";
+
+        // Unlock next level
+        if (level < 3) {
+          var next = $("hintBtn" + (level + 1));
+          next.disabled = false;
+          next.querySelector(".hint-icon").textContent = "🔓";
+        }
+      }
+
+      // -----------------------------------------------------------------
+      // Verification Badge
+      // -----------------------------------------------------------------
+      function renderBadge(data) {
+        var badge = $("verifyBadge");
+        var note = $("verifyNote");
+
+        badge.className = "badge";
+        note.style.display = "none";
+
+        if (data.verified === true) {
+          badge.textContent = "✅ Double-checked";
+          badge.classList.add("badge-verified");
+        } else if (data.verified === false) {
+          badge.textContent = "⚠️ Please double-check this with a teacher";
+          badge.classList.add("badge-warning");
+          if (data.verify_note) {
+            note.textContent = data.verify_note;
+            note.style.display = "block";
+          }
+        } else {
+          // null — hide badge
+          badge.classList.add("hidden");
+        }
+      }
+
+      // -----------------------------------------------------------------
+      // Read Aloud (Text-to-Speech)
+      // -----------------------------------------------------------------
+      var isSpeaking = false;
+
+      function setupListenButton(data) {
+        var btn = $("btnListen");
+        var voiceNote = $("voiceNote");
+
+        btn.classList.remove("hidden");
+        voiceNote.classList.remove("visible");
+        isSpeaking = false;
+        btn.textContent = "🔊 Listen";
+
+        // Check for voice support
+        var synth = window.speechSynthesis;
+        if (!synth) {
+          btn.classList.add("hidden");
+          return;
+        }
+
+        // Voice check (voices may load asynchronously)
+        function checkVoices() {
+          var voices = synth.getVoices();
+          var langBase = selectedLangCode.split("-")[0];
+          var hasVoice = voices.some(function (v) {
+            return v.lang.startsWith(langBase);
+          });
+          if (!hasVoice && voices.length > 0) {
+            btn.classList.add("hidden");
+            voiceNote.classList.add("visible");
+          }
+        }
+
+        checkVoices();
+        if (synth.onvoiceschanged !== undefined) {
+          synth.onvoiceschanged = checkVoices;
+        }
+
+        btn.onclick = function () {
+          toggleReadAloud(data);
+        };
+      }
+
+      function toggleReadAloud(data) {
+        var synth = window.speechSynthesis;
+        var btn = $("btnListen");
+
+        if (isSpeaking) {
+          synth.cancel();
+          isSpeaking = false;
+          btn.textContent = "🔊 Listen";
+          return;
+        }
+
+        // Build text to read
+        var parts = [];
+        if (data.parent_explanation) parts.push(data.parent_explanation);
+        if (data.teach_script) {
+          data.teach_script.forEach(function (step, i) {
+            parts.push(step);
+          });
+        }
+
+        var utterance = new SpeechSynthesisUtterance(parts.join(". "));
+        utterance.lang = selectedLangCode;
+        utterance.rate = 0.9;
+
+        utterance.onend = function () {
+          isSpeaking = false;
+          btn.textContent = "🔊 Listen";
+        };
+
+        utterance.onerror = function () {
+          isSpeaking = false;
+          btn.textContent = "🔊 Listen";
+        };
+
+        synth.speak(utterance);
+        isSpeaking = true;
+        btn.textContent = "⏹️ Stop";
+      }
+
+      // -----------------------------------------------------------------
+      // Reset / Try Another
+      // -----------------------------------------------------------------
+      $("btnTryAnother").addEventListener("click", resetAll);
+      $("btnTryAnotherBottom").addEventListener("click", resetAll);
+
+      function resetAll() {
+        // Cancel any speech
+        if (window.speechSynthesis) {
+          window.speechSynthesis.cancel();
+        }
+        isSpeaking = false;
+
+        // Reset photo
+        resetPhoto();
+
+        // Hide all result/state sections
+        resultArea.classList.remove("visible");
+        retakeSection.classList.remove("visible");
+        notHomeworkSection.classList.remove("visible");
+        loadingSection.classList.remove("visible");
+
+        // Show setup
+        setupArea.classList.remove("dimmed");
+        btnSubmitText.textContent = currentMode === "check" ? "🔍 Check my child's work" : "✨ Explain it to me";
+        if (inputProblemText) inputProblemText.value = "";
+
+        // Clear data
+        currentData = null;
+
+        // Hide error
+        hideError();
+
+        // Scroll to top
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+    })();
+  </script>
+
+</body>
+</html>
+
