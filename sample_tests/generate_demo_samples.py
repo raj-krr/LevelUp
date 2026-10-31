@@ -102,3 +102,4 @@ create_image_with_text(
 
 if __name__ == "__main__":
     print("All sample demo images created successfully in sample_tests/")
+
