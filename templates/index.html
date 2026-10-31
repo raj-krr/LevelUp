@@ -3,71 +3,57 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>LevelUp</title>
+  <title>LevelUp — Your Kid's Homework. Your Language.</title>
   <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
   <meta name="description" content="Your kid's homework. Your language. Level up.">
-  <meta name="theme-color" content="#4A5D3A">
+  <meta name="theme-color" content="#3B5732">
   <style>
     /* ====================================================================
-       LevelUp Design System — Olive Green & Beige
+       LevelUp Design System — Light, Fresh Botanical Olive & Warm Linen
        ==================================================================== */
 
-    /* --- CSS Custom Properties (Light Mode) --- */
     :root {
-      --olive-dark: #4A5D3A;
-      --olive-medium: #6B8F5B;
-      --olive-light: #8FBF7A;
-      --beige-warm: #F5F0E8;
-      --beige-light: #FAF7F2;
-      --cream: #FFFDF7;
-      --earth-brown: #5C4A3A;
-      --earth-light: #8B7D6B;
-      --terracotta: #C67B5C;
-      --rust: #B85C4A;
-      --gold: #D4A54A;
+      /* Bright, fresh botanical olive & warm linen palette */
+      --olive-dark: #3B5732;
+      --olive-medium: #4D7342;
+      --olive-light: #7DA671;
+      --olive-soft-bg: rgba(77, 115, 66, 0.08);
+      --olive-badge-bg: rgba(77, 115, 66, 0.12);
 
+      --beige-warm: #FAF8F5;       /* Light, warm, luminous linen background */
+      --beige-light: #FFFFFF;      /* Clean pure white cards */
+      --beige-subtle: #F5F2EB;     /* Soft ivory tint */
+      --cream: #FFFFFF;
+
+      --earth-brown: #1E261D;      /* Crisp, high-contrast dark forest-slate (never muddy) */
+      --earth-light: #5A6658;      /* Gentle sage-slate muted text */
+
+      --terracotta: #D06346;       /* Warm coral */
+      --rust: #C44C3A;
+      --gold: #D69736;             /* Honey gold for level badges */
+
+      /* Semantic tokens */
       --bg-page: var(--beige-warm);
-      --bg-card: var(--beige-light);
-      --bg-input: var(--cream);
+      --bg-card: #FFFFFF;
+      --bg-input: #FFFFFF;
       --bg-primary: var(--olive-dark);
       --bg-primary-hover: var(--olive-medium);
       --text-body: var(--earth-brown);
       --text-muted: var(--earth-light);
-      --text-on-primary: #FFFDF7;
-      --border: #D9D0C4;
+      --text-on-primary: #FFFFFF;
+
+      --border: #E8E3DA;
       --border-focus: var(--olive-medium);
-      --shadow-card: 0 2px 12px rgba(90, 80, 60, 0.07);
-      --shadow-card-hover: 0 4px 20px rgba(90, 80, 60, 0.12);
-      --radius-lg: 18px;
-      --radius-md: 12px;
+      --shadow-card: 0 4px 20px rgba(45, 55, 40, 0.05);
+      --shadow-card-hover: 0 8px 30px rgba(45, 55, 40, 0.09);
+
+      --radius-lg: 20px;
+      --radius-md: 14px;
       --radius-sm: 8px;
       --radius-full: 9999px;
     }
 
-    /* --- Dark Mode --- */
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg-page: #1A1E16;
-        --bg-card: #242A1E;
-        --bg-input: #2E3528;
-        --bg-primary: #8FBF7A;
-        --bg-primary-hover: #A5D190;
-        --text-body: #E8E2D6;
-        --text-muted: #A89E8E;
-        --text-on-primary: #1A1E16;
-        --border: #3A4230;
-        --border-focus: #8FBF7A;
-        --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.25);
-        --shadow-card-hover: 0 4px 20px rgba(0, 0, 0, 0.35);
-        --olive-dark: #8FBF7A;
-        --olive-medium: #A5D190;
-        --terracotta: #E09070;
-        --rust: #D07060;
-        --gold: #E8C060;
-      }
-    }
-
-    /* --- Reset & Base --- */
+    /* Reset & Base */
     *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
@@ -75,8 +61,9 @@
     }
 
     html {
-      font-size: 18px;
+      font-size: 17px;
       -webkit-text-size-adjust: 100%;
+      background: var(--bg-page);
     }
 
     body {
@@ -91,54 +78,93 @@
       -moz-osx-font-smoothing: grayscale;
     }
 
-    /* --- Layout Container --- */
+    /* Layout Container */
     .container {
-      max-width: 480px;
+      max-width: 500px;
       margin: 0 auto;
-      padding: 0 16px 32px;
+      padding: 0 16px 36px;
     }
 
-    /* --- Header --- */
+    /* Header */
     .header {
       text-align: center;
-      padding: 24px 0 8px;
+      padding: 22px 0 10px;
     }
 
     .logo {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
       text-decoration: none;
     }
 
     .logo-icon {
-      width: 36px;
-      height: 36px;
-      background: var(--bg-primary);
-      border-radius: var(--radius-sm);
+      width: 38px;
+      height: 38px;
+      background: linear-gradient(135deg, var(--olive-dark), var(--olive-medium));
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--text-on-primary);
-      font-size: 18px;
+      color: #FFF;
+      font-size: 20px;
       font-weight: 800;
+      box-shadow: 0 4px 12px rgba(59, 87, 50, 0.25);
     }
 
     .logo-text {
-      font-size: 1.55rem;
+      font-size: 1.6rem;
       font-weight: 800;
       color: var(--olive-dark);
       letter-spacing: -0.5px;
     }
 
     .tagline {
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       color: var(--text-muted);
       margin-top: 4px;
-      font-weight: 400;
+      font-weight: 500;
     }
 
-    /* --- Cards --- */
+    /* Mode Switcher Tabs */
+    .mode-switch-wrapper {
+      display: flex;
+      justify-content: center;
+      margin: 14px 0 18px;
+    }
+
+    .mode-switch {
+      display: inline-flex;
+      background: #FFFFFF;
+      padding: 4px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    }
+
+    .mode-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 18px;
+      border-radius: var(--radius-full);
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .mode-btn.active {
+      background: var(--olive-dark);
+      color: #FFFFFF;
+      box-shadow: 0 3px 10px rgba(59, 87, 50, 0.2);
+    }
+
+    /* Cards */
     .card {
       background: var(--bg-card);
       border-radius: var(--radius-lg);
@@ -146,34 +172,39 @@
       margin-bottom: 14px;
       box-shadow: var(--shadow-card);
       border: 1px solid var(--border);
+      transition: all 0.2s ease;
     }
 
     .card-accent {
-      border-left: 4px solid var(--olive-dark);
+      border-left: 4px solid var(--olive-medium);
     }
 
     .card-warn {
       border-left: 4px solid var(--terracotta);
     }
 
-    /* --- Section Labels --- */
+    .card-gold {
+      border-left: 4px solid var(--gold);
+      background: #FFFAF0;
+    }
+
     .section-label {
       font-size: 0.72rem;
-      font-weight: 600;
+      font-weight: 700;
       color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.8px;
       margin-bottom: 10px;
     }
 
-    /* --- Pill Selector (Language, Subject) --- */
+    /* Pill Selectors */
     .pill-scroll {
       display: flex;
       gap: 8px;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
-      padding: 2px 0;
+      padding: 3px 0;
       margin: 0 -4px;
     }
 
@@ -185,12 +216,12 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 10px 16px;
+      padding: 10px 18px;
       border-radius: var(--radius-full);
-      border: 2px solid var(--border);
-      background: var(--bg-input);
+      border: 1.5px solid var(--border);
+      background: #FFFFFF;
       color: var(--text-body);
-      font-size: 0.83rem;
+      font-size: 0.85rem;
       font-weight: 500;
       cursor: pointer;
       transition: all 0.2s ease;
@@ -201,7 +232,7 @@
     }
 
     .pill:hover {
-      border-color: var(--border-focus);
+      border-color: var(--olive-light);
     }
 
     .pill:active {
@@ -209,13 +240,14 @@
     }
 
     .pill.active {
-      background: var(--bg-primary);
-      color: var(--text-on-primary);
-      border-color: var(--bg-primary);
+      background: var(--olive-dark);
+      color: #FFFFFF;
+      border-color: var(--olive-dark);
       font-weight: 600;
+      box-shadow: 0 3px 8px rgba(59, 87, 50, 0.2);
     }
 
-    /* --- Grade Selector (Circles) --- */
+    /* Grade Selector */
     .grade-row {
       display: flex;
       gap: 8px;
@@ -226,8 +258,8 @@
       width: 48px;
       height: 48px;
       border-radius: 50%;
-      border: 2px solid var(--border);
-      background: var(--bg-input);
+      border: 1.5px solid var(--border);
+      background: #FFFFFF;
       color: var(--text-body);
       font-size: 1rem;
       font-weight: 600;
@@ -240,84 +272,83 @@
     }
 
     .grade-btn:hover {
-      border-color: var(--border-focus);
+      border-color: var(--olive-light);
     }
 
     .grade-btn.active {
-      background: var(--bg-primary);
-      color: var(--text-on-primary);
-      border-color: var(--bg-primary);
-      transform: scale(1.05);
+      background: var(--olive-dark);
+      color: #FFFFFF;
+      border-color: var(--olive-dark);
+      transform: scale(1.06);
+      box-shadow: 0 4px 10px rgba(59, 87, 50, 0.25);
     }
 
-    /* --- Photo Capture Area --- */
+    /* Photo Capture */
     .photo-area {
-      border: 2px dashed var(--border);
+      border: 2px dashed #D5CDC0;
       border-radius: var(--radius-lg);
-      padding: 32px 20px;
+      padding: 30px 20px;
       text-align: center;
       cursor: pointer;
       transition: all 0.2s ease;
-      background: var(--bg-input);
+      background: #FAF8F5;
       position: relative;
     }
 
     .photo-area:hover {
-      border-color: var(--border-focus);
-      background: var(--bg-card);
-    }
-
-    .photo-area.has-photo {
-      padding: 12px;
-      border-style: solid;
       border-color: var(--olive-medium);
+      background: #FFFFFF;
     }
 
     .photo-icon {
-      font-size: 2.2rem;
+      font-size: 2.4rem;
       margin-bottom: 8px;
     }
 
     .photo-label {
-      font-size: 0.83rem;
-      color: var(--text-muted);
+      font-size: 0.86rem;
+      color: var(--text-body);
+      font-weight: 600;
       line-height: 1.4;
     }
 
     .photo-sublabel {
-      font-size: 0.72rem;
+      font-size: 0.73rem;
       color: var(--text-muted);
       margin-top: 4px;
-      opacity: 0.7;
     }
 
     .photo-buttons {
       display: flex;
-      gap: 8px;
+      gap: 10px;
       justify-content: center;
-      margin-top: 12px;
+      margin-top: 14px;
     }
 
     .photo-btn {
-      padding: 10px 16px;
+      padding: 10px 18px;
       border-radius: var(--radius-md);
       border: 1.5px solid var(--border);
-      background: var(--bg-card);
+      background: #FFFFFF;
       color: var(--text-body);
-      font-size: 0.78rem;
-      font-weight: 500;
+      font-size: 0.82rem;
+      font-weight: 600;
       cursor: pointer;
       transition: all 0.15s ease;
       display: flex;
       align-items: center;
       gap: 6px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+    }
+
+    .photo-btn:hover {
+      border-color: var(--olive-medium);
     }
 
     .photo-btn:active {
       transform: scale(0.97);
     }
 
-    /* Hidden file inputs */
     .file-input {
       display: none;
     }
@@ -334,10 +365,10 @@
 
     .preview-img {
       width: 100%;
-      max-height: 260px;
+      max-height: 250px;
       object-fit: contain;
       border-radius: var(--radius-md);
-      background: var(--bg-page);
+      background: #F5F2EB;
     }
 
     .preview-actions {
@@ -348,49 +379,48 @@
     }
 
     .preview-size {
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      background: var(--bg-page);
-      padding: 4px 10px;
+      font-size: 0.74rem;
+      font-weight: 500;
+      color: var(--olive-dark);
+      background: var(--olive-soft-bg);
+      padding: 4px 12px;
       border-radius: var(--radius-full);
     }
 
     .change-photo-link {
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       color: var(--olive-medium);
       cursor: pointer;
-      font-weight: 500;
+      font-weight: 600;
       border: none;
       background: none;
       text-decoration: underline;
-      text-underline-offset: 2px;
     }
 
-    /* --- Primary Button --- */
+    /* Primary & Outline Buttons */
     .btn-primary {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
       width: 100%;
-      min-height: 56px;
+      min-height: 54px;
       padding: 14px 24px;
       border-radius: var(--radius-md);
       border: none;
-      background: var(--bg-primary);
-      color: var(--text-on-primary);
+      background: linear-gradient(135deg, var(--olive-dark), var(--olive-medium));
+      color: #FFFFFF;
       font-size: 1rem;
       font-weight: 700;
       cursor: pointer;
       transition: all 0.2s ease;
       -webkit-tap-highlight-color: transparent;
-      letter-spacing: 0.2px;
+      box-shadow: 0 4px 14px rgba(59, 87, 50, 0.25);
     }
 
     .btn-primary:hover:not(:disabled) {
-      background: var(--bg-primary-hover);
       transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(74, 93, 58, 0.25);
+      box-shadow: 0 6px 18px rgba(59, 87, 50, 0.3);
     }
 
     .btn-primary:active:not(:disabled) {
@@ -400,23 +430,22 @@
     .btn-primary:disabled {
       opacity: 0.45;
       cursor: not-allowed;
-      transform: none;
+      box-shadow: none;
     }
 
-    /* --- Secondary / Outline Button --- */
     .btn-outline {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
       width: 100%;
-      min-height: 48px;
-      padding: 12px 24px;
+      min-height: 46px;
+      padding: 10px 20px;
       border-radius: var(--radius-md);
-      border: 2px solid var(--olive-medium);
-      background: transparent;
-      color: var(--olive-medium);
-      font-size: 0.89rem;
+      border: 1.5px solid var(--border);
+      background: #FFFFFF;
+      color: var(--text-body);
+      font-size: 0.85rem;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.2s ease;
@@ -424,22 +453,19 @@
     }
 
     .btn-outline:hover {
-      background: var(--bg-card);
+      border-color: var(--olive-medium);
+      color: var(--olive-dark);
     }
 
-    .btn-outline:active {
-      transform: scale(0.98);
-    }
-
-    /* --- Inline Error --- */
+    /* Inline Error */
     .error-msg {
       display: none;
       padding: 12px 16px;
       border-radius: var(--radius-md);
-      background: rgba(184, 92, 74, 0.08);
-      border: 1px solid var(--rust);
+      background: #FFF5F2;
+      border: 1px solid #F5C6BC;
       color: var(--rust);
-      font-size: 0.83rem;
+      font-size: 0.84rem;
       font-weight: 500;
       margin-bottom: 12px;
       line-height: 1.4;
@@ -450,11 +476,11 @@
       animation: fadeSlideIn 0.3s ease;
     }
 
-    /* --- Loading State --- */
+    /* Loading State */
     .loading-section {
       display: none;
       text-align: center;
-      padding: 40px 20px;
+      padding: 44px 20px;
     }
 
     .loading-section.visible {
@@ -464,8 +490,8 @@
     .spinner {
       width: 48px;
       height: 48px;
-      border: 4px solid var(--border);
-      border-top-color: var(--bg-primary);
+      border: 4px solid #EAE4D9;
+      border-top-color: var(--olive-dark);
       border-radius: 50%;
       animation: spin 0.8s linear infinite;
       margin: 0 auto 16px;
@@ -476,88 +502,60 @@
     }
 
     .loading-text {
-      font-size: 0.89rem;
-      color: var(--text-muted);
-      font-weight: 500;
+      font-size: 0.95rem;
+      color: var(--olive-dark);
+      font-weight: 700;
       transition: opacity 0.3s ease;
     }
 
     .loading-sub {
-      font-size: 0.72rem;
+      font-size: 0.75rem;
       color: var(--text-muted);
-      margin-top: 4px;
-      opacity: 0.6;
+      margin-top: 6px;
     }
 
-    /* --- Result Sections --- */
+    .progress-bar-container {
+      display: none;
+      width: 100%;
+      max-width: 260px;
+      height: 6px;
+      background: #ECE6DC;
+      border-radius: var(--radius-full);
+      overflow: hidden;
+      margin: 12px auto 6px;
+    }
+
+    .progress-bar-container.visible {
+      display: block;
+    }
+
+    .progress-bar-fill {
+      width: 0%;
+      height: 100%;
+      background: var(--olive-medium);
+      transition: width 0.2s ease;
+    }
+
+    /* ====================================================================
+       SLIDE DECK / CAROUSEL SYSTEM (Replaces vertical endless scroll)
+       ==================================================================== */
     .result-area {
       display: none;
     }
 
     .result-area.visible {
       display: block;
+      animation: fadeSlideIn 0.35s ease forwards;
     }
 
-    .result-header {
+    .result-top-bar {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
+      gap: 8px;
     }
 
-    .result-card {
-      opacity: 0;
-      transform: translateY(14px);
-      animation: cardIn 0.45s ease forwards;
-    }
-
-    .result-card:nth-child(2) { animation-delay: 0.07s; }
-    .result-card:nth-child(3) { animation-delay: 0.14s; }
-    .result-card:nth-child(4) { animation-delay: 0.21s; }
-    .result-card:nth-child(5) { animation-delay: 0.28s; }
-    .result-card:nth-child(6) { animation-delay: 0.35s; }
-    .result-card:nth-child(7) { animation-delay: 0.42s; }
-    .result-card:nth-child(8) { animation-delay: 0.49s; }
-
-    @keyframes cardIn {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes fadeSlideIn {
-      from {
-        opacity: 0;
-        transform: translateY(-8px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .result-icon {
-      font-size: 1.1rem;
-      margin-right: 8px;
-    }
-
-    .result-title {
-      font-size: 0.89rem;
-      font-weight: 700;
-      color: var(--olive-dark);
-      display: flex;
-      align-items: center;
-      margin-bottom: 10px;
-    }
-
-    .result-text {
-      font-size: 0.89rem;
-      line-height: 1.7;
-      color: var(--text-body);
-    }
-
-    /* Listen button */
     .btn-listen {
       display: inline-flex;
       align-items: center;
@@ -565,55 +563,302 @@
       padding: 8px 16px;
       border-radius: var(--radius-full);
       border: 1.5px solid var(--olive-medium);
-      background: transparent;
-      color: var(--olive-medium);
-      font-size: 0.78rem;
-      font-weight: 600;
+      background: #FFFFFF;
+      color: var(--olive-dark);
+      font-size: 0.8rem;
+      font-weight: 700;
       cursor: pointer;
       transition: all 0.15s ease;
-      min-height: 36px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
     }
 
     .btn-listen:hover {
-      background: var(--bg-card);
+      background: var(--olive-soft-bg);
     }
 
-    .btn-listen:active {
-      transform: scale(0.96);
+    .btn-listen.speaking {
+      background: var(--olive-dark);
+      color: #FFFFFF;
+      border-color: var(--olive-dark);
     }
 
-    .btn-listen.hidden {
-      display: none;
-    }
-
-    .voice-note {
-      font-size: 0.72rem;
+    .btn-reset-top {
+      padding: 8px 14px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border);
+      background: #FFFFFF;
       color: var(--text-muted);
-      font-style: italic;
-      margin-top: 4px;
-      display: none;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
     }
 
-    .voice-note.visible {
-      display: block;
+    .btn-reset-top:hover {
+      color: var(--text-body);
+      border-color: var(--olive-light);
     }
 
-    /* --- Teach Script (numbered steps) --- */
+    /* Slide Navigation Tabs (Top) */
+    .slide-tabs-scroll {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding: 2px 0 10px;
+      margin: 0 -4px;
+    }
+    .slide-tabs-scroll::-webkit-scrollbar { display: none; }
+
+    .slide-tab-btn {
+      padding: 7px 14px;
+      border-radius: var(--radius-full);
+      font-size: 0.78rem;
+      font-weight: 600;
+      border: 1.5px solid var(--border);
+      background: #FFFFFF;
+      color: var(--text-muted);
+      white-space: nowrap;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .slide-tab-btn.active {
+      background: var(--olive-dark);
+      color: #FFFFFF;
+      border-color: var(--olive-dark);
+      box-shadow: 0 2px 8px rgba(59, 87, 50, 0.2);
+    }
+
+    /* Carousel Slides Track */
+    .carousel-viewport {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius-lg);
+      touch-action: pan-y pinch-zoom;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.32s cubic-bezier(0.25, 1, 0.5, 1);
+      will-change: transform;
+    }
+
+    .slide-item {
+      min-width: 100%;
+      width: 100%;
+      flex-shrink: 0;
+      box-sizing: border-box;
+      opacity: 0.4;
+      transition: opacity 0.3s ease;
+    }
+
+    .slide-item.active {
+      opacity: 1;
+    }
+
+    /* Slide Content Card */
+    .slide-card {
+      background: #FFFFFF;
+      border-radius: var(--radius-lg);
+      padding: 22px 20px;
+      box-shadow: var(--shadow-card);
+      border: 1px solid var(--border);
+      min-height: 380px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .slide-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #F0ECE4;
+    }
+
+    .slide-badge-title {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--olive-dark);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .slide-number-pill {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--olive-medium);
+      background: var(--olive-soft-bg);
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+    }
+
+    .slide-body {
+      flex: 1;
+    }
+
+    .slide-lead-text {
+      font-size: 0.94rem;
+      line-height: 1.7;
+      color: var(--text-body);
+      margin-bottom: 14px;
+    }
+
+    /* Bottom Slide Navigation Bar */
+    .slide-controls-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 14px;
+      padding: 4px 0;
+      gap: 8px;
+    }
+
+    .btn-slide-nav {
+      min-height: 44px;
+      padding: 8px 18px;
+      border-radius: var(--radius-full);
+      font-size: 0.84rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+      border: 1.5px solid var(--border);
+      background: #FFFFFF;
+      color: var(--text-body);
+    }
+
+    .btn-slide-nav:hover:not(:disabled) {
+      border-color: var(--olive-medium);
+      color: var(--olive-dark);
+    }
+
+    .btn-slide-nav:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+
+    .btn-slide-next {
+      background: var(--olive-dark);
+      color: #FFFFFF;
+      border-color: var(--olive-dark);
+      box-shadow: 0 3px 10px rgba(59, 87, 50, 0.2);
+    }
+
+    .btn-slide-next:hover:not(:disabled) {
+      background: var(--olive-medium);
+      color: #FFFFFF;
+    }
+
+    /* Pagination Dots */
+    .slide-dots {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .slide-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #D9D2C5;
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+
+    .slide-dot.active {
+      width: 22px;
+      border-radius: 6px;
+      background: var(--olive-dark);
+    }
+
+    /* Verification Badge */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border-radius: var(--radius-md);
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-top: 8px;
+    }
+
+    .badge-verified {
+      background: rgba(77, 115, 66, 0.1);
+      color: var(--olive-dark);
+      border: 1px solid var(--olive-light);
+    }
+
+    .badge-warning {
+      background: rgba(208, 99, 70, 0.1);
+      color: var(--terracotta);
+      border: 1px solid var(--terracotta);
+    }
+
+    .badge.hidden { display: none !important; }
+
+    /* Key Terms */
+    .terms-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    @media (min-width: 420px) {
+      .terms-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .term-item {
+      padding: 10px 14px;
+      background: #FAF8F5;
+      border-radius: var(--radius-sm);
+      border: 1px solid #ECE7DE;
+    }
+
+    .term-word {
+      font-weight: 700;
+      font-size: 0.82rem;
+      color: var(--olive-dark);
+      margin-bottom: 2px;
+    }
+
+    .term-meaning {
+      font-size: 0.77rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* Teach Script Steps */
     .teach-list {
       list-style: none;
       counter-reset: teach-counter;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
 
     .teach-item {
-      counter-increment: teach-counter;
       display: flex;
       gap: 12px;
       align-items: flex-start;
-      margin-bottom: 12px;
-    }
-
-    .teach-item:last-child {
-      margin-bottom: 0;
+      background: #FAF8F5;
+      padding: 12px 14px;
+      border-radius: var(--radius-md);
+      border: 1px solid #ECE7DE;
     }
 
     .teach-num {
@@ -621,50 +866,63 @@
       width: 28px;
       height: 28px;
       border-radius: 50%;
-      background: var(--olive-medium);
-      color: var(--text-on-primary);
-      font-size: 0.72rem;
+      background: var(--olive-dark);
+      color: #FFFFFF;
+      font-size: 0.76rem;
       font-weight: 700;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-top: 2px;
+      margin-top: 1px;
     }
 
     .teach-text {
-      font-size: 0.89rem;
+      font-size: 0.88rem;
+      line-height: 1.55;
+      color: var(--text-body);
+    }
+
+    /* Everyday Example Highlight */
+    .example-highlight-card {
+      background: #FFFBF2;
+      border: 1.5px solid #F0E2C8;
+      border-radius: var(--radius-md);
+      padding: 14px;
+      margin-top: 12px;
+    }
+
+    .example-highlight-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #8C6218;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+
+    .example-highlight-text {
+      font-style: italic;
+      font-size: 0.88rem;
       line-height: 1.6;
       color: var(--text-body);
     }
 
-    /* --- Everyday Example --- */
-    .example-card {
-      background: var(--bg-input);
-      border-left: 4px solid var(--gold);
-    }
-
-    .example-text {
-      font-style: italic;
-      font-size: 0.89rem;
-      line-height: 1.7;
-      color: var(--text-body);
-    }
-
-    /* --- Hint Ladder --- */
+    /* Hint Ladder */
     .hint-ladder {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 10px;
     }
 
     .hint-btn {
       width: 100%;
       padding: 14px 16px;
       border-radius: var(--radius-md);
-      border: 2px solid var(--border);
-      background: var(--bg-input);
+      border: 1.5px solid var(--border);
+      background: #FAF8F5;
       color: var(--text-body);
-      font-size: 0.83rem;
+      font-size: 0.84rem;
       font-weight: 600;
       cursor: pointer;
       text-align: left;
@@ -676,24 +934,25 @@
     }
 
     .hint-btn:hover:not(:disabled):not(.opened) {
-      border-color: var(--border-focus);
-      background: var(--bg-card);
+      border-color: var(--olive-medium);
+      background: #FFFFFF;
     }
 
     .hint-btn:disabled {
-      opacity: 0.4;
+      opacity: 0.45;
       cursor: not-allowed;
     }
 
     .hint-btn.opened {
       border-color: var(--olive-medium);
-      background: var(--bg-card);
+      background: #FFFFFF;
       cursor: default;
       flex-direction: column;
       align-items: flex-start;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
     }
 
-    .hint-btn .hint-label {
+    .hint-label {
       display: flex;
       align-items: center;
       gap: 8px;
@@ -708,10 +967,10 @@
       display: none;
       margin-top: 10px;
       padding-top: 10px;
-      border-top: 1px solid var(--border);
+      border-top: 1px solid #ECE7DE;
       font-weight: 400;
-      font-size: 0.89rem;
-      line-height: 1.7;
+      font-size: 0.88rem;
+      line-height: 1.65;
       color: var(--text-body);
       width: 100%;
     }
@@ -721,119 +980,153 @@
     }
 
     .hint-level-tag {
-      font-size: 0.67rem;
+      font-size: 0.68rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.5px;
       color: var(--gold);
+      margin-left: auto;
     }
 
-    /* --- Key Terms --- */
-    .terms-grid {
-      display: grid;
-      grid-template-columns: 1fr;
+    /* Practice Questions */
+    .practice-list {
+      display: flex;
+      flex-direction: column;
       gap: 10px;
     }
 
-    @media (min-width: 400px) {
-      .terms-grid {
-        grid-template-columns: 1fr 1fr;
-      }
+    .practice-item {
+      background: #FAF8F5;
+      border: 1px solid #ECE7DE;
+      border-radius: var(--radius-md);
+      padding: 14px;
     }
 
-    .term-item {
-      padding: 10px 14px;
-      background: var(--bg-input);
-      border-radius: var(--radius-sm);
-      border: 1px solid var(--border);
+    .practice-q {
+      font-weight: 600;
+      font-size: 0.86rem;
+      color: var(--text-body);
+      margin-bottom: 8px;
+      line-height: 1.5;
     }
 
-    .term-word {
-      font-weight: 700;
-      font-size: 0.83rem;
+    .practice-reveal-btn {
+      font-size: 0.77rem;
       color: var(--olive-dark);
-      margin-bottom: 2px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
     }
 
-    .term-meaning {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      line-height: 1.4;
+    .practice-answer {
+      display: none;
+      margin-top: 8px;
+      padding: 10px 12px;
+      background: #FFFFFF;
+      border-radius: var(--radius-sm);
+      border-left: 3px solid var(--olive-medium);
+      font-size: 0.84rem;
+      color: var(--text-body);
     }
 
-    /* --- Verification Badge --- */
-    .badge {
+    .practice-answer.visible {
+      display: block;
+      animation: fadeSlideIn 0.2s ease;
+    }
+
+    /* Check Work Verdict & Reviews */
+    .verdict-header {
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 12px 18px;
-      border-radius: var(--radius-md);
-      font-size: 0.83rem;
-      font-weight: 600;
-      text-align: center;
-      animation: popIn 0.4s ease;
+      gap: 10px;
+      margin-bottom: 14px;
     }
 
-    @keyframes popIn {
-      0% { transform: scale(0.9); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
+    .verdict-tag {
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.3px;
     }
 
-    .badge-verified {
-      background: rgba(143, 191, 122, 0.12);
+    .verdict-correct {
+      background: rgba(77, 115, 66, 0.15);
       color: var(--olive-dark);
       border: 1px solid var(--olive-light);
     }
 
-    .badge-warning {
-      background: rgba(198, 123, 92, 0.1);
+    .verdict-partly {
+      background: rgba(214, 151, 54, 0.15);
+      color: #8C6218;
+      border: 1px solid var(--gold);
+    }
+
+    .verdict-incorrect {
+      background: rgba(208, 99, 70, 0.15);
       color: var(--terracotta);
       border: 1px solid var(--terracotta);
     }
 
-    .verify-note {
-      font-size: 0.78rem;
+    .verdict-unclear {
+      background: #FAF8F5;
       color: var(--text-muted);
-      text-align: center;
-      margin-top: 6px;
-      font-style: italic;
+      border: 1px solid var(--border);
     }
 
-    .badge.hidden {
-      display: none;
+    .check-block {
+      background: #FAF8F5;
+      border-radius: var(--radius-md);
+      padding: 14px;
+      margin-bottom: 12px;
+      border: 1px solid #ECE7DE;
     }
 
-    /* --- Retake Card --- */
+    .check-block-title {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--olive-dark);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+
+    /* Retake & Not-homework states */
     .retake-section, .not-homework-section {
       display: none;
     }
-
     .retake-section.visible, .not-homework-section.visible {
       display: block;
-      animation: fadeSlideIn 0.4s ease;
+      animation: fadeSlideIn 0.3s ease;
     }
 
     .retake-icon {
-      font-size: 2.5rem;
+      font-size: 2.6rem;
       text-align: center;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .retake-text {
-      font-size: 0.89rem;
+      font-size: 0.9rem;
       line-height: 1.6;
       color: var(--text-body);
       text-align: center;
       margin-bottom: 16px;
     }
 
-    /* --- Confirm Modal --- */
+    /* Confirm Modal */
     .modal-overlay {
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.45);
+      background: rgba(30, 38, 29, 0.45);
+      backdrop-filter: blur(2px);
       z-index: 100;
       align-items: center;
       justify-content: center;
@@ -845,25 +1138,25 @@
     }
 
     .modal-box {
-      background: var(--bg-card);
+      background: #FFFFFF;
       border-radius: var(--radius-lg);
-      padding: 28px 24px;
+      padding: 26px 22px;
       max-width: 340px;
       width: 100%;
       text-align: center;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-      animation: popIn 0.3s ease;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.15);
+      animation: popIn 0.25s ease;
     }
 
     .modal-title {
-      font-size: 1rem;
+      font-size: 1.05rem;
       font-weight: 700;
       color: var(--text-body);
       margin-bottom: 8px;
     }
 
     .modal-desc {
-      font-size: 0.83rem;
+      font-size: 0.84rem;
       color: var(--text-muted);
       margin-bottom: 20px;
       line-height: 1.5;
@@ -878,221 +1171,60 @@
       flex: 1;
       min-height: 44px;
       border-radius: var(--radius-sm);
-      font-size: 0.83rem;
-      font-weight: 600;
+      font-size: 0.84rem;
+      font-weight: 700;
       cursor: pointer;
       border: none;
-      transition: all 0.15s ease;
     }
 
     .modal-cancel {
-      background: var(--bg-input);
+      background: #FAF8F5;
       color: var(--text-body);
       border: 1px solid var(--border) !important;
     }
 
     .modal-confirm {
-      background: var(--bg-primary);
-      color: var(--text-on-primary);
+      background: var(--olive-dark);
+      color: #FFFFFF;
     }
 
-    /* --- Footer --- */
+    /* Footer */
     .footer {
       text-align: center;
       padding: 24px 0 16px;
-      font-size: 0.72rem;
+      font-size: 0.74rem;
       color: var(--text-muted);
-      line-height: 1.5;
-      opacity: 0.7;
+      line-height: 1.6;
     }
 
-    /* --- Mode Switcher --- */
-    .mode-switch-wrapper {
-      display: flex;
-      justify-content: center;
-      margin: 12px 0 16px;
+    /* Animations */
+    @keyframes fadeSlideIn {
+      from { opacity: 0; transform: translateY(-8px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    .mode-switch {
-      display: inline-flex;
-      background: var(--bg-card);
-      padding: 4px;
-      border-radius: var(--radius-full);
-      border: 1.5px solid var(--border);
-      box-shadow: 0 1px 4px rgba(90, 80, 60, 0.05);
+    @keyframes popIn {
+      0% { transform: scale(0.92); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
     }
 
-    .mode-btn {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding: 8px 16px;
-      border-radius: var(--radius-full);
-      border: none;
-      background: transparent;
-      color: var(--text-muted);
-      font-size: 0.8rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    .mode-btn.active {
-      background: var(--bg-primary);
-      color: var(--text-on-primary);
-      box-shadow: 0 2px 6px rgba(74, 93, 58, 0.2);
-    }
-
-    /* --- Practice Questions --- */
-    .practice-list {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .practice-item {
-      background: var(--bg-input);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      padding: 14px;
-      transition: all 0.2s ease;
-    }
-
-    .practice-q {
-      font-weight: 600;
-      font-size: 0.86rem;
-      color: var(--text-body);
-      margin-bottom: 8px;
-    }
-
-    .practice-reveal-btn {
-      font-size: 0.75rem;
-      color: var(--olive-medium);
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-weight: 600;
-      padding: 0;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .practice-answer {
-      display: none;
-      margin-top: 8px;
-      padding: 10px 12px;
-      background: var(--bg-card);
-      border-radius: var(--radius-sm);
-      border-left: 3px solid var(--olive-medium);
-      font-size: 0.83rem;
-      color: var(--text-body);
-    }
-
-    .practice-answer.visible {
-      display: block;
-      animation: fadeSlideIn 0.25s ease;
-    }
-
-    /* --- Check Child Work Result --- */
-    .verdict-header {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 14px;
-    }
-
-    .verdict-tag {
-      padding: 6px 14px;
-      border-radius: var(--radius-full);
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.3px;
-    }
-
-    .verdict-correct {
-      background: rgba(143, 191, 122, 0.2);
-      color: var(--olive-dark);
-      border: 1px solid var(--olive-light);
-    }
-
-    .verdict-partly {
-      background: rgba(212, 165, 74, 0.2);
-      color: #936814;
-      border: 1px solid var(--gold);
-    }
-
-    .verdict-incorrect {
-      background: rgba(198, 123, 92, 0.2);
-      color: var(--terracotta);
-      border: 1px solid var(--terracotta);
-    }
-
-    .verdict-unclear {
-      background: var(--bg-input);
-      color: var(--text-muted);
-      border: 1px solid var(--border);
-    }
-
-    /* --- Upload Progress Bar --- */
-    .progress-bar-container {
-      display: none;
-      width: 100%;
-      height: 6px;
-      background: var(--border);
-      border-radius: var(--radius-full);
-      overflow: hidden;
-      margin-top: 10px;
-    }
-
-    .progress-bar-container.visible {
-      display: block;
-    }
-
-    .progress-bar-fill {
-      width: 0%;
-      height: 100%;
-      background: var(--olive-medium);
-      transition: width 0.2s ease;
-    }
-
-    /* --- Section spacing --- */
-    .form-section {
-      margin-bottom: 14px;
-    }
-
-    /* --- Utility --- */
-    .hidden { display: none !important; }
-
-    .mt-sm { margin-top: 8px; }
-    .mt-md { margin-top: 14px; }
-    .mb-md { margin-bottom: 14px; }
-
-    /* --- Focus styles for a11y --- */
-    *:focus-visible {
-      outline: 2px solid var(--olive-medium);
-      outline-offset: 2px;
-    }
-
-    /* Smooth transitions for sections */
     .setup-area {
       transition: opacity 0.3s ease;
     }
 
     .setup-area.dimmed {
-      opacity: 0.45;
+      opacity: 0.35;
       pointer-events: none;
     }
+
+    .hidden { display: none !important; }
   </style>
 </head>
 <body>
 
   <div class="container">
 
-    <!-- ============================================================= -->
-    <!-- HEADER                                                         -->
-    <!-- ============================================================= -->
+    <!-- HEADER -->
     <header class="header">
       <div class="logo">
         <div class="logo-icon" aria-hidden="true">↑</div>
@@ -1100,7 +1232,7 @@
       </div>
       <p class="tagline">Your kid's homework. Your language. Level up.</p>
 
-      <!-- Mode Switcher (Explain vs Check) -->
+      <!-- Mode Switcher -->
       <div class="mode-switch-wrapper">
         <div class="mode-switch" role="tablist" aria-label="Choose mode">
           <button type="button" class="mode-btn active" id="tabExplain" role="tab" aria-selected="true">
@@ -1114,13 +1246,11 @@
     </header>
 
     <main>
-      <!-- ============================================================= -->
-      <!-- SETUP AREA (language, grade, subject, photo)                  -->
-      <!-- ============================================================= -->
+      <!-- SETUP AREA -->
       <div class="setup-area" id="setupArea">
 
         <!-- Language Picker -->
-        <div class="card form-section">
+        <div class="card">
           <div class="section-label">Language</div>
           <div class="pill-scroll" id="langPicker" role="radiogroup" aria-label="Choose language">
             {% for name, code in languages %}
@@ -1137,7 +1267,7 @@
         </div>
 
         <!-- Grade Picker -->
-        <div class="card form-section">
+        <div class="card">
           <div class="section-label">Child's class</div>
           <div class="grade-row" id="gradePicker" role="radiogroup" aria-label="Choose class">
             {% for g in grades %}
@@ -1153,7 +1283,7 @@
         </div>
 
         <!-- Subject Picker -->
-        <div class="card form-section">
+        <div class="card">
           <div class="section-label">Subject</div>
           <div class="pill-scroll" id="subjectPicker" role="radiogroup" aria-label="Choose subject">
             {% for s in subjects %}
@@ -1169,15 +1299,14 @@
         </div>
 
         <!-- Photo Capture -->
-        <div class="card form-section">
+        <div class="card">
           <div class="section-label">Homework photo</div>
 
-          <!-- Upload area (shown when no photo selected) -->
           <div class="photo-area" id="photoArea">
             <div class="photo-icon">📷</div>
             <div class="photo-label">Take a photo or choose from gallery</div>
-            <div class="photo-sublabel">We never store your photos</div>
-            <div class="photo-buttons mt-sm">
+            <div class="photo-sublabel">Student photos are processed in memory and never saved</div>
+            <div class="photo-buttons">
               <button type="button" class="photo-btn" id="btnCamera" aria-label="Take photo with camera">
                 📸 Camera
               </button>
@@ -1187,13 +1316,9 @@
             </div>
           </div>
 
-          <!-- Hidden file inputs -->
-          <input type="file" accept="image/*" capture="environment"
-                 class="file-input" id="inputCamera" aria-hidden="true">
-          <input type="file" accept="image/*"
-                 class="file-input" id="inputGallery" aria-hidden="true">
+          <input type="file" accept="image/*" capture="environment" class="file-input" id="inputCamera" aria-hidden="true">
+          <input type="file" accept="image/*" class="file-input" id="inputGallery" aria-hidden="true">
 
-          <!-- Image preview (shown after photo selected) -->
           <div class="preview-container" id="previewContainer">
             <img class="preview-img" id="previewImg" alt="Preview of selected homework photo">
             <div class="preview-actions">
@@ -1205,10 +1330,10 @@
           </div>
         </div>
 
-        <!-- Optional Context (for Check Child's Work mode) -->
-        <div class="card form-section" id="checkContextCard" style="display: none;">
-          <div class="section-label">Problem Question (Optional)</div>
-          <input type="text" id="inputProblemText" class="pill" style="width: 100%; border-radius: var(--radius-md); text-align: left; padding: 12px 14px;" placeholder="e.g. Find 3/4 + 1/2 or paste the question text...">
+        <!-- Optional Context (Check Child's Work mode) -->
+        <div class="card" id="checkContextCard" style="display: none;">
+          <div class="section-label">Question Text (Optional)</div>
+          <input type="text" id="inputProblemText" class="pill" style="width: 100%; border-radius: var(--radius-md); text-align: left; padding: 12px 14px;" placeholder="e.g. Find 3/4 of 1/2, or paste question...">
         </div>
 
         <!-- Error Message -->
@@ -1220,21 +1345,17 @@
         </button>
       </div>
 
-      <!-- ============================================================= -->
-      <!-- LOADING STATE                                                 -->
-      <!-- ============================================================= -->
+      <!-- LOADING STATE -->
       <div class="loading-section" id="loadingSection" aria-live="polite">
         <div class="spinner" aria-hidden="true"></div>
         <div class="loading-text" id="loadingText">📖 Reading the page…</div>
         <div class="progress-bar-container" id="progressBarContainer">
           <div class="progress-bar-fill" id="progressBarFill"></div>
         </div>
-        <div class="loading-sub" id="loadingSub">This usually takes 10–15 seconds</div>
+        <div class="loading-sub" id="loadingSub">Takes ~10–15 seconds with Gemma 4</div>
       </div>
 
-      <!-- ============================================================= -->
-      <!-- RETAKE STATE                                                  -->
-      <!-- ============================================================= -->
+      <!-- RETAKE STATE -->
       <div class="retake-section" id="retakeSection">
         <div class="card card-warn">
           <div class="retake-icon">📷</div>
@@ -1245,9 +1366,7 @@
         </div>
       </div>
 
-      <!-- ============================================================= -->
-      <!-- NOT-HOMEWORK STATE                                            -->
-      <!-- ============================================================= -->
+      <!-- NOT-HOMEWORK STATE -->
       <div class="not-homework-section" id="notHomeworkSection">
         <div class="card">
           <div class="retake-icon">😊</div>
@@ -1259,159 +1378,219 @@
       </div>
 
       <!-- ============================================================= -->
-      <!-- RESULT AREA                                                   -->
+      <!-- SLIDE DECK RESULT AREA                                        -->
       <!-- ============================================================= -->
       <div class="result-area" id="resultArea" aria-live="polite">
 
-        <!-- Result Header (Listen + Try Another) -->
-        <div class="result-header result-card">
+        <!-- Result Top Bar: Actions -->
+        <div class="result-top-bar">
+          <button type="button" class="btn-reset-top" id="btnTryAnotherTop">
+            🔄 Another
+          </button>
           <button type="button" class="btn-listen" id="btnListen" aria-label="Read aloud">
             🔊 Listen
           </button>
-          <button type="button" class="btn-outline" style="width:auto; min-height:36px; padding:8px 16px; font-size:0.78rem;" id="btnTryAnother">
-            Try another
+        </div>
+
+        <!-- Slide Tabs Navigation -->
+        <div class="slide-tabs-scroll" id="slideTabsScroll" role="tablist">
+          <!-- Filled dynamically by JS -->
+        </div>
+
+        <!-- Carousel Viewport -->
+        <div class="carousel-viewport" id="carouselViewport">
+          <div class="carousel-track" id="carouselTrack">
+
+            <!-- ================= EXPLAIN SLIDES ================= -->
+
+            <!-- Slide 1: Question Summary & Key Words -->
+            <div class="slide-item active" data-slide-index="0" id="slideQuestion">
+              <div class="slide-card card-accent">
+                <div class="slide-card-header">
+                  <span class="slide-badge-title">📝 Question Summary</span>
+                  <span class="slide-number-pill" id="pillSlide1">Slide 1 of 5</span>
+                </div>
+                <div class="slide-body">
+                  <p class="slide-lead-text" id="textSummary"></p>
+                  <div class="badge hidden" id="verifyBadge"></div>
+                  <p id="verifyNote" style="display:none; font-size:0.75rem; color:var(--text-muted); margin-top:6px; font-style:italic;"></p>
+
+                  <div id="cardTermsBlock" style="margin-top: 14px;">
+                    <div class="section-label" style="margin-bottom:6px;">Key Terms</div>
+                    <div class="terms-grid" id="termsGrid"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 2: Parent Explanation & Life Example -->
+            <div class="slide-item" data-slide-index="1" id="slideExplain">
+              <div class="slide-card">
+                <div class="slide-card-header">
+                  <span class="slide-badge-title">💡 Explanation For You</span>
+                  <span class="slide-number-pill" id="pillSlide2">Slide 2 of 5</span>
+                </div>
+                <div class="slide-body">
+                  <p class="slide-lead-text" id="textExplanation"></p>
+                  
+                  <div class="example-highlight-card" id="cardExampleBlock">
+                    <div class="example-highlight-title">
+                      <span>🏠 Everyday Example</span>
+                    </div>
+                    <p class="example-highlight-text" id="textExample"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 3: Teach Script -->
+            <div class="slide-item" data-slide-index="2" id="slideTeach">
+              <div class="slide-card">
+                <div class="slide-card-header">
+                  <span class="slide-badge-title">🗣️ How to Teach Your Child</span>
+                  <span class="slide-number-pill" id="pillSlide3">Slide 3 of 5</span>
+                </div>
+                <div class="slide-body">
+                  <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:12px;">Say these steps to your child one by one:</p>
+                  <ol class="teach-list" id="teachList"></ol>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 4: Hint Ladder (Levels) -->
+            <div class="slide-item" data-slide-index="3" id="slideHints">
+              <div class="slide-card">
+                <div class="slide-card-header">
+                  <span class="slide-badge-title">🎮 Help Your Child Think</span>
+                  <span class="slide-number-pill" id="pillSlide4">Slide 4 of 5</span>
+                </div>
+                <div class="slide-body">
+                  <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:12px;">Reveal hints one level at a time as your child tries:</p>
+                  <div class="hint-ladder" id="hintLadder">
+                    <button type="button" class="hint-btn" id="hintBtn1" data-level="1">
+                      <div class="hint-label">
+                        <span class="hint-icon">⭐</span>
+                        <span>Level 1</span>
+                        <span class="hint-level-tag">Nudge</span>
+                      </div>
+                      <div class="hint-content" id="hintContent1"></div>
+                    </button>
+                    <button type="button" class="hint-btn" id="hintBtn2" data-level="2" disabled>
+                      <div class="hint-label">
+                        <span class="hint-icon">🔒</span>
+                        <span>Level 2</span>
+                        <span class="hint-level-tag">Bigger hint</span>
+                      </div>
+                      <div class="hint-content" id="hintContent2"></div>
+                    </button>
+                    <button type="button" class="hint-btn" id="hintBtn3" data-level="3" disabled>
+                      <div class="hint-label">
+                        <span class="hint-icon">🔒</span>
+                        <span>Level 3</span>
+                        <span class="hint-level-tag">Full solution</span>
+                      </div>
+                      <div class="hint-content" id="hintContent3"></div>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 5: Practice Questions -->
+            <div class="slide-item" data-slide-index="4" id="slidePractice">
+              <div class="slide-card">
+                <div class="slide-card-header">
+                  <span class="slide-badge-title">🎯 Practice Together</span>
+                  <span class="slide-number-pill" id="pillSlide5">Slide 5 of 5</span>
+                </div>
+                <div class="slide-body">
+                  <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:12px;">Try similar questions to build your child's confidence:</p>
+                  <div class="practice-list" id="practiceList"></div>
+                  <div style="margin-top: 20px;">
+                    <button type="button" class="btn-outline" id="btnTryAnotherBottom">
+                      🔄 Try another homework photo
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ================= CHECK MODE SLIDES ================= -->
+
+            <!-- Check Slide 1: Review & What Was Done Well -->
+            <div class="slide-item" data-slide-index="0" id="checkSlide1" style="display:none;">
+              <div class="slide-card card-accent">
+                <div class="slide-card-header">
+                  <span class="slide-badge-title">🌟 What Was Done Well</span>
+                  <span class="slide-number-pill">Slide 1 of 3</span>
+                </div>
+                <div class="slide-body">
+                  <div class="verdict-header">
+                    <div class="verdict-tag" id="verdictTag">Review</div>
+                  </div>
+                  <p class="slide-lead-text" id="textCheckRight"></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Check Slide 2: Where to Look Closer -->
+            <div class="slide-item" data-slide-index="1" id="checkSlide2" style="display:none;">
+              <div class="slide-card">
+                <div class="slide-card-header">
+                  <span class="slide-badge-title">💡 Where to Look Closer</span>
+                  <span class="slide-number-pill">Slide 2 of 3</span>
+                </div>
+                <div class="slide-body">
+                  <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:12px;">Gentle guidance for the parent:</p>
+                  <p class="slide-lead-text" id="textCheckMistake"></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Check Slide 3: Next Step for the Child -->
+            <div class="slide-item" data-slide-index="2" id="checkSlide3" style="display:none;">
+              <div class="slide-card">
+                <div class="slide-card-header">
+                  <span class="slide-badge-title">🚀 Next Step for Your Child</span>
+                  <span class="slide-number-pill">Slide 3 of 3</span>
+                </div>
+                <div class="slide-body">
+                  <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:12px;">Ask or suggest this to your child:</p>
+                  <p class="slide-lead-text" id="textCheckNext"></p>
+                  <div style="margin-top: 20px;">
+                    <button type="button" class="btn-outline" id="btnCheckResetBottom">
+                      🔄 Check another work
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Slide Controls Navigation Bar (Bottom) -->
+        <div class="slide-controls-bar">
+          <button type="button" class="btn-slide-nav" id="btnPrevSlide" aria-label="Previous slide">
+            ← Prev
+          </button>
+          <div class="slide-dots" id="slideDotsContainer">
+            <!-- Dots filled dynamically -->
+          </div>
+          <button type="button" class="btn-slide-nav btn-slide-next" id="btnNextSlide" aria-label="Next slide">
+            Next →
           </button>
         </div>
-        <div class="voice-note" id="voiceNote">Your device doesn't have a voice for this language yet.</div>
 
-        <!-- 1. Problem Summary -->
-        <div class="card card-accent result-card" id="cardSummary">
-          <div class="result-title">
-            <span class="result-icon">📝</span>
-            What this question is asking
-          </div>
-          <p class="result-text" id="textSummary"></p>
-        </div>
-
-        <!-- 2. Parent Explanation -->
-        <div class="card result-card" id="cardExplanation">
-          <div class="result-title">
-            <span class="result-icon">💡</span>
-            Explanation for you
-          </div>
-          <p class="result-text" id="textExplanation"></p>
-        </div>
-
-        <!-- 3. Teach Script -->
-        <div class="card result-card" id="cardTeach">
-          <div class="result-title">
-            <span class="result-icon">🗣️</span>
-            How to teach your child
-          </div>
-          <ol class="teach-list" id="teachList"></ol>
-        </div>
-
-        <!-- 4. Everyday Example -->
-        <div class="card example-card result-card" id="cardExample">
-          <div class="result-title">
-            <span class="result-icon">🏠</span>
-            A real-life example
-          </div>
-          <p class="example-text" id="textExample"></p>
-        </div>
-
-        <!-- 5. Hint Ladder -->
-        <div class="card result-card" id="cardHints">
-          <div class="result-title">
-            <span class="result-icon">🎮</span>
-            Help your child think
-          </div>
-          <div class="hint-ladder" id="hintLadder">
-            <button type="button" class="hint-btn" id="hintBtn1" data-level="1">
-              <div class="hint-label">
-                <span class="hint-icon">⭐</span>
-                <span>Level 1</span>
-                <span class="hint-level-tag">Nudge</span>
-              </div>
-              <div class="hint-content" id="hintContent1"></div>
-            </button>
-            <button type="button" class="hint-btn" id="hintBtn2" data-level="2" disabled>
-              <div class="hint-label">
-                <span class="hint-icon">🔒</span>
-                <span>Level 2</span>
-                <span class="hint-level-tag">Bigger hint</span>
-              </div>
-              <div class="hint-content" id="hintContent2"></div>
-            </button>
-            <button type="button" class="hint-btn" id="hintBtn3" data-level="3" disabled>
-              <div class="hint-label">
-                <span class="hint-icon">🔒</span>
-                <span>Level 3</span>
-                <span class="hint-level-tag">Full solution</span>
-              </div>
-              <div class="hint-content" id="hintContent3"></div>
-            </button>
-          </div>
-        </div>
-
-        <!-- Check Child Work Review Card (shown in check mode) -->
-        <div class="card card-accent result-card" id="cardCheckResult" style="display: none;">
-          <div class="verdict-header">
-            <span class="result-icon">📋</span>
-            <div class="verdict-tag" id="verdictTag">Review</div>
-          </div>
-          <div class="mb-md">
-            <div class="result-title" style="margin-bottom: 4px;">
-              <span class="result-icon">🌟</span>
-              What was done well
-            </div>
-            <p class="result-text" id="textCheckRight"></p>
-          </div>
-          <div class="mb-md">
-            <div class="result-title" style="margin-bottom: 4px;">
-              <span class="result-icon">💡</span>
-              Where to look closer
-            </div>
-            <p class="result-text" id="textCheckMistake"></p>
-          </div>
-          <div>
-            <div class="result-title" style="margin-bottom: 4px;">
-              <span class="result-icon">🚀</span>
-              Next step for your child
-            </div>
-            <p class="result-text" id="textCheckNext"></p>
-          </div>
-        </div>
-
-        <!-- 6. Key Terms -->
-        <div class="card result-card" id="cardTerms">
-          <div class="result-title">
-            <span class="result-icon">📚</span>
-            Key words
-          </div>
-          <div class="terms-grid" id="termsGrid"></div>
-        </div>
-
-        <!-- 7. Practice Questions -->
-        <div class="card result-card" id="cardPractice" style="display: none;">
-          <div class="result-title">
-            <span class="result-icon">🎯</span>
-            Practice together (similar questions)
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-        </div>
-
-        <!-- 8. Verification Badge -->
-        <div class="badge hidden" id="verifyBadge"></div>
-        <p class="verify-note" id="verifyNote" style="display:none;"></p>
-
-        <!-- Try Another (bottom) -->
-        <div class="mt-md result-card">
-          <button type="button" class="btn-outline" id="btnTryAnotherBottom">
-            🔄 Try another question
-          </button>
-        </div>
       </div>
 
     </main>
 
-    <!-- ============================================================= -->
-    <!-- CONFIRM MODAL (Level 3)                                       -->
-    <!-- ============================================================= -->
+    <!-- CONFIRM MODAL (Level 3) -->
     <div class="modal-overlay" id="confirmModal">
       <div class="modal-box">
         <div class="modal-title">Show the full solution?</div>
-        <div class="modal-desc">Are you sure? Let your child try first. 💪</div>
+        <div class="modal-desc">Are you sure? Let your child try first. Every hint is a level they climb! 💪</div>
         <div class="modal-actions">
           <button type="button" class="modal-cancel" id="modalCancel">Not yet</button>
           <button type="button" class="modal-confirm" id="modalConfirm">Yes, show it</button>
@@ -1419,12 +1598,10 @@
       </div>
     </div>
 
-    <!-- ============================================================= -->
-    <!-- FOOTER                                                         -->
-    <!-- ============================================================= -->
+    <!-- FOOTER -->
     <footer class="footer">
-      Made with open-weight Gemma 4<br>
-      Always double-check important answers with a teacher.
+      LevelUp · Made with open-weight Gemma 4<br>
+      Always double-check important answers with a school teacher.
     </footer>
 
   </div>
@@ -1436,10 +1613,10 @@
     (function () {
       "use strict";
 
-      // -----------------------------------------------------------------
       // State
-      // -----------------------------------------------------------------
       let currentMode = "explain"; // "explain" or "check"
+      let currentSlide = 0;
+      let totalSlides = 5;
       let selectedLanguage = "English";
       let selectedLangCode = "en-IN";
       let selectedGrade = 5;
@@ -1448,9 +1625,7 @@
       let isSubmitting = false;
       let currentData = null;
 
-      // -----------------------------------------------------------------
-      // DOM references
-      // -----------------------------------------------------------------
+      // DOM Elements
       const $ = (id) => document.getElementById(id);
       const tabExplain = $("tabExplain");
       const tabCheck = $("tabCheck");
@@ -1473,15 +1648,88 @@
       const loadingText = $("loadingText");
       const progressBarContainer = $("progressBarContainer");
       const progressBarFill = $("progressBarFill");
-      const loadingSub = $("loadingSub");
       const resultArea = $("resultArea");
+      const carouselViewport = $("carouselViewport");
+      const carouselTrack = $("carouselTrack");
+      const slideTabsScroll = $("slideTabsScroll");
+      const slideDotsContainer = $("slideDotsContainer");
+      const btnPrevSlide = $("btnPrevSlide");
+      const btnNextSlide = $("btnNextSlide");
       const retakeSection = $("retakeSection");
       const notHomeworkSection = $("notHomeworkSection");
       const confirmModal = $("confirmModal");
 
-      // -----------------------------------------------------------------
-      // Mode Switching (Explain vs Check Child's Work)
-      // -----------------------------------------------------------------
+      // Slide Configurations
+      const EXPLAIN_TABS = [
+        { label: "📝 Summary", id: "slideQuestion" },
+        { label: "💡 For You", id: "slideExplain" },
+        { label: "🗣️ Teach", id: "slideTeach" },
+        { label: "🎮 Hints", id: "slideHints" },
+        { label: "🎯 Practice", id: "slidePractice" }
+      ];
+
+      const CHECK_TABS = [
+        { label: "🌟 What Went Well", id: "checkSlide1" },
+        { label: "💡 Guidance", id: "checkSlide2" },
+        { label: "🚀 Next Step", id: "checkSlide3" }
+      ];
+
+      // LocalStorage Helpers
+      function saveChoice(key, val) {
+        try { localStorage.setItem("levelup_" + key, val); } catch (e) {}
+      }
+      function loadChoice(key) {
+        try { return localStorage.getItem("levelup_" + key); } catch (e) { return null; }
+      }
+
+      // Restore Saved Language
+      (function restoreLang() {
+        const saved = loadChoice("language");
+        if (saved) {
+          const btn = langPicker.querySelector('[data-lang="' + saved + '"]');
+          if (btn) {
+            langPicker.querySelectorAll(".pill").forEach(p => {
+              p.classList.remove("active");
+              p.setAttribute("aria-checked", "false");
+            });
+            btn.classList.add("active");
+            btn.setAttribute("aria-checked", "true");
+            selectedLanguage = saved;
+            selectedLangCode = btn.dataset.code;
+          }
+        }
+      })();
+
+      // Picker setup helper
+      function setupPicker(container, attr, cb) {
+        container.addEventListener("click", (e) => {
+          const btn = e.target.closest("[data-" + attr + "]");
+          if (!btn) return;
+          container.querySelectorAll("[data-" + attr + "]").forEach(b => {
+            b.classList.remove("active");
+            b.setAttribute("aria-checked", "false");
+          });
+          btn.classList.add("active");
+          btn.setAttribute("aria-checked", "true");
+          cb(btn);
+        });
+      }
+
+      setupPicker(langPicker, "lang", (btn) => {
+        selectedLanguage = btn.dataset.lang;
+        selectedLangCode = btn.dataset.code;
+        saveChoice("language", selectedLanguage);
+      });
+
+      setupPicker(gradePicker, "grade", (btn) => {
+        selectedGrade = parseInt(btn.dataset.grade, 10);
+      });
+
+      setupPicker(subjectPicker, "subject", (btn) => {
+        selectedSubject = btn.dataset.subject;
+      });
+
+      // Mode Switching
       tabExplain.addEventListener("click", () => setMode("explain"));
       tabCheck.addEventListener("click", () => setMode("check"));
 
@@ -1505,83 +1753,11 @@
         }
       }
 
-      // -----------------------------------------------------------------
-      // localStorage helpers (try/catch for privacy modes)
-      // -----------------------------------------------------------------
-      function saveChoice(key, value) {
-        try { localStorage.setItem("levelup_" + key, value); } catch (e) { /* ignore */ }
-      }
-
-      function loadChoice(key) {
-        try { return localStorage.getItem("levelup_" + key); } catch (e) { return null; }
-      }
-
-      // -----------------------------------------------------------------
-      // Restore saved language
-      // -----------------------------------------------------------------
-      (function restoreLang() {
-        const saved = loadChoice("language");
-        if (saved) {
-          const btn = langPicker.querySelector('[data-lang="' + saved + '"]');
-          if (btn) {
-            langPicker.querySelectorAll(".pill").forEach((p) => {
-              p.classList.remove("active");
-              p.setAttribute("aria-checked", "false");
-            });
-            btn.classList.add("active");
-            btn.setAttribute("aria-checked", "true");
-            selectedLanguage = saved;
-            selectedLangCode = btn.dataset.code;
-          }
-        }
-      })();
-
-      // -----------------------------------------------------------------
-      // Pill / grade picker logic
-      // -----------------------------------------------------------------
-      function setupPicker(container, dataAttr, callback) {
-        container.addEventListener("click", function (e) {
-          const btn = e.target.closest("[data-" + dataAttr + "]");
-          if (!btn) return;
-          container.querySelectorAll("[data-" + dataAttr + "]").forEach((b) => {
-            b.classList.remove("active");
-            b.setAttribute("aria-checked", "false");
-          });
-          btn.classList.add("active");
-          btn.setAttribute("aria-checked", "true");
-          callback(btn);
-        });
-      }
-
-      setupPicker(langPicker, "lang", function (btn) {
-        selectedLanguage = btn.dataset.lang;
-        selectedLangCode = btn.dataset.code;
-        saveChoice("language", selectedLanguage);
-      });
-
-      setupPicker(gradePicker, "grade", function (btn) {
-        selectedGrade = parseInt(btn.dataset.grade, 10);
-      });
-
-      setupPicker(subjectPicker, "subject", function (btn) {
-        selectedSubject = btn.dataset.subject;
-      });
-
-      // -----------------------------------------------------------------
-      // Photo capture
-      // -----------------------------------------------------------------
-      $("btnCamera").addEventListener("click", function () {
-        inputCamera.click();
-      });
-
-      $("btnGallery").addEventListener("click", function () {
-        inputGallery.click();
-      });
-
-      photoArea.addEventListener("click", function (e) {
-        // Don't trigger if clicking the specific buttons
+      // Photo Selection
+      $("btnCamera").addEventListener("click", () => inputCamera.click());
+      $("btnGallery").addEventListener("click", () => inputGallery.click());
+      photoArea.addEventListener("click", (e) => {
         if (e.target.closest(".photo-btn")) return;
-        // Default to gallery on desktop, camera on mobile
         if (/Mobi|Android/i.test(navigator.userAgent)) {
           inputCamera.click();
         } else {
@@ -1596,26 +1772,21 @@
         const file = e.target.files && e.target.files[0];
         if (!file) return;
 
-        // Validate type
         if (!file.type.startsWith("image/")) {
           showError("That doesn't look like a photo. Please choose an image.");
           return;
         }
 
-        // Show preview immediately
         const objectUrl = URL.createObjectURL(file);
         previewImg.src = objectUrl;
-        previewImg.onload = function () {
-          URL.revokeObjectURL(objectUrl);
-        };
+        previewImg.onload = () => URL.revokeObjectURL(objectUrl);
 
         photoArea.style.display = "none";
         previewContainer.classList.add("visible");
 
-        // Resize in background
-        resizeImage(file).then(function (blob) {
+        resizeImage(file).then(blob => {
           resizedBlob = blob;
-          var sizeKB = Math.round(blob.size / 1024);
+          const sizeKB = Math.round(blob.size / 1024);
           previewSize.textContent = "Ready · " + sizeKB + " KB";
           btnSubmit.disabled = false;
         });
@@ -1626,6 +1797,9 @@
       $("btnChangePhoto").addEventListener("click", resetPhoto);
       $("btnRetake").addEventListener("click", resetAll);
       $("btnTryHomework").addEventListener("click", resetAll);
+      $("btnTryAnotherTop").addEventListener("click", resetAll);
+      $("btnTryAnotherBottom").addEventListener("click", resetAll);
+      $("btnCheckResetBottom").addEventListener("click", resetAll);
 
       function resetPhoto() {
         photoArea.style.display = "";
@@ -1638,64 +1812,48 @@
         inputGallery.value = "";
       }
 
-      // -----------------------------------------------------------------
-      // Image resize (canvas-based — strips EXIF, limits dimensions)
-      // -----------------------------------------------------------------
+      // Canvas Resize & EXIF Strip
       function resizeImage(file) {
-        return new Promise(function (resolve) {
-          var img = new Image();
-          var canvas = document.createElement("canvas");
-          var ctx = canvas.getContext("2d");
+        return new Promise(resolve => {
+          const img = new Image();
+          const canvas = document.createElement("canvas");
+          const ctx = canvas.getContext("2d");
 
-          img.onload = function () {
-            var MAX = 1600;
-            var w = img.width;
-            var h = img.height;
-
+          img.onload = () => {
+            const MAX = 1600;
+            let { width: w, height: h } = img;
             if (w > MAX || h > MAX) {
-              var ratio = Math.min(MAX / w, MAX / h);
-              w = Math.round(w * ratio);
-              h = Math.round(h * ratio);
+              const r = Math.min(MAX / w, MAX / h);
+              w = Math.round(w * r);
+              h = Math.round(h * r);
             }
-
             canvas.width = w;
             canvas.height = h;
             ctx.drawImage(img, 0, 0, w, h);
-
-            canvas.toBlob(
-              function (blob) {
-                URL.revokeObjectURL(img.src);
-                resolve(blob);
-              },
-              "image/jpeg",
-              0.8
-            );
+            canvas.toBlob(blob => {
+              URL.revokeObjectURL(img.src);
+              resolve(blob);
+            }, "image/jpeg", 0.82);
           };
 
           img.src = URL.createObjectURL(file);
         });
       }
 
-      // -----------------------------------------------------------------
-      // Error display
-      // -----------------------------------------------------------------
-      var errorTimeout = null;
-
+      // Errors
+      let errorTimeout = null;
       function showError(msg) {
         errorMsg.textContent = msg;
         errorMsg.classList.add("visible");
         clearTimeout(errorTimeout);
         errorTimeout = setTimeout(hideError, 8000);
       }
-
       function hideError() {
         errorMsg.classList.remove("visible");
         clearTimeout(errorTimeout);
       }
 
-      // -----------------------------------------------------------------
-      // Submit (with Low-Bandwidth upload progress tracking)
-      // -----------------------------------------------------------------
+      // Submit Request
       btnSubmit.addEventListener("click", submitRequest);
 
       function submitRequest() {
@@ -1703,7 +1861,6 @@
         isSubmitting = true;
         hideError();
 
-        // Show loading state
         setupArea.classList.add("dimmed");
         btnSubmitText.textContent = "Working…";
         btnSubmit.disabled = true;
@@ -1712,7 +1869,7 @@
         progressBarFill.style.width = "0%";
         loadingText.textContent = "📤 Uploading… 0%";
 
-        var formData = new FormData();
+        const formData = new FormData();
         formData.append("image", resizedBlob, "homework.jpg");
         formData.append("language", selectedLanguage);
         formData.append("grade", selectedGrade.toString());
@@ -1721,44 +1878,42 @@
           formData.append("problem_text", (inputProblemText.value || "").trim());
         }
 
-        var endpoint = currentMode === "check" ? "/api/check" : "/api/explain";
-        var xhr = new XMLHttpRequest();
+        const endpoint = currentMode === "check" ? "/api/check" : "/api/explain";
+        const xhr = new XMLHttpRequest();
         xhr.open("POST", endpoint, true);
 
-        // Upload progress
-        xhr.upload.onprogress = function (e) {
+        xhr.upload.onprogress = (e) => {
           if (e.lengthComputable) {
-            var pct = Math.round((e.loaded / e.total) * 100);
+            const pct = Math.round((e.loaded / e.total) * 100);
             progressBarFill.style.width = pct + "%";
             loadingText.textContent = "📤 Uploading… " + pct + "%";
           }
         };
 
-        // When upload completes, transition to processing stages
-        var stageTimer = null;
-        xhr.upload.onload = function () {
+        let stageTimer = null;
+        xhr.upload.onload = () => {
           progressBarContainer.classList.remove("visible");
           if (currentMode === "check") {
-            loadingText.textContent = "🔍 Reviewing your child's steps…";
+            loadingText.textContent = "🔍 Reviewing child's steps with Gemma 4…";
           } else {
-            loadingText.textContent = "📖 Reading the page…";
-            stageTimer = setTimeout(function () {
-              loadingText.textContent = "🔍 Double-checking the answer…";
+            loadingText.textContent = "📖 Reading the page with Gemma 4…";
+            stageTimer = setTimeout(() => {
+              loadingText.textContent = "🔍 Double-checking with Gemma 4 verifier…";
             }, 8000);
           }
         };
 
-        xhr.onload = function () {
+        xhr.onload = () => {
           if (stageTimer) clearTimeout(stageTimer);
           isSubmitting = false;
 
           try {
-            var data = JSON.parse(xhr.responseText);
+            const data = JSON.parse(xhr.responseText);
             if (xhr.status >= 200 && xhr.status < 300) {
               if (currentMode === "check") {
                 handleCheckResult(data);
               } else {
-                handleResult(data);
+                handleExplainResult(data);
               }
             } else {
               showError(data.error || "Something went wrong. Please try again.");
@@ -1770,7 +1925,7 @@
           }
         };
 
-        xhr.onerror = function () {
+        xhr.onerror = () => {
           if (stageTimer) clearTimeout(stageTimer);
           isSubmitting = false;
           showError("Could not connect. Please check your internet and try again.");
@@ -1788,121 +1943,216 @@
         progressBarContainer.classList.remove("visible");
       }
 
-      // -----------------------------------------------------------------
-      // Handle result
-      // -----------------------------------------------------------------
-      function handleResult(data) {
+      // =================================================================
+      // SLIDE DECK SYSTEM (CAROUSEL)
+      // =================================================================
+      function initSlideDeck(tabsConfig) {
+        currentSlide = 0;
+        totalSlides = tabsConfig.length;
+
+        // Build top tabs
+        slideTabsScroll.innerHTML = "";
+        tabsConfig.forEach((tab, index) => {
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "slide-tab-btn" + (index === 0 ? " active" : "");
+          btn.textContent = tab.label;
+          btn.onclick = () => goToSlide(index);
+          slideTabsScroll.appendChild(btn);
+        });
+
+        // Build bottom dots
+        slideDotsContainer.innerHTML = "";
+        tabsConfig.forEach((_, index) => {
+          const dot = document.createElement("div");
+          dot.className = "slide-dot" + (index === 0 ? " active" : "");
+          dot.onclick = () => goToSlide(index);
+          slideDotsContainer.appendChild(dot);
+        });
+
+        goToSlide(0);
+      }
+
+      function goToSlide(index) {
+        if (index < 0) index = 0;
+        if (index >= totalSlides) index = totalSlides - 1;
+        currentSlide = index;
+
+        // Move track
+        carouselTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+        // Update tabs active state
+        slideTabsScroll.querySelectorAll(".slide-tab-btn").forEach((t, i) => {
+          t.classList.toggle("active", i === currentSlide);
+          if (i === currentSlide) {
+            t.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+          }
+        });
+
+        // Update dots active state
+        slideDotsContainer.querySelectorAll(".slide-dot").forEach((d, i) => {
+          d.classList.toggle("active", i === currentSlide);
+        });
+
+        // Update prev / next buttons
+        btnPrevSlide.disabled = currentSlide === 0;
+        if (currentSlide === totalSlides - 1) {
+          btnNextSlide.textContent = "Done ✨";
+        } else {
+          btnNextSlide.textContent = "Next →";
+        }
+
+        // Focus card for accessibility
+        const activeSlideEl = carouselTrack.children[currentSlide];
+        if (activeSlideEl) {
+          activeSlideEl.focus();
+        }
+      }
+
+      btnPrevSlide.addEventListener("click", () => goToSlide(currentSlide - 1));
+      btnNextSlide.addEventListener("click", () => {
+        if (currentSlide === totalSlides - 1) {
+          btnNextSlide.textContent = "Done ✨";
+        } else {
+          goToSlide(currentSlide + 1);
+        }
+      });
+
+      // Touch Swipe Gesture Support
+      let touchStartX = 0;
+      let touchEndX = 0;
+      carouselViewport.addEventListener("touchstart", (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+
+      carouselViewport.addEventListener("touchend", (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipeGesture();
+      }, { passive: true });
+
+      function handleSwipeGesture() {
+        const threshold = 40; // minimum pixels for a swipe
+        if (touchEndX < touchStartX - threshold) {
+          goToSlide(currentSlide + 1);
+        } else if (touchEndX > touchStartX + threshold) {
+          goToSlide(currentSlide - 1);
+        }
+      }
+
+      // =================================================================
+      // EXPLAIN MODE RESULT HANDLER
+      // =================================================================
+      function handleExplainResult(data) {
         currentData = data;
         loadingSection.classList.remove("visible");
         setupArea.classList.add("dimmed");
 
-        // Poor image quality
         if (data.image_quality === "poor") {
-          $("retakeText").textContent = data.retake_hint || "The photo is hard to read. Please try taking it again with better lighting.";
+          $("retakeText").textContent = data.retake_hint || "The photo is blurry or dark. Please retake it with better lighting.";
           retakeSection.classList.add("visible");
           return;
         }
 
-        // Not homework
         if (data.subject === "not_homework") {
-          $("notHomeworkText").textContent = data.problem_summary || "This doesn't seem to be homework. Please try with a homework photo.";
+          $("notHomeworkText").textContent = data.problem_summary || "This does not appear to be homework. Please photograph a textbook or worksheet.";
           notHomeworkSection.classList.add("visible");
           return;
         }
 
-        // --- Render result sections ---
-        renderResult(data);
-      }
+        // Show explain slides, hide check slides
+        $("slideQuestion").style.display = "";
+        $("slideExplain").style.display = "";
+        $("slideTeach").style.display = "";
+        $("slideHints").style.display = "";
+        $("slidePractice").style.display = "";
 
-      function renderResult(data) {
-        // 1. Problem Summary
+        $("checkSlide1").style.display = "none";
+        $("checkSlide2").style.display = "none";
+        $("checkSlide3").style.display = "none";
+
+        // Slide 1: Summary & Words
         $("textSummary").textContent = data.problem_summary || "";
+        renderBadge(data);
 
-        // 2. Parent Explanation
+        const termsGrid = $("termsGrid");
+        termsGrid.innerHTML = "";
+        const terms = data.key_terms || [];
+        if (terms.length === 0) {
+          $("cardTermsBlock").style.display = "none";
+        } else {
+          $("cardTermsBlock").style.display = "block";
+          terms.forEach(t => {
+            const item = document.createElement("div");
+            item.className = "term-item";
+            const word = document.createElement("div");
+            word.className = "term-word";
+            word.textContent = t.term || "";
+            const mean = document.createElement("div");
+            mean.className = "term-meaning";
+            mean.textContent = t.meaning || "";
+            item.appendChild(word);
+            item.appendChild(mean);
+            termsGrid.appendChild(item);
+          });
+        }
+
+        // Slide 2: Parent Explanation & Example
         $("textExplanation").textContent = data.parent_explanation || "";
+        if (data.everyday_example) {
+          $("cardExampleBlock").style.display = "block";
+          $("textExample").textContent = data.everyday_example;
+        } else {
+          $("cardExampleBlock").style.display = "none";
+        }
 
-        // 3. Teach Script
-        var teachList = $("teachList");
+        // Slide 3: Teach Script
+        const teachList = $("teachList");
         teachList.innerHTML = "";
-        var steps = data.teach_script || [];
-        steps.forEach(function (step, i) {
-          var li = document.createElement("li");
+        (data.teach_script || []).forEach((step, idx) => {
+          const li = document.createElement("li");
           li.className = "teach-item";
-
-          var num = document.createElement("span");
+          const num = document.createElement("span");
           num.className = "teach-num";
-          num.textContent = (i + 1).toString();
-
-          var txt = document.createElement("span");
+          num.textContent = (idx + 1).toString();
+          const txt = document.createElement("span");
           txt.className = "teach-text";
           txt.textContent = step;
-
           li.appendChild(num);
           li.appendChild(txt);
           teachList.appendChild(li);
         });
 
-        // 4. Everyday Example
-        $("textExample").textContent = data.everyday_example || "";
-
-        // 5. Hint Ladder — reset all
+        // Slide 4: Hint Ladder
         resetHintLadder(data);
 
-        // 6. Key Terms
-        var termsGrid = $("termsGrid");
-        termsGrid.innerHTML = "";
-        var terms = data.key_terms || [];
-        if (terms.length === 0) {
-          $("cardTerms").style.display = "none";
-        } else {
-          $("cardTerms").style.display = "";
-          terms.forEach(function (t) {
-            var item = document.createElement("div");
-            item.className = "term-item";
-
-            var word = document.createElement("div");
-            word.className = "term-word";
-            word.textContent = t.term || "";
-
-            var meaning = document.createElement("div");
-            meaning.className = "term-meaning";
-            meaning.textContent = t.meaning || "";
-
-            item.appendChild(word);
-            item.appendChild(meaning);
-            termsGrid.appendChild(item);
-          });
-        }
-
-        // 7. Practice Questions (Should-Have #12)
-        var practiceCard = $("cardPractice");
-        var practiceList = $("practiceList");
+        // Slide 5: Practice Questions
+        const practiceList = $("practiceList");
         practiceList.innerHTML = "";
-        var practiceItems = data.practice_questions || [];
+        const practiceItems = data.practice_questions || [];
         if (practiceItems.length === 0) {
-          practiceCard.style.display = "none";
+          const p = document.createElement("p");
+          p.style.fontSize = "0.85rem";
+          p.style.color = "var(--text-muted)";
+          p.textContent = "You're all set! Review the hints and teach script with your child.";
+          practiceList.appendChild(p);
         } else {
-          practiceCard.style.display = "block";
-          practiceItems.forEach(function (pq, idx) {
-            var pItem = document.createElement("div");
+          practiceItems.forEach((pq, idx) => {
+            const pItem = document.createElement("div");
             pItem.className = "practice-item";
-
-            var qDiv = document.createElement("div");
+            const qDiv = document.createElement("div");
             qDiv.className = "practice-q";
-            qDiv.textContent = (idx + 1) + ". " + pq.question;
-
-            var revealBtn = document.createElement("button");
+            qDiv.textContent = `${idx + 1}. ${pq.question}`;
+            const revealBtn = document.createElement("button");
             revealBtn.type = "button";
             revealBtn.className = "practice-reveal-btn";
             revealBtn.textContent = "👁️ Show answer";
-
-            var aDiv = document.createElement("div");
+            const aDiv = document.createElement("div");
             aDiv.className = "practice-answer";
             aDiv.textContent = pq.answer;
 
-            revealBtn.onclick = function () {
-              var isVisible = aDiv.classList.contains("visible");
-              if (isVisible) {
+            revealBtn.onclick = () => {
+              const isVis = aDiv.classList.contains("visible");
+              if (isVis) {
                 aDiv.classList.remove("visible");
                 revealBtn.textContent = "👁️ Show answer";
               } else {
@@ -1918,57 +2168,36 @@
           });
         }
 
-        // 8. Verification Badge
-        renderBadge(data);
+        // Init Carousel
+        initSlideDeck(EXPLAIN_TABS);
+        setupAudioPlayer(data);
 
-        // Hide check work card in explain mode
-        $("cardCheckResult").style.display = "none";
-
-        // Show explain cards
-        $("cardSummary").style.display = "";
-        $("cardExplanation").style.display = "";
-        $("cardTeach").style.display = "";
-        $("cardExample").style.display = "";
-        $("cardHints").style.display = "";
-
-        // Setup listen button
-        setupListenButton(data);
-
-        // Show result area
         resultArea.classList.add("visible");
-
-        // Scroll to results
         resultArea.scrollIntoView({ behavior: "smooth", block: "start" });
-
-        // Move focus for a11y
-        resultArea.focus();
       }
 
-      // -----------------------------------------------------------------
-      // Handle Check Child Work Result (Should-Have #11)
-      // -----------------------------------------------------------------
+      // =================================================================
+      // CHECK WORK MODE RESULT HANDLER
+      // =================================================================
       function handleCheckResult(data) {
         currentData = data;
         loadingSection.classList.remove("visible");
         setupArea.classList.add("dimmed");
 
-        // Hide explain cards
-        $("cardSummary").style.display = "none";
-        $("cardExplanation").style.display = "none";
-        $("cardTeach").style.display = "none";
-        $("cardExample").style.display = "none";
-        $("cardHints").style.display = "none";
-        $("cardTerms").style.display = "none";
-        $("cardPractice").style.display = "none";
-        $("verifyBadge").classList.add("hidden");
-        $("verifyNote").style.display = "none";
+        // Hide explain slides, show check slides
+        $("slideQuestion").style.display = "none";
+        $("slideExplain").style.display = "none";
+        $("slideTeach").style.display = "none";
+        $("slideHints").style.display = "none";
+        $("slidePractice").style.display = "none";
 
-        // Setup Check Result card
-        var card = $("cardCheckResult");
-        card.style.display = "block";
+        $("checkSlide1").style.display = "";
+        $("checkSlide2").style.display = "";
+        $("checkSlide3").style.display = "";
 
-        var tag = $("verdictTag");
-        var v = (data.verdict || "unclear").toLowerCase();
+        // Slide 1: Verdict & Praise
+        const tag = $("verdictTag");
+        const v = (data.verdict || "unclear").toLowerCase();
         tag.className = "verdict-tag";
 
         if (v === "correct") {
@@ -1981,89 +2210,36 @@
           tag.textContent = "🌱 Needs revision";
           tag.classList.add("verdict-incorrect");
         } else {
-          tag.textContent = "🔍 Unclear / needs closer look";
+          tag.textContent = "🔍 Needs a closer look";
           tag.classList.add("verdict-unclear");
         }
 
-        $("textCheckRight").textContent = data.what_is_right || "Great effort working through the question.";
+        $("textCheckRight").textContent = data.what_is_right || "Great effort working through the question steps.";
         $("textCheckMistake").textContent = data.mistake_explained || "Take a look at how the calculation is structured.";
         $("textCheckNext").textContent = data.next_step_hint || "Ask your child what step they did first!";
 
-        // Setup Listen button for check mode
-        setupCheckListenButton(data);
+        initSlideDeck(CHECK_TABS);
+        setupAudioPlayer(data, true);
 
         resultArea.classList.add("visible");
         resultArea.scrollIntoView({ behavior: "smooth", block: "start" });
-        resultArea.focus();
       }
 
-      function setupCheckListenButton(data) {
-        var btn = $("btnListen");
-        var voiceNote = $("voiceNote");
-        btn.classList.remove("hidden");
-        voiceNote.classList.remove("visible");
-        isSpeaking = false;
-        btn.textContent = "🔊 Listen";
-
-        var synth = window.speechSynthesis;
-        if (!synth) {
-          btn.classList.add("hidden");
-          return;
-        }
-
-        btn.onclick = function () {
-          if (isSpeaking) {
-            synth.cancel();
-            isSpeaking = false;
-            btn.textContent = "🔊 Listen";
-            return;
-          }
-
-          var textParts = [
-            data.what_is_right,
-            data.mistake_explained,
-            data.next_step_hint
-          ].filter(Boolean);
-
-          var utterance = new SpeechSynthesisUtterance(textParts.join(". "));
-          utterance.lang = selectedLangCode;
-          utterance.rate = 0.9;
-
-          utterance.onend = function () {
-            isSpeaking = false;
-            btn.textContent = "🔊 Listen";
-          };
-
-          utterance.onerror = function () {
-            isSpeaking = false;
-            btn.textContent = "🔊 Listen";
-          };
-
-          synth.speak(utterance);
-          isSpeaking = true;
-          btn.textContent = "⏹️ Stop";
-        };
-      }
-
-      // -----------------------------------------------------------------
-      // Hint Ladder
-      // -----------------------------------------------------------------
+      // =================================================================
+      // HINT LADDER LOGIC
+      // =================================================================
       function resetHintLadder(data) {
-        var hints = data.hints || {};
-
-        // Reset states
-        ["hintBtn1", "hintBtn2", "hintBtn3"].forEach(function (id) {
-          var btn = $(id);
+        const hints = data.hints || {};
+        ["hintBtn1", "hintBtn2", "hintBtn3"].forEach((id) => {
+          const btn = $(id);
           btn.classList.remove("opened");
-          btn.disabled = id !== "hintBtn1"; // Only L1 starts enabled
+          btn.disabled = id !== "hintBtn1";
         });
 
-        // Set content (using textContent for safety)
         $("hintContent1").textContent = hints.nudge || "";
         $("hintContent2").textContent = hints.bigger_hint || "";
         $("hintContent3").textContent = hints.full_solution || "";
 
-        // Reset icons
         $("hintBtn1").querySelector(".hint-icon").textContent = "⭐";
         $("hintBtn2").querySelector(".hint-icon").textContent = "🔒";
         $("hintBtn3").querySelector(".hint-icon").textContent = "🔒";
@@ -2081,51 +2257,42 @@
 
       $("hintBtn3").addEventListener("click", function () {
         if (this.classList.contains("opened") || this.disabled) return;
-        // Show confirmation modal
         confirmModal.classList.add("visible");
       });
 
-      $("modalCancel").addEventListener("click", function () {
-        confirmModal.classList.remove("visible");
-      });
-
-      $("modalConfirm").addEventListener("click", function () {
+      $("modalCancel").addEventListener("click", () => confirmModal.classList.remove("visible"));
+      $("modalConfirm").addEventListener("click", () => {
         confirmModal.classList.remove("visible");
         openHint(3);
       });
 
-      // Close modal on overlay click
-      confirmModal.addEventListener("click", function (e) {
-        if (e.target === confirmModal) {
-          confirmModal.classList.remove("visible");
-        }
+      confirmModal.addEventListener("click", (e) => {
+        if (e.target === confirmModal) confirmModal.classList.remove("visible");
       });
 
       function openHint(level) {
-        var btn = $("hintBtn" + level);
+        const btn = $("hintBtn" + level);
         btn.classList.add("opened");
         btn.querySelector(".hint-icon").textContent = "⭐";
 
-        // Unlock next level
         if (level < 3) {
-          var next = $("hintBtn" + (level + 1));
+          const next = $("hintBtn" + (level + 1));
           next.disabled = false;
           next.querySelector(".hint-icon").textContent = "🔓";
         }
       }
 
-      // -----------------------------------------------------------------
-      // Verification Badge
-      // -----------------------------------------------------------------
+      // =================================================================
+      // VERIFICATION BADGE
+      // =================================================================
       function renderBadge(data) {
-        var badge = $("verifyBadge");
-        var note = $("verifyNote");
-
+        const badge = $("verifyBadge");
+        const note = $("verifyNote");
         badge.className = "badge";
         note.style.display = "none";
 
         if (data.verified === true) {
-          badge.textContent = "✅ Double-checked";
+          badge.textContent = "✅ Double-checked with Gemma 4";
           badge.classList.add("badge-verified");
         } else if (data.verified === false) {
           badge.textContent = "⚠️ Please double-check this with a teacher";
@@ -2135,128 +2302,91 @@
             note.style.display = "block";
           }
         } else {
-          // null — hide badge
           badge.classList.add("hidden");
         }
       }
 
-      // -----------------------------------------------------------------
-      // Read Aloud (Text-to-Speech)
-      // -----------------------------------------------------------------
-      var isSpeaking = false;
+      // =================================================================
+      // AUDIO (TEXT-TO-SPEECH)
+      // =================================================================
+      let isSpeaking = false;
 
-      function setupListenButton(data) {
-        var btn = $("btnListen");
-        var voiceNote = $("voiceNote");
-
-        btn.classList.remove("hidden");
-        voiceNote.classList.remove("visible");
+      function setupAudioPlayer(data, isCheckMode = false) {
+        const btn = $("btnListen");
+        btn.classList.remove("speaking");
         isSpeaking = false;
         btn.textContent = "🔊 Listen";
 
-        // Check for voice support
-        var synth = window.speechSynthesis;
+        const synth = window.speechSynthesis;
         if (!synth) {
-          btn.classList.add("hidden");
+          btn.style.display = "none";
           return;
         }
 
-        // Voice check (voices may load asynchronously)
-        function checkVoices() {
-          var voices = synth.getVoices();
-          var langBase = selectedLangCode.split("-")[0];
-          var hasVoice = voices.some(function (v) {
-            return v.lang.startsWith(langBase);
-          });
-          if (!hasVoice && voices.length > 0) {
-            btn.classList.add("hidden");
-            voiceNote.classList.add("visible");
+        btn.onclick = () => {
+          if (isSpeaking) {
+            synth.cancel();
+            isSpeaking = false;
+            btn.classList.remove("speaking");
+            btn.textContent = "🔊 Listen";
+            return;
           }
-        }
 
-        checkVoices();
-        if (synth.onvoiceschanged !== undefined) {
-          synth.onvoiceschanged = checkVoices;
-        }
+          let textParts = [];
+          if (isCheckMode) {
+            textParts = [
+              data.what_is_right,
+              data.mistake_explained,
+              data.next_step_hint
+            ].filter(Boolean);
+          } else {
+            if (data.parent_explanation) textParts.push(data.parent_explanation);
+            if (data.teach_script) {
+              data.teach_script.forEach((s) => textParts.push(s));
+            }
+          }
 
-        btn.onclick = function () {
-          toggleReadAloud(data);
+          const utterance = new SpeechSynthesisUtterance(textParts.join(". "));
+          utterance.lang = selectedLangCode;
+          utterance.rate = 0.9;
+
+          utterance.onend = () => {
+            isSpeaking = false;
+            btn.classList.remove("speaking");
+            btn.textContent = "🔊 Listen";
+          };
+          utterance.onerror = () => {
+            isSpeaking = false;
+            btn.classList.remove("speaking");
+            btn.textContent = "🔊 Listen";
+          };
+
+          synth.speak(utterance);
+          isSpeaking = true;
+          btn.classList.add("speaking");
+          btn.textContent = "⏹️ Stop";
         };
       }
 
-      function toggleReadAloud(data) {
-        var synth = window.speechSynthesis;
-        var btn = $("btnListen");
-
-        if (isSpeaking) {
-          synth.cancel();
-          isSpeaking = false;
-          btn.textContent = "🔊 Listen";
-          return;
-        }
-
-        // Build text to read
-        var parts = [];
-        if (data.parent_explanation) parts.push(data.parent_explanation);
-        if (data.teach_script) {
-          data.teach_script.forEach(function (step, i) {
-            parts.push(step);
-          });
-        }
-
-        var utterance = new SpeechSynthesisUtterance(parts.join(". "));
-        utterance.lang = selectedLangCode;
-        utterance.rate = 0.9;
-
-        utterance.onend = function () {
-          isSpeaking = false;
-          btn.textContent = "🔊 Listen";
-        };
-
-        utterance.onerror = function () {
-          isSpeaking = false;
-          btn.textContent = "🔊 Listen";
-        };
-
-        synth.speak(utterance);
-        isSpeaking = true;
-        btn.textContent = "⏹️ Stop";
-      }
-
-      // -----------------------------------------------------------------
-      // Reset / Try Another
-      // -----------------------------------------------------------------
-      $("btnTryAnother").addEventListener("click", resetAll);
-      $("btnTryAnotherBottom").addEventListener("click", resetAll);
-
+      // =================================================================
+      // RESET ALL
+      // =================================================================
       function resetAll() {
-        // Cancel any speech
-        if (window.speechSynthesis) {
-          window.speechSynthesis.cancel();
-        }
+        if (window.speechSynthesis) window.speechSynthesis.cancel();
         isSpeaking = false;
 
-        // Reset photo
         resetPhoto();
-
-        // Hide all result/state sections
         resultArea.classList.remove("visible");
         retakeSection.classList.remove("visible");
         notHomeworkSection.classList.remove("visible");
         loadingSection.classList.remove("visible");
 
-        // Show setup
         setupArea.classList.remove("dimmed");
         btnSubmitText.textContent = currentMode === "check" ? "🔍 Check my child's work" : "✨ Explain it to me";
         if (inputProblemText) inputProblemText.value = "";
 
-        // Clear data
         currentData = null;
-
-        // Hide error
         hideError();
-
-        // Scroll to top
         window.scrollTo({ top: 0, behavior: "smooth" });
       }
 
@@ -2265,4 +2395,3 @@
 
 </body>
 </html>
-
