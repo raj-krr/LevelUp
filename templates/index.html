@@ -1219,8 +1219,9 @@
 
     .hidden { display: none !important; }
 
+    
     /* ====================================================================
-       Landing Page Layout & Components
+       LevelUp Clean & Spacious Design System
        ==================================================================== */
     .landing-wrapper {
       width: 100%;
@@ -1229,20 +1230,20 @@
       flex-direction: column;
     }
 
-    /* Top Sticky Navbar */
+    /* Top Navigation Bar */
     .landing-nav {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(250, 248, 245, 0.94);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
+      background: rgba(250, 248, 245, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
-      padding: 12px 20px;
+      padding: 14px 24px;
     }
 
     .landing-nav-inner {
-      max-width: 1080px;
+      max-width: 980px;
       margin: 0 auto;
       display: flex;
       align-items: center;
@@ -1258,34 +1259,33 @@
     }
 
     .nav-logo-icon {
-      width: 34px;
-      height: 34px;
+      width: 32px;
+      height: 32px;
       background: linear-gradient(135deg, var(--olive-dark), var(--olive-medium));
-      border-radius: 10px;
+      border-radius: 9px;
       display: flex;
       align-items: center;
       justify-content: center;
       color: #FFF;
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 800;
-      box-shadow: 0 3px 8px rgba(59, 87, 50, 0.2);
     }
 
     .nav-brand-title {
-      font-size: 1.3rem;
+      font-size: 1.25rem;
       font-weight: 800;
       color: var(--olive-dark);
-      letter-spacing: -0.5px;
+      letter-spacing: -0.4px;
     }
 
     .badge-gemma-nav {
       display: inline-flex;
       align-items: center;
       gap: 4px;
-      padding: 3px 10px;
+      padding: 3px 9px;
       border-radius: var(--radius-full);
       background: var(--olive-soft-bg);
-      border: 1px solid rgba(77, 115, 66, 0.25);
+      border: 1px solid rgba(77, 115, 66, 0.2);
       color: var(--olive-dark);
       font-size: 0.72rem;
       font-weight: 700;
@@ -1294,11 +1294,11 @@
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 24px;
     }
 
     .nav-link {
-      font-size: 0.85rem;
+      font-size: 0.86rem;
       font-weight: 600;
       color: var(--text-muted);
       text-decoration: none;
@@ -1321,32 +1321,31 @@
       font-weight: 700;
       text-decoration: none;
       transition: all 0.2s ease;
-      box-shadow: 0 3px 10px rgba(59, 87, 50, 0.2);
+      box-shadow: 0 2px 8px rgba(59, 87, 50, 0.18);
     }
 
     .nav-cta-btn:hover {
       background: var(--olive-medium);
       transform: translateY(-1px);
-      box-shadow: 0 5px 14px rgba(59, 87, 50, 0.28);
     }
 
-    @media (max-width: 820px) {
+    @media (max-width: 768px) {
       .nav-links { display: none; }
       .badge-gemma-nav { display: none; }
     }
 
-    /* Page Container for Landing Sections */
+    /* Landing Content Container */
     .landing-content {
-      max-width: 1080px;
+      max-width: 980px;
       margin: 0 auto;
       padding: 0 20px;
       width: 100%;
     }
 
-    /* Hero Section */
+    /* Hero Section — Airy & Spacious */
     .hero-section {
       text-align: center;
-      padding: 56px 0 40px;
+      padding: 68px 0 52px;
       position: relative;
     }
 
@@ -1358,11 +1357,11 @@
       border-radius: var(--radius-full);
       background: #FFFFFF;
       border: 1px solid var(--border);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
       font-size: 0.8rem;
       font-weight: 700;
       color: var(--olive-dark);
       margin-bottom: 22px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
     }
 
     .hero-eyebrow-dot {
@@ -1370,23 +1369,16 @@
       height: 8px;
       border-radius: 50%;
       background: #2E7D32;
-      box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.2);
-      animation: pulseDot 2s infinite ease-in-out;
-    }
-
-    @keyframes pulseDot {
-      0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.25); opacity: 0.7; }
     }
 
     .hero-title {
-      font-size: 2.6rem;
+      font-size: 2.85rem;
       font-weight: 800;
       color: var(--earth-brown);
-      line-height: 1.18;
+      line-height: 1.2;
       letter-spacing: -1px;
       margin-bottom: 18px;
-      max-width: 840px;
+      max-width: 780px;
       margin-left: auto;
       margin-right: auto;
     }
@@ -1401,8 +1393,8 @@
       font-size: 1.05rem;
       color: var(--text-muted);
       line-height: 1.65;
-      max-width: 720px;
-      margin: 0 auto 30px;
+      max-width: 640px;
+      margin: 0 auto 32px;
       font-weight: 400;
     }
 
@@ -1410,9 +1402,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 12px;
+      gap: 14px;
       flex-wrap: wrap;
-      margin-bottom: 34px;
+      margin-bottom: 28px;
     }
 
     .btn-hero-primary {
@@ -1426,14 +1418,13 @@
       font-size: 0.94rem;
       font-weight: 700;
       text-decoration: none;
-      transition: all 0.25s ease;
+      transition: all 0.2s ease;
       box-shadow: 0 4px 14px rgba(59, 87, 50, 0.25);
     }
 
     .btn-hero-primary:hover {
       background: var(--olive-medium);
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(59, 87, 50, 0.32);
     }
 
     .btn-hero-secondary {
@@ -1449,77 +1440,51 @@
       font-weight: 600;
       text-decoration: none;
       transition: all 0.2s ease;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
     }
 
     .btn-hero-secondary:hover {
       border-color: var(--olive-medium);
       color: var(--olive-dark);
-      transform: translateY(-1px);
     }
 
-    .btn-hero-outline {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 13px 20px;
-      border-radius: var(--radius-full);
-      background: transparent;
+    .hero-substrip {
+      font-size: 0.82rem;
       color: var(--text-muted);
-      border: 1px dashed var(--border);
-      font-size: 0.88rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.2s ease;
-    }
-
-    .btn-hero-outline:hover {
-      color: var(--text-body);
-      border-color: var(--olive-light);
-    }
-
-    .hero-stats-row {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
       flex-wrap: wrap;
+      margin-top: 10px;
     }
 
-    .hero-stat-chip {
+    .hero-substrip span {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: #FFFFFF;
-      border: 1px solid var(--border);
-      padding: 7px 14px;
-      border-radius: var(--radius-full);
-      font-size: 0.8rem;
-      color: var(--text-body);
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
     }
 
-    .hero-stat-chip strong {
-      color: var(--olive-dark);
-      font-weight: 700;
+    .substrip-sep {
+      color: #D5CDC0;
+      user-select: none;
     }
 
     @media (max-width: 640px) {
-      .hero-title { font-size: 1.9rem; }
-      .hero-subtitle { font-size: 0.92rem; }
-      .hero-section { padding: 36px 0 24px; }
+      .hero-title { font-size: 2.05rem; }
+      .hero-subtitle { font-size: 0.95rem; }
+      .hero-section { padding: 44px 0 32px; }
     }
 
-    /* Landing Section Shared */
+    /* Section Headers */
     .landing-section {
-      padding: 44px 0;
-      border-top: 1px solid rgba(232, 227, 218, 0.7);
+      padding: 56px 0;
+      border-top: 1px solid rgba(232, 227, 218, 0.6);
     }
 
     .section-head-center {
       text-align: center;
-      max-width: 680px;
-      margin: 0 auto 32px;
+      max-width: 620px;
+      margin: 0 auto 36px;
     }
 
     .section-badge-tag {
@@ -1527,7 +1492,7 @@
       text-transform: uppercase;
       font-size: 0.72rem;
       font-weight: 800;
-      letter-spacing: 1.1px;
+      letter-spacing: 1px;
       color: var(--olive-dark);
       background: var(--olive-badge-bg);
       padding: 4px 12px;
@@ -1536,12 +1501,12 @@
     }
 
     .section-main-heading {
-      font-size: 1.8rem;
+      font-size: 1.85rem;
       font-weight: 800;
       color: var(--earth-brown);
       letter-spacing: -0.5px;
-      line-height: 1.28;
-      margin-bottom: 10px;
+      line-height: 1.25;
+      margin-bottom: 8px;
     }
 
     .section-lead-text {
@@ -1550,34 +1515,84 @@
       line-height: 1.6;
     }
 
-    /* Interactive Demo Cards */
-    .demo-grid {
+    /* 3-Step Clean Cards */
+    .how-cards-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 20px;
     }
 
-    .demo-card-item {
+    .how-card {
       background: #FFFFFF;
-      border: 1.5px solid var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 26px 22px;
+      box-shadow: var(--shadow-card);
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .how-card:hover {
+      border-color: var(--olive-light);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-card-hover);
+    }
+
+    .how-card-num {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: var(--olive-soft-bg);
+      color: var(--olive-dark);
+      font-size: 0.92rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 4px;
+    }
+
+    .how-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--earth-brown);
+    }
+
+    .how-card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Demo Cards Grid */
+    .demo-grid-clean {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 20px;
+    }
+
+    .demo-item {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
       border-radius: var(--radius-lg);
       padding: 16px;
+      box-shadow: var(--shadow-card);
       display: flex;
       flex-direction: column;
       gap: 12px;
-      transition: all 0.25s ease;
-      box-shadow: var(--shadow-card);
       cursor: pointer;
-      position: relative;
+      transition: all 0.2s ease;
     }
 
-    .demo-card-item:hover {
+    .demo-item:hover {
       border-color: var(--olive-light);
       transform: translateY(-3px);
       box-shadow: var(--shadow-card-hover);
     }
 
-    .demo-thumb-container {
+    .demo-item-thumb {
       width: 100%;
       height: 140px;
       border-radius: var(--radius-md);
@@ -1586,19 +1601,19 @@
       position: relative;
     }
 
-    .demo-thumb-img {
+    .demo-item-thumb img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
     }
 
-    .demo-tag-float {
+    .demo-item-tag {
       position: absolute;
       top: 10px;
       left: 10px;
       background: rgba(255, 255, 255, 0.94);
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(6px);
       border: 1px solid var(--border);
       padding: 4px 10px;
       border-radius: var(--radius-full);
@@ -1607,254 +1622,47 @@
       color: var(--olive-dark);
     }
 
-    .demo-card-title {
+    .demo-item-title {
       font-size: 0.98rem;
       font-weight: 700;
       color: var(--earth-brown);
     }
 
-    .demo-card-description {
+    .demo-item-desc {
       font-size: 0.82rem;
       color: var(--text-muted);
       line-height: 1.5;
       flex: 1;
     }
 
-    .btn-demo-load {
+    .demo-item-btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 6px;
       width: 100%;
-      padding: 10px 14px;
+      padding: 9px 12px;
       border-radius: var(--radius-md);
       background: var(--olive-soft-bg);
       color: var(--olive-dark);
-      font-size: 0.84rem;
+      font-size: 0.82rem;
       font-weight: 700;
       border: 1px solid rgba(77, 115, 66, 0.2);
       transition: all 0.2s ease;
     }
 
-    .demo-card-item:hover .btn-demo-load {
+    .demo-item:hover .demo-item-btn {
       background: var(--olive-dark);
       color: #FFFFFF;
     }
 
-    /* Why LevelUp / Features Grid */
-    .features-grid-layout {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
-    }
-
-    .feature-box {
-      background: #FFFFFF;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 24px 20px;
-      box-shadow: var(--shadow-card);
-      transition: all 0.2s ease;
-    }
-
-    .feature-box:hover {
-      border-color: var(--olive-light);
-      box-shadow: var(--shadow-card-hover);
-    }
-
-    .feature-icon-circle {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      background: var(--olive-soft-bg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-      margin-bottom: 14px;
-    }
-
-    .feature-box h3 {
-      font-size: 1.02rem;
-      font-weight: 700;
-      color: var(--earth-brown);
-      margin-bottom: 8px;
-    }
-
-    .feature-box p {
-      font-size: 0.83rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
-
-    /* Steps Grid */
-    .steps-row-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 18px;
-    }
-
-    .step-unit-card {
-      background: #FFFFFF;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 22px 18px;
-      position: relative;
-      box-shadow: var(--shadow-card);
-    }
-
-    .step-badge-num {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: var(--olive-dark);
-      color: #FFF;
-      font-size: 0.88rem;
-      font-weight: 800;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 14px;
-    }
-
-    .step-unit-card h4 {
-      font-size: 0.98rem;
-      font-weight: 700;
-      color: var(--earth-brown);
-      margin-bottom: 6px;
-    }
-
-    .step-unit-card p {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      line-height: 1.55;
-    }
-
-    /* Tech Architecture Box */
-    .tech-overview-card {
-      background: #FFFFFF;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 28px 24px;
-      box-shadow: var(--shadow-card);
-    }
-
-    .pipeline-diagram {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-      overflow-x: auto;
-      padding: 12px 4px 18px;
-      margin-bottom: 24px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .pipe-node {
-      flex: 1;
-      min-width: 170px;
-      background: #FAF8F5;
-      border: 1.5px solid var(--border);
-      border-radius: var(--radius-md);
-      padding: 14px 12px;
-      text-align: center;
-    }
-
-    .pipe-node.highlight {
-      border-color: var(--olive-dark);
-      background: rgba(59, 87, 50, 0.06);
-    }
-
-    .pipe-icon {
-      font-size: 22px;
-      margin-bottom: 6px;
-    }
-
-    .pipe-title {
-      font-size: 0.86rem;
-      font-weight: 700;
-      color: var(--earth-brown);
-    }
-
-    .pipe-sub {
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      margin-top: 2px;
-    }
-
-    .pipe-arrow {
-      color: var(--olive-light);
-      font-size: 18px;
-      font-weight: 800;
-      flex-shrink: 0;
-    }
-
-    .tech-specs-subgrid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 16px;
-    }
-
-    .spec-block h5 {
-      font-size: 0.88rem;
-      font-weight: 700;
-      color: var(--olive-dark);
-      margin-bottom: 4px;
-    }
-
-    .spec-block p {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-
-    /* Hackathon Prize Cards */
-    .prizes-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-    }
-
-    .prize-item-card {
-      background: linear-gradient(135deg, #FFFFFF 0%, #FAF8F5 100%);
-      border: 1.5px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 24px 20px;
-      box-shadow: var(--shadow-card);
-      position: relative;
-    }
-
-    .prize-sponsor-badge {
-      display: inline-block;
-      font-size: 0.72rem;
-      font-weight: 800;
-      color: var(--olive-dark);
-      background: var(--olive-badge-bg);
-      padding: 3px 10px;
-      border-radius: var(--radius-full);
-      margin-bottom: 10px;
-    }
-
-    .prize-item-card h3 {
-      font-size: 1.12rem;
-      font-weight: 800;
-      color: var(--earth-brown);
-      margin-bottom: 8px;
-    }
-
-    .prize-item-card p {
-      font-size: 0.84rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
-
     /* Live App Section */
-    .app-section-container {
-      padding: 48px 0 20px;
-      border-top: 2px solid rgba(59, 87, 50, 0.15);
+    .app-section-clean {
+      padding: 56px 0 32px;
+      border-top: 2px solid rgba(59, 87, 50, 0.12);
     }
 
-    .app-card-frame {
+    .app-box-frame {
       max-width: 520px;
       margin: 0 auto;
     }
@@ -1896,63 +1704,60 @@
       border-color: var(--olive-dark);
     }
 
-    /* Landing Footer */
-    .landing-footer {
+    /* Minimalist Footer */
+    .landing-footer-clean {
       background: #FFFFFF;
       border-top: 1px solid var(--border);
       padding: 36px 20px;
-      margin-top: 50px;
+      margin-top: 48px;
       text-align: center;
     }
 
-    .footer-inner {
-      max-width: 1080px;
+    .footer-inner-clean {
+      max-width: 720px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
     }
 
-    .footer-brand {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 1.15rem;
+    .footer-brand-title {
+      font-size: 1.1rem;
       font-weight: 800;
       color: var(--olive-dark);
     }
 
-    .footer-links {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-      justify-content: center;
+    .footer-meta-text {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.6;
     }
 
-    .footer-link {
-      font-size: 0.82rem;
+    .footer-links-row {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 4px;
+    }
+
+    .footer-link-item {
+      font-size: 0.8rem;
       font-weight: 600;
       color: var(--text-muted);
       text-decoration: none;
     }
 
-    .footer-link:hover {
+    .footer-link-item:hover {
       color: var(--olive-dark);
-    }
-
-    .footer-disclaimer {
-      font-size: 0.74rem;
-      color: var(--text-muted);
-      max-width: 620px;
-      line-height: 1.55;
     }
 
   </style>
 </head>
 <body>
 
-  <div class="landing-wrapper">
+    <div class="landing-wrapper">
 
     <!-- TOP NAVBAR -->
     <header class="landing-nav">
@@ -1960,14 +1765,12 @@
         <a href="#" class="nav-brand">
           <div class="nav-logo-icon" aria-hidden="true">↑</div>
           <span class="nav-brand-title">LevelUp</span>
-          <span class="badge-gemma-nav">Built with Gemma 4</span>
+          <span class="badge-gemma-nav">Gemma 4</span>
         </a>
         <nav class="nav-links">
           <a href="#how-it-works" class="nav-link">How It Works</a>
-          <a href="#why-levelup" class="nav-link">Why LevelUp</a>
-          <a href="#demo-samples" class="nav-link">Live Demos</a>
-          <a href="#tech-architecture" class="nav-link">Gemma 4 AI</a>
-          <a href="#hackathon-prizes" class="nav-link">Hackathon</a>
+          <a href="#demo-samples" class="nav-link">Demo Samples</a>
+          <a href="https://github.com/raj-krr/LevelUp" target="_blank" rel="noopener" class="nav-link">GitHub</a>
         </nav>
         <a href="#app-workspace" class="nav-cta-btn">
           <span>⚡ Launch Coach App</span>
@@ -1981,230 +1784,111 @@
       <section class="hero-section" id="hero">
         <div class="hero-eyebrow">
           <span class="hero-eyebrow-dot"></span>
-          <span>🏆 Hacktoberfest 2026 • DeepMind & DigitalOcean Prize Contender</span>
+          <span>Built with Gemma 4 for Hacktoberfest 2026</span>
         </div>
         <h1 class="hero-title">
-          Your Kid's Homework. <br>
-          <span class="gradient-text">In Your Native Language.</span> <br>
-          Zero Answers Given Away.
+          Your Kid's Homework.<br>
+          <span class="gradient-text">In Your Native Language.</span>
         </h1>
         <p class="hero-subtitle">
-          LevelUp empowers parents across India to become confident home tutors. Powered by Google Gemma 4 multimodal models, it breaks down curriculum concepts into 6 Indic languages with relatable analogies, progressive Socratic hints, and step-by-step coaching scripts.
+          An AI coach for parents. Understand schoolwork in 6 Indic languages through real-world analogies, Socratic hints, and teaching scripts—without giving answers away.
         </p>
         <div class="hero-actions">
           <a href="#app-workspace" class="btn-hero-primary">
             🚀 Launch Homework Coach
           </a>
           <a href="#demo-samples" class="btn-hero-secondary">
-            ⚡ Try Instant Demo Sample
-          </a>
-          <a href="https://github.com/raj-krr/LevelUp" target="_blank" rel="noopener" class="btn-hero-outline">
-            ⭐ GitHub Repo
+            ⚡ Try a Demo Sample
           </a>
         </div>
-        <div class="hero-stats-row">
-          <div class="hero-stat-chip">🌐 <strong>6 Indic Languages</strong> (Hindi, Tamil, Telugu, Bengali, Marathi, English)</div>
-          <div class="hero-stat-chip">🧠 <strong>Dual Gemma 4</strong> (26B-A4B-IT + 31B-IT)</div>
-          <div class="hero-stat-chip">🪜 <strong>Socratic Hint Ladder</strong> (Anti-Cheating)</div>
-          <div class="hero-stat-chip">🔒 <strong>100% In-Memory Privacy</strong> (Zero Disk/Log)</div>
-        </div>
-      </section>
-
-      <!-- INTERACTIVE DEMO SAMPLES -->
-      <section class="landing-section" id="demo-samples">
-        <div class="section-head-center">
-          <span class="section-badge-tag">Interactive Preview</span>
-          <h2 class="section-main-heading">Test Gemma 4 Instantly Without a Textbook</h2>
-          <p class="section-lead-text">Don't have physical homework nearby? Click any sample below to load it into LevelUp and see multimodal AI coaching in action:</p>
-        </div>
-        <div class="demo-grid">
-          <div class="demo-card-item" onclick="window.loadDemoSample('1_math_word_problem_grade5.jpg', 5, 'Math', 'explain')">
-            <div class="demo-thumb-container">
-              <img src="/static/samples/1_math_word_problem_grade5.jpg" alt="Grade 5 Fractions" class="demo-thumb-img" loading="lazy">
-              <span class="demo-tag-float">Grade 5 · Math</span>
-            </div>
-            <div class="demo-card-title">📐 Fraction Word Problem</div>
-            <div class="demo-card-description">Sharing sweets among friends. Gemma 4 translates the problem, creates a relatable roti/sweets metaphor, and guides the parent with a Socratic hint ladder.</div>
-            <button type="button" class="btn-demo-load">Load & Explain →</button>
-          </div>
-
-          <div class="demo-card-item" onclick="window.loadDemoSample('2_handwritten_math.jpg', 6, 'Math', 'check')">
-            <div class="demo-thumb-container">
-              <img src="/static/samples/2_handwritten_math.jpg" alt="Handwritten Math Work" class="demo-thumb-img" loading="lazy">
-              <span class="demo-tag-float">Grade 6 · Check Work</span>
-            </div>
-            <div class="demo-card-title">✍️ Child's Handwritten Equation</div>
-            <div class="demo-card-description">Student's handwritten algebraic steps. Gemma 4 spots where the sign was flipped, praises the first two steps, and gently guides the next attempt.</div>
-            <button type="button" class="btn-demo-load">Load & Review →</button>
-          </div>
-
-          <div class="demo-card-item" onclick="window.loadDemoSample('3_science_water_cycle.jpg', 6, 'Science', 'explain')">
-            <div class="demo-thumb-container">
-              <img src="/static/samples/3_science_water_cycle.jpg" alt="Science Water Cycle" class="demo-thumb-img" loading="lazy">
-              <span class="demo-tag-float">Grade 6 · Science</span>
-            </div>
-            <div class="demo-card-title">🔬 Water Cycle & Evaporation</div>
-            <div class="demo-card-description">Diagram with textbook questions. Translated into conversational Indic explanations with relatable tea-kettle steam and summer drying analogies.</div>
-            <button type="button" class="btn-demo-load">Load & Explain →</button>
-          </div>
-        </div>
-      </section>
-
-      <!-- WHY LEVELUP -->
-      <section class="landing-section" id="why-levelup">
-        <div class="section-head-center">
-          <span class="section-badge-tag">The Philosophy</span>
-          <h2 class="section-main-heading">Built for Parents. Never for Cheating.</h2>
-          <p class="section-lead-text">How LevelUp bridges the educational divide in multilingual Indian homes:</p>
-        </div>
-        <div class="features-grid-layout">
-          <div class="feature-box">
-            <div class="feature-icon-circle">🗣️</div>
-            <h3>Overcoming Language Barrier</h3>
-            <p>Schools teach in English or formal textbooks, but parents think and teach best in their mother tongue. LevelUp translates concepts into 6 Indic languages so parents feel confident and empowered.</p>
-          </div>
-          <div class="feature-box">
-            <div class="feature-icon-circle">🚫</div>
-            <h3>Zero Direct Answers</h3>
-            <p>Standard AI solvers (ChatGPT, Photomath) encourage mindless copying. LevelUp never blurts out the answer. Instead, it provides conversational scripts for parents and progressive Socratic nudges for the child.</p>
-          </div>
-          <div class="feature-box">
-            <div class="feature-icon-circle">💡</div>
-            <h3>Everyday Cultural Metaphors</h3>
-            <p>Abstract formulas are anchored in relatable experiences: dividing rotis at the dinner table, calculating cricket run rates, and visualizing electricity through village water pumps.</p>
-          </div>
-          <div class="feature-box">
-            <div class="feature-icon-circle">✍️</div>
-            <h3>"Check Child's Work" Diagnostician</h3>
-            <p>Parents often can't tell if multi-step homework is right. Gemma 4 reviews handwritten notebook pages, celebrates what went well, and pinpoints where confusion started.</p>
-          </div>
+        <div class="hero-substrip">
+          <span>🌐 Hindi · Tamil · Telugu · Bengali · Marathi · English</span>
+          <span class="substrip-sep">•</span>
+          <span>🪜 Socratic Hint Ladder</span>
+          <span class="substrip-sep">•</span>
+          <span>🔒 100% In-Memory Privacy</span>
         </div>
       </section>
 
       <!-- HOW IT WORKS -->
       <section class="landing-section" id="how-it-works">
         <div class="section-head-center">
-          <span class="section-badge-tag">Step-by-Step</span>
-          <h2 class="section-main-heading">From Textbook Photo to Guided Understanding</h2>
-          <p class="section-lead-text">A simple 4-step workflow engineered for any smartphone:</p>
+          <span class="section-badge-tag">How It Works</span>
+          <h2 class="section-main-heading">From Photo to Guided Understanding</h2>
+          <p class="section-lead-text">Three simple steps designed to empower parents, not cheat for students:</p>
         </div>
-        <div class="steps-row-grid">
-          <div class="step-unit-card">
-            <div class="step-badge-num">1</div>
-            <h4>📸 Snap Homework</h4>
-            <p>Photograph any printed textbook question, worksheet, or child's handwritten notebook page (Grades 3–8).</p>
+        <div class="how-cards-grid">
+          <div class="how-card">
+            <div class="how-card-num">1</div>
+            <h3>📸 Snap Homework</h3>
+            <p>Photograph any printed textbook question, worksheet, or child's notebook page (Grades 3–8).</p>
           </div>
-          <div class="step-unit-card">
-            <div class="step-badge-num">2</div>
-            <h4>👁️ Gemma 4 Vision</h4>
-            <p>Google Gemma 4 multimodal model reads equations, geometric diagrams, and handwritten work entirely in memory.</p>
+          <div class="how-card">
+            <div class="how-card-num">2</div>
+            <h3>💡 Understand in Your Language</h3>
+            <p>Gemma 4 explains the concept in your mother tongue using relatable cultural analogies (rotis, cricket, water pumps).</p>
           </div>
-          <div class="step-unit-card">
-            <div class="step-badge-num">3</div>
-            <h4>🗣️ Indic Coaching Deck</h4>
-            <p>Receive a 5-slide interactive coaching deck with parent scripts, everyday analogies, and a 3-level hint ladder.</p>
-          </div>
-          <div class="step-unit-card">
-            <div class="step-badge-num">4</div>
-            <h4>🔊 Per-Slide Audio</h4>
-            <p>Tap the listen button to hear any slide read aloud in native pronunciation using the Web Speech API.</p>
+          <div class="how-card">
+            <div class="how-card-num">3</div>
+            <h3>🪜 Coach with Socratic Hints</h3>
+            <p>Follow conversational parent scripts and 3 progressive hints so your child learns to solve it independently.</p>
           </div>
         </div>
       </section>
 
-      <!-- TECH ARCHITECTURE -->
-      <section class="landing-section" id="tech-architecture">
+      <!-- DEMO SAMPLES -->
+      <section class="landing-section" id="demo-samples">
         <div class="section-head-center">
-          <span class="section-badge-tag">Under The Hood</span>
-          <h2 class="section-main-heading">Dual Gemma 4 Architecture & Privacy Pipeline</h2>
-          <p class="section-lead-text">Engineered with open weights, privacy-first in-memory processing, and dual-model verification:</p>
+          <span class="section-badge-tag">Instant Demos</span>
+          <h2 class="section-main-heading">Try It Out Instantly</h2>
+          <p class="section-lead-text">Click any real homework problem below to test Gemma 4 in 1 click:</p>
         </div>
-        <div class="tech-overview-card">
-          <div class="pipeline-diagram">
-            <div class="pipe-node">
-              <div class="pipe-icon">📱</div>
-              <div class="pipe-title">1. Client Upload</div>
-              <div class="pipe-sub">In-Memory BytesIO · No Disk</div>
+        <div class="demo-grid-clean">
+          <div class="demo-item" onclick="window.loadDemoSample('1_math_word_problem_grade5.jpg', 5, 'Math', 'explain')">
+            <div class="demo-item-thumb">
+              <img src="/static/samples/1_math_word_problem_grade5.jpg" alt="Grade 5 Fractions" loading="lazy">
+              <span class="demo-item-tag">Grade 5 · Math</span>
             </div>
-            <div class="pipe-arrow">➔</div>
-            <div class="pipe-node highlight">
-              <div class="pipe-icon">🧠</div>
-              <div class="pipe-title">2. gemma-4-26b-a4b-it</div>
-              <div class="pipe-sub">Multimodal Vision + 6 Indic Languages</div>
-            </div>
-            <div class="pipe-arrow">➔</div>
-            <div class="pipe-node">
-              <div class="pipe-icon">🔍</div>
-              <div class="pipe-title">3. gemma-4-31b-it</div>
-              <div class="pipe-sub">Pedagogical Verification & Safety</div>
-            </div>
-            <div class="pipe-arrow">➔</div>
-            <div class="pipe-node">
-              <div class="pipe-icon">🎠</div>
-              <div class="pipe-title">4. Slide Carousel</div>
-              <div class="pipe-sub">Swipe Gestures & Native Audio</div>
-            </div>
+            <div class="demo-item-title">📐 Fraction Word Problem</div>
+            <div class="demo-item-desc">Sharing sweets among friends. Gemma 4 creates an everyday sweets analogy and guided hint ladder.</div>
+            <button type="button" class="demo-item-btn">Load & Explain →</button>
           </div>
-          <div class="tech-specs-subgrid">
-            <div class="spec-block">
-              <h5>🚀 Model 1: Multimodal Explainer</h5>
-              <p><strong>gemma-4-26b-a4b-it</strong> extracts visual homework context, reasons about grade-appropriate curriculum levels, and translates explanations into natural regional Indic phrasing.</p>
-            </div>
-            <div class="spec-block">
-              <h5>🛡️ Model 2: Pedagogical Verifier</h5>
-              <p><strong>gemma-4-31b-it</strong> audits the output to ensure mathematical accuracy, verifies that no direct answers were leaked, and flags potential hallucinations.</p>
-            </div>
-            <div class="spec-block">
-              <h5>🔒 Privacy by Design</h5>
-              <p>Images are read directly into memory via BytesIO, processed, and immediately discarded. No child photos or handwriting samples are ever written to disk or recorded in server logs.</p>
-            </div>
-            <div class="spec-block">
-              <h5>⚡ Lightweight & Open-Weights</h5>
-              <p>Leverages Google DeepMind's open Gemma 4 weights, enabling transparent, auditable, and low-latency educational intelligence accessible to everyone.</p>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      <!-- HACKATHON PRIZES -->
-      <section class="landing-section" id="hackathon-prizes">
-        <div class="section-head-center">
-          <span class="section-badge-tag">Hacktoberfest 2026</span>
-          <h2 class="section-main-heading">Targeted Prize Categories</h2>
-        </div>
-        <div class="prizes-grid">
-          <div class="prize-item-card">
-            <div class="prize-sponsor-badge">Google DeepMind</div>
-            <h3>Best Use of Gemma 4</h3>
-            <p>Packs multimodal vision, 6 Indic languages, and dual-model verification into a focused educational tool that empowers parents and respects student privacy.</p>
+          <div class="demo-item" onclick="window.loadDemoSample('2_handwritten_math.jpg', 6, 'Math', 'check')">
+            <div class="demo-item-thumb">
+              <img src="/static/samples/2_handwritten_math.jpg" alt="Handwritten Math Work" loading="lazy">
+              <span class="demo-item-tag">Grade 6 · Check Work</span>
+            </div>
+            <div class="demo-item-title">✍️ Child's Handwritten Equation</div>
+            <div class="demo-item-desc">Student's handwritten steps. Gemma 4 spots where the sign was flipped and praises the correct steps.</div>
+            <button type="button" class="demo-item-btn">Load & Review →</button>
           </div>
-          <div class="prize-item-card">
-            <div class="prize-sponsor-badge">DigitalOcean</div>
-            <h3>Best Open-Source AI Project</h3>
-            <p>Original open-source architecture with MIT license, 100% test coverage, comprehensive documentation, and production Gunicorn deployment on cloud infrastructure.</p>
+
+          <div class="demo-item" onclick="window.loadDemoSample('3_science_water_cycle.jpg', 6, 'Science', 'explain')">
+            <div class="demo-item-thumb">
+              <img src="/static/samples/3_science_water_cycle.jpg" alt="Water Cycle Diagram" loading="lazy">
+              <span class="demo-item-tag">Grade 6 · Science</span>
+            </div>
+            <div class="demo-item-title">🔬 Water Cycle & Evaporation</div>
+            <div class="demo-item-desc">Diagram with textbook questions. Translated into conversational Indic explanations with home examples.</div>
+            <button type="button" class="demo-item-btn">Load & Explain →</button>
           </div>
         </div>
       </section>
 
       <!-- LIVE APP WORKSPACE -->
-      <section class="app-section-container" id="app-workspace">
+      <section class="app-section-clean" id="app-workspace">
         <div class="section-head-center">
           <span class="section-badge-tag">Interactive Workspace</span>
-          <h2 class="section-main-heading">Try LevelUp Live</h2>
-          <p class="section-lead-text">Select your language, snap homework or pick a sample above, and experience Gemma 4:</p>
+          <h2 class="section-main-heading">Live Homework Coach</h2>
+          <p class="section-lead-text">Your kid's homework. Your language. Level up.</p>
         </div>
-        <div class="app-card-frame">
+        <div class="app-box-frame">
 
   <div class="container">
 
     <!-- HEADER -->
-    <header class="header">
-      <div class="logo">
-        <div class="logo-icon" aria-hidden="true">↑</div>
-        <span class="logo-text">LevelUp</span>
-      </div>
-      <p class="tagline">Your kid's homework. Your language. Level up.</p>
-
+    <header class="header" style="padding-top: 4px;">
       <!-- Mode Switcher -->
       <div class="mode-switch-wrapper">
         <div class="mode-switch" role="tablist" aria-label="Choose mode">
@@ -2216,6 +1900,7 @@
           </button>
         </div>
       </div>
+    
     </header>
 
     <main>
