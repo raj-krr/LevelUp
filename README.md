@@ -205,3 +205,4 @@ LevelUp is configured out-of-the-box for **DigitalOcean App Platform**:
 
 MIT License. Built with ❤️ for Hacktoberfest 2026.
 
+
